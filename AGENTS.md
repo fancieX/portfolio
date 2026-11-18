@@ -15,9 +15,10 @@
 ---
 
 ## Project Overview & Objectives
-- **Project Name:** Retro PC Developer Portfolio
-- **Stage 1 (Current):** Faithfully recreate the reference website (`https://retro-pc.framer.website/`) 1:1 using Next.js 16, TypeScript, Tailwind CSS v4, Lucide React, and Framer Motion. Keep the project strictly local/private.
-- **Stage 2 (Future):** Personalize the completed recreation into a personal developer portfolio (replacing case studies, bio, links, and assets).
+- **Project Name:** Snapline Developer Portfolio
+- **Reference Target:** `https://snapline.framer.website/`
+- **Stage 1 (Current):** Faithfully recreate the Snapline reference website (`https://snapline.framer.website/`) 1:1 using Next.js 16, TypeScript, Tailwind CSS v4, Lucide React, and Framer Motion. Keep the project strictly local/private.
+- **Stage 2 (Future):** Personalize the completed recreation into a personal developer portfolio (`stage-2-personalization`) (replacing case studies, bio, links, and assets).
 
 ---
 
