@@ -86,8 +86,8 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | **M2: Domain Modeling & Data** | | | | | | | | | |
 | `2.1` | Domain Data Types & Schemas | `task/2.1-domain-types` | High | Low | No | `MERGED` | #9 | `e62eb1b` | `Merged into stage-1` |
 | `2.2` | Work Case Studies Structured Data (6 Projects) | `task/2.2-work-mock-data` | High | Medium | No | `MERGED` | #10 | `3825814` | `Merged into stage-1` |
-| `2.3` | Journal Articles Structured Data (5 Articles) | `task/2.3-journal-mock-data` | High | Medium | No | `IMPLEMENTED` | - | - | `Unmerged` |
-| `2.4` | Site Navigation & Global Metadata Configurations | `task/2.4-navigation-metadata` | Medium | Low | No | `NOT STARTED` | - | - | `Unmerged` |
+| `2.3` | Journal Articles Structured Data (5 Articles) | `task/2.3-journal-mock-data` | High | Medium | No | `MERGED` | #11 | `0a86d4f` | `Merged into stage-1` |
+| `2.4` | Site Navigation & Global Metadata Configurations | `task/2.4-navigation-metadata` | Medium | Low | No | `IMPLEMENTED` | - | - | `Unmerged` |
 | **M3: Design System Primitives** | | | | | | | | | |
 | `3.1` | Canvas Background & Repeating Dot-Grid Primitive | `task/3.1-dot-grid-canvas` | Critical | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `3.2` | Artboard Surface & Card Container Primitives | `task/3.2-card-primitives` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -1415,8 +1415,8 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 | `1.5` | `task/1.5-root-layout` | `stage-1` | `stage-1` | `feat(layout): implement root layout and global document shell` | `feat(layout): implement root layout and global document shell` | `MERGED` |
 | `2.1` | `task/2.1-domain-types` | `stage-1` | `stage-1` | `feat(types): define TypeScript domain interfaces for projects and articles` | `feat(types): define TypeScript domain interfaces for projects and articles` | `MERGED` |
 | `2.2` | `task/2.2-work-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for six work projects` | `feat(data): populate structured data records for six work projects` | `MERGED` |
-| `2.3` | `task/2.3-journal-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for five journal articles` | `feat(data): populate structured data records for five journal articles` | `IMPLEMENTED` |
-| `2.4` | `task/2.4-navigation-metadata` | `stage-1` | `stage-1` | `feat(data): configure site navigation and footer sitemap datasets` | `feat(data): configure site navigation and footer sitemap datasets` | `NOT STARTED` |
+| `2.3` | `task/2.3-journal-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for five journal articles` | `feat(data): populate structured data records for five journal articles` | `MERGED` |
+| `2.4` | `task/2.4-navigation-metadata` | `stage-1` | `stage-1` | `feat(data): configure site navigation and footer sitemap datasets` | `feat(data): configure site navigation and footer sitemap datasets` | `IMPLEMENTED` |
 | `3.1` | `task/3.1-dot-grid-canvas` | `stage-1` | `stage-1` | `feat(ui): implement canvas background with 22px repeating dot grid` | `feat(ui): implement canvas background with 22px repeating dot grid` | `NOT STARTED` |
 | `3.2` | `task/3.2-card-primitives` | `stage-1` | `stage-1` | `feat(ui): create artboard and dark container card primitives` | `feat(ui): create artboard and dark container card primitives` | `NOT STARTED` |
 | `3.3` | `task/3.3-pill-badge-primitives` | `stage-1` | `stage-1` | `feat(ui): implement pill, badge, and category tag primitives` | `feat(ui): implement pill, badge, and category tag primitives` | `NOT STARTED` |
