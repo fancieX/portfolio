@@ -84,8 +84,8 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `1.4` | Static Asset Pipeline, Licensing Gates & Staging | `task/1.4-static-assets` | High | Low | Yes | `MERGED` | #7 | `becf773` | `Merged into stage-1` |
 | `1.5` | Shared Application Shell & Root Layout | `task/1.5-root-layout` | Critical | Medium | Yes | `MERGED` | #8 | `0430782` | `Merged into stage-1` |
 | **M2: Domain Modeling & Data** | | | | | | | | | |
-| `2.1` | Domain Data Types & Schemas | `task/2.1-domain-types` | High | Low | No | `IMPLEMENTED` | - | - | `Unmerged` |
-| `2.2` | Work Case Studies Structured Data (6 Projects) | `task/2.2-work-mock-data` | High | Medium | No | `NOT STARTED` | - | - | `Unmerged` |
+| `2.1` | Domain Data Types & Schemas | `task/2.1-domain-types` | High | Low | No | `MERGED` | #9 | `e62eb1b` | `Merged into stage-1` |
+| `2.2` | Work Case Studies Structured Data (6 Projects) | `task/2.2-work-mock-data` | High | Medium | No | `IMPLEMENTED` | - | - | `Unmerged` |
 | `2.3` | Journal Articles Structured Data (5 Articles) | `task/2.3-journal-mock-data` | High | Medium | No | `NOT STARTED` | - | - | `Unmerged` |
 | `2.4` | Site Navigation & Global Metadata Configurations | `task/2.4-navigation-metadata` | Medium | Low | No | `NOT STARTED` | - | - | `Unmerged` |
 | **M3: Design System Primitives** | | | | | | | | | |
@@ -1413,8 +1413,8 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 | `1.3` | `task/1.3-font-integration` | `stage-1` | `stage-1` | `feat(fonts): stage local Geist and Inter WOFF2 fonts with next/font` | `feat(fonts): stage local Geist and Inter WOFF2 fonts with next/font` | `MERGED` |
 | `1.4` | `task/1.4-static-assets` | `stage-1` | `stage-1` | `feat(assets): establish asset licensing gates and stage local inventory` | `feat(assets): establish asset licensing gates and stage local inventory` | `MERGED` |
 | `1.5` | `task/1.5-root-layout` | `stage-1` | `stage-1` | `feat(layout): implement root layout and global document shell` | `feat(layout): implement root layout and global document shell` | `MERGED` |
-| `2.1` | `task/2.1-domain-types` | `stage-1` | `stage-1` | `feat(types): define TypeScript domain interfaces for projects and articles` | `feat(types): define TypeScript domain interfaces for projects and articles` | `IMPLEMENTED` |
-| `2.2` | `task/2.2-work-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for six work projects` | `feat(data): populate structured data records for six work projects` | `NOT STARTED` |
+| `2.1` | `task/2.1-domain-types` | `stage-1` | `stage-1` | `feat(types): define TypeScript domain interfaces for projects and articles` | `feat(types): define TypeScript domain interfaces for projects and articles` | `MERGED` |
+| `2.2` | `task/2.2-work-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for six work projects` | `feat(data): populate structured data records for six work projects` | `IMPLEMENTED` |
 | `2.3` | `task/2.3-journal-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for five journal articles` | `feat(data): populate structured data records for five journal articles` | `NOT STARTED` |
 | `2.4` | `task/2.4-navigation-metadata` | `stage-1` | `stage-1` | `feat(data): configure site navigation and footer sitemap datasets` | `feat(data): configure site navigation and footer sitemap datasets` | `NOT STARTED` |
 | `3.1` | `task/3.1-dot-grid-canvas` | `stage-1` | `stage-1` | `feat(ui): implement canvas background with 22px repeating dot grid` | `feat(ui): implement canvas background with 22px repeating dot grid` | `NOT STARTED` |
