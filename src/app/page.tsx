@@ -2,35 +2,57 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-canvas p-8 text-text-primary">
-      <div className="mx-auto max-w-lg rounded-medium border border-border-light bg-surface-light p-6 shadow-card">
-        <div className="inline-flex items-center gap-2 rounded-pill bg-neon-lime px-3 py-1 text-xs font-medium text-text-primary">
-          <span>Snapline Asset Pipeline</span>
+    <main className="relative z-20 mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-4 py-8 sm:px-8 lg:px-12">
+      {/* Top Header Placeholder (Persistent Header in M4) */}
+      <header className="flex h-14 w-full items-center justify-between">
+        <span className="font-heading text-lg font-bold tracking-tight text-text-primary">
+          Maya.
+        </span>
+        <div className="inline-flex items-center gap-2 rounded-pill border border-border-light bg-surface-light px-4 py-2 text-xs font-medium text-text-primary shadow-pill">
+          <span className="inline-block h-2 w-2 rounded-full bg-live-green" />
+          <span>Available for projects</span>
         </div>
-        <h1 className="mt-4 font-heading text-2xl font-bold tracking-tight text-text-primary">
-          Static Asset Pipeline Verified
-        </h1>
-        <p className="mt-2 font-sans text-sm text-text-secondary">
-          All 28 assets (15 images, 4 WOFF2 fonts, 8 SVG icons, 1 dot pattern) staged locally.
-        </p>
+      </header>
 
-        <div className="mt-6 flex items-center gap-4">
-          <div className="relative h-28 w-20 overflow-hidden rounded-small border border-border-light bg-surface-muted">
+      {/* Artboard Surface Container */}
+      <section className="mt-8 flex-1 rounded-large border border-border-light bg-surface-light p-6 shadow-card sm:p-10 lg:p-12">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-pill bg-neon-lime px-3 py-1 text-xs font-semibold uppercase tracking-wider text-text-primary">
+              <span>Product Designer · Lisbon</span>
+            </div>
+            <h1 className="mt-4 font-heading text-3xl font-bold tracking-tight text-text-primary sm:text-5xl lg:text-6xl">
+              Maya Ortiz
+            </h1>
+            <p className="mt-4 text-base leading-relaxed text-text-secondary sm:text-lg">
+              Crafting thoughtful digital interfaces, enterprise design systems, and web
+              applications with meticulous attention to typography, interaction, and visual craft.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-text-muted">
+              <span className="rounded-small border border-border-light bg-surface-muted px-2.5 py-1">
+                Figma Dot Grid Canvas (#E6E6E3 · 22px)
+              </span>
+              <span className="rounded-small border border-border-light bg-surface-muted px-2.5 py-1">
+                Geist &amp; Inter Typography
+              </span>
+              <span className="rounded-small border border-border-light bg-surface-muted px-2.5 py-1">
+                Next.js 16 App Router
+              </span>
+            </div>
+          </div>
+
+          <div className="relative h-64 w-48 shrink-0 overflow-hidden rounded-medium border border-border-light bg-surface-muted shadow-card sm:h-72 sm:w-56">
             <Image
               src="/images/hero-portrait.webp"
-              alt="Hero portrait demonstration"
+              alt="Maya Ortiz — Product Designer in Lisbon"
               fill
               className="object-cover"
-              sizes="80px"
+              sizes="(max-width: 640px) 192px, 224px"
               priority
             />
           </div>
-          <div className="flex-1">
-            <h2 className="text-sm font-medium text-text-primary">Hero Portrait (1200×1800)</h2>
-            <p className="mt-1 text-xs text-text-muted">Direct local staging via next/image</p>
-          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

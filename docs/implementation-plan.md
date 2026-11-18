@@ -81,8 +81,8 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `1.1` | Next.js 16 App Router & TypeScript Foundation | `task/1.1-nextjs-app-foundation` | Critical | Medium | Yes | `MERGED` | #4 | `c082b0c` | `Merged into stage-1` |
 | `1.2` | Tailwind CSS v4 & Design Token Integration | `task/1.2-tailwind-v4-tokens` | Critical | Medium | Yes | `MERGED` | #5 | `4d11f35` | `Merged into stage-1` |
 | `1.3` | Web Font Integration (Geist & Inter WOFF2) | `task/1.3-font-integration` | High | Low | Yes | `MERGED` | #6 | `25c7ab6` | `Merged into stage-1` |
-| `1.4` | Static Asset Pipeline, Licensing Gates & Staging | `task/1.4-static-assets` | High | Low | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
-| `1.5` | Shared Application Shell & Root Layout | `task/1.5-root-layout` | Critical | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `1.4` | Static Asset Pipeline, Licensing Gates & Staging | `task/1.4-static-assets` | High | Low | Yes | `MERGED` | #7 | `becf773` | `Merged into stage-1` |
+| `1.5` | Shared Application Shell & Root Layout | `task/1.5-root-layout` | Critical | Medium | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
 | **M2: Domain Modeling & Data** | | | | | | | | | |
 | `2.1` | Domain Data Types & Schemas | `task/2.1-domain-types` | High | Low | No | `NOT STARTED` | - | - | `Unmerged` |
 | `2.2` | Work Case Studies Structured Data (6 Projects) | `task/2.2-work-mock-data` | High | Medium | No | `NOT STARTED` | - | - | `Unmerged` |
@@ -1411,8 +1411,8 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 | `1.1` | `task/1.1-nextjs-app-foundation` | `stage-1` | `stage-1` | `feat(setup): initialize Next.js App Router and TypeScript foundation` | `feat(setup): initialize Next.js App Router and TypeScript foundation` | `MERGED` |
 | `1.2` | `task/1.2-tailwind-v4-tokens` | `stage-1` | `stage-1` | `feat(styles): configure Tailwind CSS v4 and design tokens` | `feat(styles): configure Tailwind CSS v4 and design tokens` | `MERGED` |
 | `1.3` | `task/1.3-font-integration` | `stage-1` | `stage-1` | `feat(fonts): stage local Geist and Inter WOFF2 fonts with next/font` | `feat(fonts): stage local Geist and Inter WOFF2 fonts with next/font` | `MERGED` |
-| `1.4` | `task/1.4-static-assets` | `stage-1` | `stage-1` | `feat(assets): establish asset licensing gates and stage local inventory` | `feat(assets): establish asset licensing gates and stage local inventory` | `IMPLEMENTED` |
-| `1.5` | `task/1.5-root-layout` | `stage-1` | `stage-1` | `feat(layout): implement root layout and global document shell` | `feat(layout): implement root layout and global document shell` | `NOT STARTED` |
+| `1.4` | `task/1.4-static-assets` | `stage-1` | `stage-1` | `feat(assets): establish asset licensing gates and stage local inventory` | `feat(assets): establish asset licensing gates and stage local inventory` | `MERGED` |
+| `1.5` | `task/1.5-root-layout` | `stage-1` | `stage-1` | `feat(layout): implement root layout and global document shell` | `feat(layout): implement root layout and global document shell` | `IMPLEMENTED` |
 | `2.1` | `task/2.1-domain-types` | `stage-1` | `stage-1` | `feat(types): define TypeScript domain interfaces for projects and articles` | `feat(types): define TypeScript domain interfaces for projects and articles` | `NOT STARTED` |
 | `2.2` | `task/2.2-work-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for six work projects` | `feat(data): populate structured data records for six work projects` | `NOT STARTED` |
 | `2.3` | `task/2.3-journal-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for five journal articles` | `feat(data): populate structured data records for five journal articles` | `NOT STARTED` |
