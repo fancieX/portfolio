@@ -36,7 +36,7 @@ flowchart LR
      - Routes 11–15: Five Editorial Articles (`/journal/constraints`, `/journal/white-space`, `/journal/design-system`, `/journal/typography-brand`, `/journal/handoff`)
      - Route 16: Contact Page with Dark Theme & Form (`/contact`)
      - Routes 17–18: Legal Pages with Tab Toggle (`/privacy`, `/terms`)
-   - Implement the custom error recovery canvas via an explicit direct route (`src/app/404/page.tsx`) and an unknown URL fallback boundary (`src/app/not-found.tsx`), both sharing a reusable `NotFoundCanvas` component.
+   - Implement the authentic custom error recovery canvas via an explicit direct route (`src/app/404/page.tsx`) and an unknown URL fallback boundary (`src/app/not-found.tsx`), both sharing a reusable `NotFoundCanvas` component preserving the original Snapline composition (huge bold 404 background watermark, 3 interactive draggable Polaroid photo cards with `# Layer 01–03` tags and dimension badges, "This page wandered off..." copy, and "Back home" / "See the work" action buttons).
    - Embody the Figma design canvas metaphor: base canvas `#E6E6E3` with repeating 22px dot grid, white artboard containers, interactive selection frames with 8 resize handles, universal bottom floating dock (`~280px`), simulated collaborator cursors, and Lisbon local time.
    - **Rendering & Routing Architecture:**
      - Next.js 16 App Router with TypeScript strict mode.
@@ -1137,22 +1137,31 @@ MILESTONE 11: LEGAL & ERROR RECOVERY PAGES (Area J, K)
 - **Task ID:** `11.3`
 - **Task Name:** Custom 404 Recovery Canvas with 3 Draggable Polaroids
 - **Priority:** High | **Complexity:** High | **Visual QA:** Yes
-- **Scope:** Custom error page architecture (direct route + fallback handler + shared canvas component).
-- **Objective:** Implement an explicit direct route at `src/app/404/page.tsx`, a global fallback handler at `src/app/not-found.tsx`, and a shared reusable component `src/components/error/NotFoundCanvas.tsx` displaying huge `404` background watermark, recovery message, Return Home button, and `PolaroidStack.tsx` with 3 interactive mouse-draggable Polaroid cards (`# Layer 01`, `# Layer 02`, `# Layer 03`).
+- **Scope:** Custom error recovery architecture (direct `/404` route + root `not-found.tsx` fallback + shared reusable canvas component preserving authentic Snapline composition).
+- **Objective:** Implement an explicit direct route at `src/app/404/page.tsx`, a global fallback boundary at `src/app/not-found.tsx`, and a shared reusable component `src/components/error/NotFoundCanvas.tsx` that faithfully recreates the original Snapline 404 composition: base dot-grid canvas, huge centered bold black `404` background watermark, horizontal hot-pink typographic baseline guide (`#FF3B5C`), 3 interactive draggable Polaroid photo cards (`AST-09`, `AST-10`, `AST-11`) with `# Layer 01–03` tags and neon lime dimension badges (`170 × 192`), the exact two-line copy ("This page wandered off. Shuffle the photos while you're here, then" / "let's get you back to something worth looking at."), and the two action buttons ("Back home" navigating to `/` and "See the work" navigating to `/work`).
 - **Affected Files:** `src/app/404/page.tsx`, `src/app/not-found.tsx`, `src/components/error/NotFoundCanvas.tsx`, `src/components/error/PolaroidStack.tsx`, `src/components/error/PolaroidCard.tsx`.
 - **Dependencies:** Task 3.1, Task 3.4.
-- **Expected Result:** Explicit direct route at `/404` and global fallback for unknown URLs both render the identical interactive 404 recovery canvas via the shared `NotFoundCanvas` component.
+- **Expected Result:** Both direct access at `/404` and arbitrary invalid URLs render the identical, authentic Snapline 404 experience without visual discrepancy.
 - **Acceptance Criteria:**
-  1. Direct navigation to `/404` renders the custom recovery canvas via `src/app/404/page.tsx`.
-  2. Navigating to an arbitrary invalid URL (e.g. `/unknown-slug`) automatically triggers `src/app/not-found.tsx` rendering the same shared recovery canvas with HTTP 404 status.
-  3. Polaroids can be dragged freely with elevated drop shadows and boundary constraints.
-  4. Return Home button navigates back to `/`.
-- **Testing Requirements:** Test direct URL access at `http://localhost:3000/404`; test invalid URL fallback at `http://localhost:3000/some-random-invalid-url`; visual comparison against `docs/research/snapline/screenshots/desktop/404-desktop-initial.png`; test Polaroid dragging.
-- **Responsive Baseline:** Desktop: fanned out cards across canvas | Tablet: cards scaled down to fit | Mobile: cards stacked with drag boundary constrained to 390px.
-- **Research References:** `docs/research/snapline/PAGE_TOPOLOGY.md` (Template 4) and `docs/research/snapline/interaction-matrix.md` (404 Page).
+  1. Direct navigation to `/404` successfully renders the original 404 composition via `src/app/404/page.tsx`.
+  2. Requesting an arbitrary unknown URL triggers the Next.js `src/app/not-found.tsx` fallback rendering the identical shared recovery canvas.
+  3. Production build testing (`npm run build && npm run start`): Direct `/404` and unknown URL fallback are both tested against a running production server; actual HTTP response status is empirically verified (confirming expected 404 document status on unknown URLs).
+  4. The 3 Polaroid cards render with authentic photography (`AST-09`, `AST-10`, `AST-11`), fanning out over the `404` watermark with slight initial rotations (~ -12°, 0°, +12°).
+  5. Dragging any Polaroid card lifts it with elevated drop shadow, displaying a Figma selection bounding box with 8 resize handles, layer tag (`# Layer 01/02/03`), and neon lime dimension badge (`170 × 192`, `#D4FF00`).
+  6. The two action buttons function correctly: "Back home" navigates to `/` and "See the work" navigates to `/work`.
+  7. Persistent top Header (`Maya.` / `Get in touch`) and bottom Floating Dock render and function normally.
+- **Testing Requirements:**
+  1. Production Server Testing: Run `npm run build && npm run start` and test with browser and curl.
+  2. Direct Route: Navigate to `http://localhost:3000/404`, confirm visual rendering and inspect HTTP response status.
+  3. Fallback Route: Request `http://localhost:3000/arbitrary-missing-slug`, confirm visual rendering and inspect HTTP response status.
+  4. Interactive Testing: Test dragging each of the 3 Polaroid cards across desktop, tablet, and mobile; verify selection handles and dimension badge visibility during drag.
+  5. Action Button Testing: Click "Back home" (verifying navigation to `/`) and "See the work" (verifying navigation to `/work`).
+  6. Visual Regression: Compare side-by-side against all 5 reference screenshots (`docs/research/snapline/screenshots/desktop/404-desktop-initial.png`, `docs/research/snapline/screenshots/interactions/404-desktop-polaroid-drag-start.png`, `docs/research/snapline/screenshots/interactions/404-desktop-polaroid-drag-moved.png`, `docs/research/snapline/screenshots/tablet/404-tablet-768px.png`, `docs/research/snapline/screenshots/mobile/404-mobile-390px.png`).
+- **Responsive Baseline:** Desktop: fanned out cards across canvas | Tablet: cards scaled proportionally to fit 768px width | Mobile: cards scaled to fit 390px width with drag boundaries constrained to viewport bounds.
+- **Research References:** `docs/research/snapline/PAGE_TOPOLOGY.md` (Template 4: Custom 404 Recovery Canvas), `docs/research/snapline/reference-analysis.md` (Section 2 Route Inventory & Section 3 Figma Metaphors), `docs/research/snapline/interaction-matrix.md` (Section 4 Interactive 404 Polaroid Draggable Cards), and `docs/research/snapline/asset-inventory.csv` (`AST-09`, `AST-10`, `AST-11`).
 - **Task Branch:** `task/11.3-custom-404-canvas`
-- **Commit Message:** `feat(error): implement custom 404 recovery canvas with direct route and not-found fallback`
-- **PR Title:** `feat(error): implement custom 404 recovery canvas with direct route and not-found fallback`
+- **Commit Message:** `feat(error): implement authentic 404 recovery canvas with 3 draggable polaroids and direct route/fallback handling`
+- **PR Title:** `feat(error): implement authentic 404 recovery canvas with 3 draggable polaroids and direct route/fallback handling`
 
 ```
 ================================================================================
@@ -1487,9 +1496,10 @@ Stage 1 is complete only when all 53 tasks have been implemented, reviewed, appr
 2. **All 6 Project Detail Routes Work:** Dedicated case study routes (`/work/orbit`, `/work/pilot`, `/work/kite`, `/work/grid`, `/work/bloom`, `/work/tidal`) compile and display verified metadata and metrics.
 3. **All 5 Journal Article Routes Work:** Editorial routes (`/journal/constraints`, `/journal/white-space`, `/journal/design-system`, `/journal/typography-brand`, `/journal/handoff`) render full formatted content.
 4. **Custom 404 Recovery Experience Operates Intentionally Across Both Scenarios:**
-   - **Explicit Direct Route:** Navigating directly to `/404` renders the custom recovery canvas via `src/app/404/page.tsx`.
-   - **Invalid URL Fallback:** Navigating to an arbitrary invalid URL (e.g. `/invalid-page`) automatically renders the shared custom recovery canvas via `src/app/not-found.tsx` with HTTP 404 status.
-   - **Zero Expected Content Pages Display 404:** No valid content link erroneously returns a 404 error.
+   - **Explicit Direct Route:** Navigating directly to `/404` renders the authentic recovery canvas via `src/app/404/page.tsx` with complete Snapline composition (huge 404 watermark, 3 draggable Polaroids with Layer 01–03 tags and dimension badges, "This page wandered off..." copy, and "Back home" / "See the work" action buttons).
+   - **Invalid URL Fallback:** Navigating to an arbitrary invalid URL (e.g. `/invalid-page`) automatically renders the identical shared custom recovery canvas via `src/app/not-found.tsx`.
+   - **HTTP Status Verification in Production:** Verified via running production build (`npm run build && npm run start`) that both direct `/404` and unknown URL fallback routes operate correctly, with actual HTTP response status codes empirically measured and verified (confirming expected 404 status on unknown URL requests).
+   - **Zero Expected Content Pages Display 404:** No valid content link erroneously returns a 404 error or triggers the not-found fallback.
 5. **1:1 Visual & Motion Fidelity:** All fonts, colors, line heights, paddings, borders, shadows, and Figma selection handles mirror the reference website.
 6. **Universal Floating Dock:** Dock functions as the universal primary navigation across desktop, tablet, and mobile.
 7. **Zero Console Errors:** The browser console remains completely clean of React hydration errors, 404 network warnings, or syntax warnings.

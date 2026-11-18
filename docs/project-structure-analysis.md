@@ -78,7 +78,7 @@ Inspection of the repository prior to clean commit `5fb0c65`:
 | **Prerendering & Dynamic Generation** | Fast initial page loads with pre-rendered HTML across 18 content pages + custom 404 | **Static Prerendering + `generateStaticParams`** for the 6 project slugs and 5 article slugs; standard static pre-rendering for fixed pages | Client-side only (requires manual SSG setup if needed) |
 | **SEO & Meta Tags** | Dynamic page titles (`Orbit \| Maya Ortiz`, etc.) and OpenGraph metadata | **Native Metadata API** (`export const metadata = ...`) | Requires `react-helmet-async` or manual document.title updates |
 | **Font Optimization** | Geist & Inter WOFF2 fonts with zero Layout Shift (CLS) | **`next/font/local`** automatically optimizes and preloads fonts | Requires manual `@font-face` CSS management |
-| **Custom 404 Architecture** | Direct `/404` page + unknown URL fallback | **`src/app/404/page.tsx` + `not-found.tsx`** sharing a reusable `NotFoundCanvas` component | Requires manual wildcard route matching |
+| **Custom 404 Architecture** | Direct `/404` page + unknown URL fallback | **`src/app/404/page.tsx` + `not-found.tsx`** sharing a reusable `NotFoundCanvas` component (preserving authentic 404 watermark, 3 draggable Polaroids, and "Back home" / "See the work" action buttons) | Requires manual wildcard route matching |
 | **Virtual 2D Canvas Motion** | Spatial canvas panning between artboards | **Client Components (`"use client"`)** running Framer Motion | Fully supported |
 | **Standard Alignment** | Mandated in `AGENTS.md` and approved `docs/implementation-plan.md` | **Mandated Standard Stack** | Deviates from approved project guidelines |
 
@@ -137,7 +137,8 @@ portfolio/
 │   │   ├── about/                      # About-specific components (stats, timeline, tools, FAQ accordion)
 │   │   ├── journal/                    # Journal-specific components (cards, editorial reader)
 │   │   ├── contact/                    # Contact-specific components (inquiry form, selectors)
-│   │   └── legal/                      # Reusable legal layout with tab navigation
+│   │   ├── legal/                      # Reusable legal layout with tab navigation
+│   │   └── error/                      # 404 recovery canvas (NotFoundCanvas, PolaroidStack, PolaroidCard)
 │   ├── data/                           # Structured TypeScript data models (6 projects, 5 articles)
 │   ├── hooks/                          # Custom React hooks (canvas coordinates, viewport, Lisbon clock)
 │   ├── styles/                         # Global styles (Tailwind v4 theme directives)
