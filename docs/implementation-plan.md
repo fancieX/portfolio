@@ -78,8 +78,8 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | Task ID | Task Description | Branch Name | Priority | Complexity | Visual QA | Status | PR | Commit | Merge Status |
 |:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **M1: Foundation & Setup** | | | | | | | | | |
-| `1.1` | Next.js 16 App Router & TypeScript Foundation | `task/1.1-nextjs-app-foundation` | Critical | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
-| `1.2` | Tailwind CSS v4 & Design Token Integration | `task/1.2-tailwind-v4-tokens` | Critical | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `1.1` | Next.js 16 App Router & TypeScript Foundation | `task/1.1-nextjs-app-foundation` | Critical | Medium | Yes | `MERGED` | #4 | `c082b0c` | `Merged into stage-1` |
+| `1.2` | Tailwind CSS v4 & Design Token Integration | `task/1.2-tailwind-v4-tokens` | Critical | Medium | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
 | `1.3` | Web Font Integration (Geist & Inter WOFF2) | `task/1.3-font-integration` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `1.4` | Static Asset Pipeline, Licensing Gates & Staging | `task/1.4-static-assets` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `1.5` | Shared Application Shell & Root Layout | `task/1.5-root-layout` | Critical | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -1408,7 +1408,7 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 
 | Task ID | Exact Branch Name | Base Branch | Target PR Branch | Commit Message | PR Title | Initial Status |
 |:---:|:---|:---:|:---:|:---|:---|:---:|
-| `1.1` | `task/1.1-nextjs-app-foundation` | `stage-1` | `stage-1` | `feat(setup): initialize Next.js App Router and TypeScript foundation` | `feat(setup): initialize Next.js App Router and TypeScript foundation` | `NOT STARTED` |
+| `1.1` | `task/1.1-nextjs-app-foundation` | `stage-1` | `stage-1` | `feat(setup): initialize Next.js App Router and TypeScript foundation` | `feat(setup): initialize Next.js App Router and TypeScript foundation` | `MERGED` |
 | `1.2` | `task/1.2-tailwind-v4-tokens` | `stage-1` | `stage-1` | `feat(styles): configure Tailwind CSS v4 and design tokens` | `feat(styles): configure Tailwind CSS v4 and design tokens` | `NOT STARTED` |
 | `1.3` | `task/1.3-font-integration` | `stage-1` | `stage-1` | `feat(fonts): stage local Geist and Inter WOFF2 fonts with next/font` | `feat(fonts): stage local Geist and Inter WOFF2 fonts with next/font` | `NOT STARTED` |
 | `1.4` | `task/1.4-static-assets` | `stage-1` | `stage-1` | `feat(assets): establish asset licensing gates and stage local inventory` | `feat(assets): establish asset licensing gates and stage local inventory` | `NOT STARTED` |
