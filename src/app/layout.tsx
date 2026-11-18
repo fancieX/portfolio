@@ -1,10 +1,59 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { geist, inter } from "@/styles/fonts";
 import "@/styles/globals.css";
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#E6E6E3",
+};
+
 export const metadata: Metadata = {
-  title: "Snapline Portfolio",
-  description: "Recreation of Snapline Developer Portfolio",
+  metadataBase: new URL("https://snapline.framer.website"),
+  title: {
+    default: "Maya Ortiz | Product Designer in Lisbon",
+    template: "%s | Maya Ortiz",
+  },
+  description:
+    "Product Designer in Lisbon crafting thoughtful digital interfaces, design systems, and web apps.",
+  keywords: [
+    "Product Designer",
+    "Lisbon",
+    "Maya Ortiz",
+    "Design Systems",
+    "UI/UX Design",
+    "Digital Interfaces",
+    "Web Apps",
+  ],
+  authors: [{ name: "Maya Ortiz" }],
+  creator: "Maya Ortiz",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://snapline.framer.website/",
+    siteName: "Maya Ortiz",
+    title: "Maya Ortiz | Product Designer in Lisbon",
+    description:
+      "Product Designer in Lisbon crafting thoughtful digital interfaces, design systems, and web apps.",
+    images: [
+      {
+        url: "/images/hero-portrait.webp",
+        width: 1200,
+        height: 1800,
+        alt: "Maya Ortiz — Product Designer in Lisbon",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maya Ortiz | Product Designer in Lisbon",
+    description:
+      "Product Designer in Lisbon crafting thoughtful digital interfaces, design systems, and web apps.",
+    images: ["/images/hero-portrait.webp"],
+  },
+  icons: {
+    icon: "/icons/cursor.svg",
+  },
 };
 
 export default function RootLayout({
@@ -14,7 +63,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="relative min-h-screen font-sans text-text-primary antialiased">
+        <div id="canvas-root" className="relative min-h-screen w-full">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
