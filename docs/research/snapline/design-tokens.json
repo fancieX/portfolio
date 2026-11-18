@@ -1,0 +1,421 @@
+{
+  "$schema": "https://json.schemastore.org/design-tokens.json",
+  "name": "Snapline Design System Tokens",
+  "version": "1.1.0",
+  "source": "https://snapline.framer.website/",
+  "extractedAt": "2026-11-18T17:15:00Z",
+  "verificationStatus": "Supplemental Browser Inspection Verified",
+  "color": {
+    "background": {
+      "canvas": {
+        "value": "#E6E6E3",
+        "description": "Infinite 2D canvas background base tone",
+        "sourceElement": "body / #root",
+        "sourcePage": "/",
+        "property": "background-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "canvasPattern": {
+        "value": "radial-gradient(circle, #C3C3BF 1px, transparent 1.3px) 0 0 / 22px 22px",
+        "description": "Figma-style background canvas dot grid pattern",
+        "sourceElement": "body / background-layer",
+        "sourcePage": "/",
+        "property": "background-image",
+        "viewport": "1440px",
+        "measurementMethod": "stylesheetRule"
+      },
+      "surfaceLight": {
+        "value": "#FFFFFF",
+        "description": "Primary card surface and artboard container background",
+        "sourceElement": ".artboard-container",
+        "sourcePage": "/",
+        "property": "background-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "surfaceMuted": {
+        "value": "#ECECEC",
+        "description": "Secondary card and input background",
+        "sourceElement": ".secondary-card, input",
+        "sourcePage": "/about",
+        "property": "background-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "surfaceDark": {
+        "value": "#161616",
+        "description": "Dark card container used on Contact page and footer CTA blocks",
+        "sourceElement": ".contact-card, .footer-cta",
+        "sourcePage": "/contact",
+        "property": "background-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "dock": {
+        "value": "rgba(255, 255, 255, 0.85)",
+        "description": "Floating dock glassmorphic container background",
+        "sourceElement": "nav.dock",
+        "sourcePage": "/",
+        "property": "background-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "dockActivePill": {
+        "value": "#0A0A0A",
+        "description": "Active icon background container in floating dock",
+        "sourceElement": "nav.dock .active-indicator",
+        "sourcePage": "/",
+        "property": "background-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      }
+    },
+    "text": {
+      "primary": {
+        "value": "#0A0A0A",
+        "description": "High contrast headings and primary body text",
+        "sourceElement": "h1, h2, .heading-primary",
+        "sourcePage": "/",
+        "property": "color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "secondary": {
+        "value": "#3A3A3A",
+        "description": "Standard body paragraphs and narrative descriptions",
+        "sourceElement": "p.body-text",
+        "sourcePage": "/about",
+        "property": "color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "muted": {
+        "value": "#605F5F",
+        "description": "Secondary labels, metadata, dates, and category tags",
+        "sourceElement": ".metadata-label, .article-date",
+        "sourcePage": "/journal",
+        "property": "color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "faint": {
+        "value": "#8A8A8A",
+        "description": "Input placeholders, footer copyright, and deactivated states",
+        "sourceElement": "input::placeholder, .footer-meta",
+        "sourcePage": "/",
+        "property": "color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "inverse": {
+        "value": "#FFFFFF",
+        "description": "Text on dark containers and solid button labels",
+        "sourceElement": ".contact-card h2, .btn-primary",
+        "sourcePage": "/contact",
+        "property": "color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      }
+    },
+    "accent": {
+      "neonLime": {
+        "value": "#D6FF3F",
+        "altValue": "#CCFF00",
+        "description": "Signature neon lime accent used for simulated cursors, active pills, resize dimension tags, active dock icons, and CTA highlights",
+        "sourceElement": ".dock-active-icon, .dimension-pill, .btn-send",
+        "sourcePage": "/",
+        "property": "color, background-color, border-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "guidelinePink": {
+        "value": "#FF3B5C",
+        "description": "Figma-style alignment guidelines and typographic baseline markers",
+        "sourceElement": ".guideline-line, .baseline-marker",
+        "sourcePage": "/work/orbit",
+        "property": "stroke, border-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "liveGreen": {
+        "value": "#22C55E",
+        "description": "Pulsating indicator for 'Booking projects for January' badge",
+        "sourceElement": ".availability-pulse",
+        "sourcePage": "/",
+        "property": "background-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      }
+    },
+    "border": {
+      "light": {
+        "value": "rgba(10, 10, 10, 0.08)",
+        "description": "Standard hairline border for cards, inputs, and section dividers",
+        "sourceElement": ".card-border, .filter-pill",
+        "sourcePage": "/work",
+        "property": "border-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "subtle": {
+        "value": "#E6E6E3",
+        "description": "Faint inner border for light container frames",
+        "sourceElement": ".frame-container",
+        "sourcePage": "/",
+        "property": "border-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "dark": {
+        "value": "rgba(255, 255, 255, 0.12)",
+        "description": "Borders inside dark theme containers and footer CTA",
+        "sourceElement": ".contact-card .input-group",
+        "sourcePage": "/contact",
+        "property": "border-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "focus": {
+        "value": "#D6FF3F",
+        "description": "Interactive focus ring on inputs and active Figma frame handles",
+        "sourceElement": "input:focus, select:focus",
+        "sourcePage": "/contact",
+        "property": "border-color, outline-color",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "primary": {
+        "value": "Geist, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        "description": "Clean modern sans-serif utilized for all headings, body copy, and UI controls",
+        "sourceElement": "body, p, h1, h2, h3",
+        "sourcePage": "/",
+        "property": "font-family",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle & @font-face"
+      },
+      "heading": {
+        "value": "Geist, Inter, sans-serif",
+        "description": "Heading font weights with tight letter tracking",
+        "sourceElement": "h1, h2",
+        "sourcePage": "/",
+        "property": "font-family",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "mono": {
+        "value": "'Geist Mono', 'SF Mono', Consolas, monospace",
+        "description": "Metadata numbers, timestamps, dimensions (e.g. '380 \u00d7 475'), and index counters",
+        "sourceElement": ".dimension-tag, .index-counter",
+        "sourcePage": "/",
+        "property": "font-family",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      }
+    },
+    "fontUrls": {
+      "geistRegular": "https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RnOM4mJPby1QNtA.woff2",
+      "geistMedium": "https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RruM4mJPby1QNtA.woff2",
+      "geistSemiBold": "https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RQuQ4mJPby1QNtA.woff2",
+      "interBold": "https://framerusercontent.com/assets/syRNPWzAMIrcJ3wIlPIP43KjQs.woff2"
+    },
+    "fontWeight": {
+      "regular": "400",
+      "medium": "500",
+      "semiBold": "600",
+      "bold": "700"
+    },
+    "fontSize": {
+      "displayDesktop": {
+        "size": "72px",
+        "lineHeight": "1.05",
+        "letterSpacing": "-0.03em",
+        "weight": "600",
+        "sourceElement": "h1.hero-title",
+        "sourcePage": "/",
+        "property": "font-size, line-height, letter-spacing",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "displayTablet": {
+        "size": "52px",
+        "lineHeight": "1.10",
+        "letterSpacing": "-0.025em",
+        "weight": "600",
+        "sourceElement": "h1.hero-title",
+        "sourcePage": "/",
+        "property": "font-size, line-height, letter-spacing",
+        "viewport": "768px",
+        "measurementMethod": "computedStyle"
+      },
+      "displayMobile": {
+        "size": "38px",
+        "lineHeight": "1.15",
+        "letterSpacing": "-0.02em",
+        "weight": "600",
+        "sourceElement": "h1.hero-title",
+        "sourcePage": "/",
+        "property": "font-size, line-height, letter-spacing",
+        "viewport": "390px",
+        "measurementMethod": "computedStyle"
+      },
+      "h2": {
+        "size": "26px",
+        "lineHeight": "1.25",
+        "letterSpacing": "-0.02em",
+        "weight": "500",
+        "sourceElement": "h2.section-heading",
+        "sourcePage": "/about",
+        "property": "font-size, line-height",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "h3": {
+        "size": "20px",
+        "lineHeight": "1.35",
+        "letterSpacing": "-0.015em",
+        "weight": "500",
+        "sourceElement": "h3.card-title",
+        "sourcePage": "/work",
+        "property": "font-size, line-height",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "body": {
+        "size": "18px",
+        "lineHeight": "1.6",
+        "letterSpacing": "-0.01em",
+        "weight": "400",
+        "sourceElement": "p.body-lead",
+        "sourcePage": "/about",
+        "property": "font-size, line-height",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "bodyRegular": {
+        "size": "16px",
+        "lineHeight": "1.55",
+        "letterSpacing": "-0.01em",
+        "weight": "400",
+        "sourceElement": "p.body-text",
+        "sourcePage": "/journal/constraints",
+        "property": "font-size, line-height",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "caption": {
+        "size": "14px",
+        "lineHeight": "1.4",
+        "letterSpacing": "-0.005em",
+        "weight": "400",
+        "sourceElement": ".caption, .filter-pill",
+        "sourcePage": "/work",
+        "property": "font-size, line-height",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      },
+      "micro": {
+        "size": "12px",
+        "lineHeight": "1.2",
+        "letterSpacing": "0em",
+        "weight": "500",
+        "sourceElement": ".metadata-tag, .dimension-tag",
+        "sourcePage": "/",
+        "property": "font-size, line-height",
+        "viewport": "1440px",
+        "measurementMethod": "computedStyle"
+      }
+    }
+  },
+  "spacing": {
+    "base": "4px",
+    "scale": {
+      "1": "4px",
+      "2": "8px",
+      "3": "12px",
+      "4": "16px",
+      "5": "20px",
+      "6": "24px",
+      "8": "32px",
+      "10": "40px",
+      "12": "48px",
+      "16": "64px",
+      "20": "80px",
+      "24": "96px",
+      "32": "128px"
+    }
+  },
+  "layout": {
+    "container": {
+      "maxWidth": "1200px",
+      "paddingDesktop": "48px",
+      "paddingTablet": "32px",
+      "paddingMobile": "16px",
+      "sourceElement": ".artboard-container",
+      "sourcePage": "/",
+      "property": "max-width, padding",
+      "viewport": "all",
+      "measurementMethod": "computedStyle"
+    },
+    "dock": {
+      "width": "280px",
+      "height": "52px",
+      "bottomOffsetDesktop": "24px",
+      "bottomOffsetMobile": "16px",
+      "borderRadius": "9999px",
+      "backdropFilter": "blur(12px)",
+      "zIndex": "1000",
+      "sourceElement": "nav.floating-dock",
+      "sourcePage": "/",
+      "property": "width, height, bottom, z-index, backdrop-filter",
+      "viewport": "all",
+      "measurementMethod": "computedStyle"
+    }
+  },
+  "borderRadius": {
+    "small": "8px",
+    "medium": "16px",
+    "large": "24px",
+    "pill": "9999px"
+  },
+  "boxShadow": {
+    "dock": "0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04)",
+    "card": "0 2px 12px rgba(0, 0, 0, 0.04)",
+    "cardHover": "0 12px 40px rgba(0, 0, 0, 0.08)",
+    "pill": "0 2px 8px rgba(0, 0, 0, 0.06)",
+    "handle": "0 2px 6px rgba(0, 0, 0, 0.15)"
+  },
+  "breakpoints": {
+    "desktop": "1200px",
+    "tablet": "768px",
+    "mobile": "390px"
+  },
+  "motion": {
+    "spring": {
+      "standard": {
+        "stiffness": 380,
+        "damping": 30,
+        "mass": 0.8
+      },
+      "gentle": {
+        "stiffness": 260,
+        "damping": 24,
+        "mass": 1
+      },
+      "snappy": {
+        "stiffness": 500,
+        "damping": 35,
+        "mass": 0.6
+      }
+    },
+    "transition": {
+      "color": "0.15s ease",
+      "transform": "0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+      "canvasPan": "0.6s cubic-bezier(0.22, 1, 0.36, 1)"
+    }
+  }
+}
