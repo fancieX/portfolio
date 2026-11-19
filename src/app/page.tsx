@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArtboardContainer, DarkContainer } from "@/components/primitives";
 
 export default function Home() {
   return (
@@ -14,8 +15,8 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Artboard Surface Container */}
-      <section className="mt-8 flex-1 rounded-large border border-border-light bg-surface-light p-6 shadow-card sm:p-10 lg:p-12">
+      {/* Artboard Surface Container Primitive (Task 3.2) */}
+      <ArtboardContainer className="mt-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-pill bg-neon-lime px-3 py-1 text-xs font-semibold uppercase tracking-wider text-text-primary">
@@ -52,7 +53,23 @@ export default function Home() {
             />
           </div>
         </div>
-      </section>
+      </ArtboardContainer>
+
+      {/* Dark Container Primitive Showcase (Task 3.2) */}
+      <DarkContainer className="mt-8 mb-12">
+        <div className="flex flex-col gap-4">
+          <div className="inline-flex w-fit items-center gap-2 rounded-pill bg-white/10 px-3 py-1 text-xs font-semibold text-white">
+            <span>Dark Container Primitive · #161616</span>
+          </div>
+          <h2 className="font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            Contact &amp; CTA Surface Preview
+          </h2>
+          <p className="max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
+            This container provides the #161616 dark surface with rgba(255,255,255,0.12) border
+            and cascading on-dark text tokens, matching the Snapline Contact section and footer blocks.
+          </p>
+        </div>
+      </DarkContainer>
     </main>
   );
 }
