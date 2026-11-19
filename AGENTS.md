@@ -1,6 +1,7 @@
 # Project Instructions & Git/GitHub Workflow Guidelines
 
 ## Core Workflow Mandates (Non-Negotiable)
+- **Documentation-First Mandate:** Never begin coding any task until research is conducted, documentation is updated, a comprehensive task specification (`docs/specifications/tasks/task-X.Y.md`) is authored across all 21 standardized sections, and the documentation validation gate passes.
 - **Stable Branch Baseline:** `main` is the stable, production-ready baseline branch.
 - **Stage 1 Integration Branch:** `stage-1` is the integration branch for all Stage 1 implementation tasks. All task PRs must target `stage-1`.
 - **One Unique Branch Per Task:** Every numbered task requires one unique branch (`task/<milestone>.<task-number>-<short-slug>`).
@@ -38,9 +39,9 @@ Every numbered task in `docs/implementation-plan.md` has its own dedicated Git b
   - `task/1.3-font-integration`
   - `task/2.1-domain-types`
   - `task/2.2-mock-data`
-  - `task/2.3-audio-context`
-  - `task/2.4-window-manager`
   - `task/3.1-design-tokens`
+  - `task/3.6-figma-selection-overlay`
+  - `task/4.1-hero-section`
 
 ---
 
@@ -49,28 +50,9 @@ Every numbered task in `docs/implementation-plan.md` has its own dedicated Git b
 1. **Strict Lineage:** All task branches must be branched from the latest, up-to-date `stage-1` branch (`git checkout stage-1 && git pull origin stage-1 && git checkout -b task/...`).
 2. **One Task Per Branch:** Implement ONLY the specific numbered task assigned to that branch. Never combine multiple tasks into one branch.
 3. **No Direct Commits:** Never implement or commit directly to `main` or `stage-1`.
-4. **Just-In-Time Creation:** Do NOT create all task branches upfront. Create a branch only immediately before starting work on that specific task.
+4. **Just-In-Time Creation:** Do NOT create task branches upfront. Create a branch only immediately before starting Phase 6 implementation for that specific task.
 5. **Dependency Verification:** Before starting any task branch, verify that all prerequisite tasks and dependencies have been completed, tested, reviewed, and merged into `stage-1`.
 6. **No Auto-Merging:** Never merge Pull Requests automatically. Always wait for explicit user review and approval before merging.
-
----
-
-## 12-Step Standard Task Workflow
-
-For every single numbered task, execute this exact sequence:
-
-1. **Step 1 - Inspect:** Inspect current Git branch and working tree (`git status`).
-2. **Step 2 - Checkout Base:** Switch to the `stage-1` integration branch (`git checkout stage-1`).
-3. **Step 3 - Pull Updates:** Pull the latest changes from remote (`git pull origin stage-1`).
-4. **Step 4 - Create Task Branch:** Create and switch to the task branch (`git checkout -b task/<num>-<slug>`).
-5. **Step 5 - Implement:** Implement ONLY the scoped files and code for that numbered task.
-6. **Step 6 - Verify & Test:** Run tests, typechecking, linting, and build validation (`npm run test`, `npm run build`).
-7. **Step 7 - Inspect Diff:** Review `git diff` and `git status` to ensure zero unrelated changes or unintended files are tracked.
-8. **Step 8 - Conventional Commit:** Commit changes using Conventional Commits format (e.g. `feat(setup): scaffold Next.js application`).
-9. **Step 9 - Push Branch:** Push the task branch to GitHub (`git push -u origin task/<num>-<slug>`).
-10. **Step 10 - Create Pull Request:** Create a Pull Request targeting `stage-1` via GitHub CLI (`gh pr create --base stage-1 --head task/<num>-<slug> --title "..." --body "..."`).
-11. **Step 11 - Await Approval:** Stop and inform the user. Wait for the user's manual review and approval. Do not merge automatically.
-12. **Step 12 - Transition to Next Task:** Once the user reviews and merges the PR into `stage-1`, update `docs/implementation-plan.md`, switch back to `stage-1`, pull, and prepare the subsequent task branch.
 
 ---
 
@@ -88,91 +70,272 @@ For every single numbered task, execute this exact sequence:
 ## Implementation Plan Tracking Protocol
 
 Maintain and update `docs/implementation-plan.md` as work progresses. Each task entry must track:
-- **Branch Name:** `task/<num>-<slug>`
+- **Branch Name:** `task/<milestone>.<num>-<slug>`
 - **Status:** `NOT STARTED` | `IN PROGRESS` | `IMPLEMENTED` | `TESTED` | `PR CREATED` | `MERGED`
 - **GitHub Pull Request:** Link or PR number
 - **Merge Status:** `Unmerged` | `Merged into stage-1`
 - **Commit Reference:** Git commit SHA
+- **Task Specification Link:** `docs/specifications/tasks/task-X.Y.md`
 
 ---
 
-## Task-Based Development Workflow
+## Autonomous Documentation-First Development Workflow
 
-This section codifies the autonomous execution protocol for all future task requests (e.g., "Do Task 1.4", "Implement Task 2.1"). When a short task instruction is received, automatically execute this complete lifecycle without requiring repeated procedural explanations.
+This lifecycle codifies the autonomous, documentation-first execution protocol for all task requests (e.g., "Do Task 1.1", "Do Task 4.1"). When a short prompt is received, automatically execute all 8 phases below in sequence without asking routine procedural questions.
 
-### 1. Autonomous Task Discovery
-Upon receiving a task prompt (e.g., "Do Task X"):
-1. **Locate Task Specification:** Find the exact entry for Task X in `docs/implementation-plan.md`. Read its objective, scope, affected files, dependencies, responsive baseline, and acceptance criteria.
-2. **Discover Architecture & Context:** Read `docs/project-structure-analysis.md` and related architectural documentation.
-3. **Inspect Snapline Research & References:** Read relevant documents under `docs/research/snapline/`:
-   - `design-tokens.json` (exact hex codes, typography scale, spacing, radii, shadows, breakpoints).
-   - `PAGE_TOPOLOGY.md` (route hierarchy, metadata, layout structure, interaction models).
-   - `asset-inventory.csv` (asset paths, dimensions, provenance, and descriptions).
-   - `interaction-matrix.md` & `responsive-analysis.md` (motion curves, hover behaviors, responsive layout shifts).
-   - View matching reference screenshots in `docs/research/snapline/screenshots/`.
-4. **Inspect Relevant Skills:** For reverse-engineering, cloning, or component architecture, inspect `.agent/skills/clone-website/SKILL.md` and related domain skills.
-5. **Inspect Existing Code:** Examine the current codebase to understand existing components, data schemas, and styles before writing code.
-6. **Strict Task Isolation:** Implement ONLY the scoped requirements of Task X. Never implement future or unrequested tasks prematurely. Never skip requirements simply because they were omitted from the user's short prompt.
+```
++-----------------------------------------------------------------------------------+
+|               8-PHASE DOCUMENTATION-FIRST DEVELOPMENT LIFECYCLE                  |
++-----------------------------------------------------------------------------------+
+|  Phase 1: Discover All Relevant Documentation                                     |
+|  Phase 2: Conduct Detailed Research (Visual, Motion, Interactions, Responsive)    |
+|  Phase 3: Update Markdown Documentation (Plan, Research & 21-Section Task Spec)   |
+|  Phase 4: Documentation Validation Gate (Zero Code Until Validated)               |
+|  Phase 5: Git Branch Preparation (Cut from stage-1 Just-In-Time)                  |
+|  Phase 6: Implement Strictly According to Documentation                           |
+|  Phase 7: Visual and Functional Verification (tsc, lint, build, runtime)         |
+|  Phase 8: Standardized 14-Point Final Report & Await User Control Gate            |
++-----------------------------------------------------------------------------------+
+```
 
-### 2. Automatic Git Branch Management
-1. **Inspect Working Tree & Remote:** Run `git status` and `git fetch origin` to inspect the active state and remote changes.
-2. **Determine Parent Branch:** Identify the correct parent branch from the task dependencies in `docs/implementation-plan.md`. If all prerequisites are merged, the parent is the latest `stage-1`. If a prerequisite is on an unmerged dependency branch, maintain that dependency lineage.
+---
+
+### PHASE 1: DISCOVER ALL RELEVANT DOCUMENTATION
+
+Upon receiving a short task prompt (e.g. "Do Task X.Y"):
+1. **Identify Task:** Locate the exact task entry in `docs/implementation-plan.md`. Read its full description, scope, and acceptance criteria.
+2. **Identify Prerequisites:** Verify all prerequisite tasks, dependencies, and their merge status on `stage-1`.
+3. **Read Project Instructions:** Read `AGENTS.md` and any relevant nested instruction files.
+4. **Inspect Architecture:** Read `docs/project-structure-analysis.md`.
+5. **Explore Documentation:** Explore all relevant Markdown files under `docs/` and `docs/research/`.
+6. **Examine Snapline Research:** Review:
+   - `docs/research/snapline/design-tokens.json` (exact hex codes, typography scale, spacing, radii, shadows, breakpoints).
+   - `docs/research/snapline/PAGE_TOPOLOGY.md` (route hierarchy, metadata, layout structure, interaction models).
+   - `docs/research/snapline/asset-inventory.csv` (asset paths, dimensions, provenance, descriptions).
+   - `docs/research/snapline/interaction-matrix.md` & `responsive-analysis.md` (motion curves, hover behaviors, responsive layout shifts).
+7. **Examine Screenshots & Visual References:** Inspect reference screenshots in `docs/research/snapline/screenshots/` (desktop, tablet, mobile, interactions).
+8. **Inspect Relevant Skills:** Review `.agent/skills/clone-website/SKILL.md` and related UI/motion skills.
+9. **Inspect Existing Code:** Examine existing source code under `src/` to understand component schemas, styles, and shared state before designing changes.
+10. **Follow Links:** Never assume the implementation plan is the sole source; follow all relevant documentation links and cross-references.
+
+---
+
+### PHASE 2: CONDUCT DETAILED RESEARCH
+
+Before writing any specification or code, thoroughly investigate what the requested task should look and behave like using the live reference target (`https://snapline.framer.website/`), screenshots, assets, and cloning skills.
+
+Investigate and document every detail across five areas:
+
+#### A. Visual Design
+- Component hierarchy and visual grouping
+- Element dimensions (exact or estimated)
+- Container max-widths and responsive constraints
+- Horizontal and vertical alignment
+- Margins, padding, and spacing
+- Typography: font families, font sizes, weights, line heights, letter spacing, text alignment
+- Text colors and background colors
+- Gradients, blurs, and decorative effects
+- Borders, corner radii, and box shadows
+- Image dimensions, aspect ratios, object-fit, and cropping
+- Icon sizes and alignment
+- Layering and z-index ordering
+- Positioning models (static, relative, absolute, fixed, sticky)
+
+#### B. Animations & Motion
+Investigate all animations (entrance, character/word, reveals, fade, slide, scale, rotate, hover, click, scroll-triggered, section transitions, staggered sequences, loading/transition states, background animations).
+For each animation, document:
+- Animated element
+- Trigger condition (mount, hover, click, in-view, scroll-scrub)
+- Initial state and final state
+- Direction of movement
+- Transform values (x, y, scale, rotate)
+- Opacity transitions
+- Duration and delay
+- Easing function (cubic-bezier or spring parameters)
+- Stagger interval for child elements
+- Repeat / reversal behavior
+- Scroll-dependency
+- Mobile behavior (reduced motion / adaptation)
+
+#### C. Interactions & Transitions
+- Hover behavior and cursor styling
+- Mouse movement and parallax interactions
+- Click and press states
+- Button states (idle, hover, active, disabled)
+- Navigation and dropdown behaviors
+- Card interactions and tilt effects
+- Link destinations and navigation models
+- Active and selected states
+- Keyboard interactions and focus indicators
+- Scroll behavior and sticky anchors
+- Page-to-page transitions and loading states
+- Error and empty states
+
+#### D. Responsive Design
+Document layouts across Desktop (1200px/1440px), Laptop (1024px), Tablet (768px), and Mobile (390px):
+- Verified breakpoints
+- Grid column and layout direction changes
+- Typography scaling across viewports
+- Element resizing, re-wrapping, and hugging
+- Image cropping and aspect ratio shifts
+- Mobile navigation transitions
+- Spacing and padding adjustments
+- Elements hidden, swapped, or repositioned
+
+#### E. Technical Expectations
+- Component hierarchy and file locations
+- Shared and reusable component abstractions
+- Asset dependencies and local paths
+- Expected route paths and URL structures
+- Data models and TypeScript types
+- State management requirements (React state, Context, or Zustand)
+- Event handling and callbacks
+- External libraries and dependencies
+- Accessibility requirements (ARIA roles, labels, keyboard navigation)
+- Performance considerations (Turbopack, image optimization, repaint minimization)
+
+**Evidence Classification:** Clearly distinguish between:
+1. *Verified observations* (confirmed via live DOM/CSS inspection)
+2. *Measured values* (exact pixel/rem/token metrics)
+3. *Reasonable approximations* (calibrated visual estimates)
+4. *Implementation decisions* (technical architecture choices)
+5. *Unknown details* (requiring further investigation)
+
+---
+
+### PHASE 3: UPDATE THE MARKDOWN DOCUMENTATION (BEFORE CODING)
+
+Documentation must be formally updated and saved BEFORE any implementation code is written.
+
+#### A. Update `docs/implementation-plan.md`
+For the requested task:
+- Refine task description and scope
+- Specify visual, motion, interaction, responsive, and technical requirements
+- Specify prerequisite dependencies and verify merge status
+- Define testable acceptance criteria
+- Link the detailed task specification: `docs/specifications/tasks/task-X.Y.md`
+
+#### B. Create or Update Detailed Task Specification
+Create the task specification file at:
+`docs/specifications/tasks/task-X.Y.md` (e.g. `docs/specifications/tasks/task-3.6.md`, `docs/specifications/tasks/task-4.1.md`)
+
+Every task specification must contain the following **21 standardized sections**:
+1. **Task Overview:** High-level summary of the task and its role in the application.
+2. **Objective:** Concrete goal and value delivered.
+3. **Scope:** Exhaustive list of what is included.
+4. **Out-of-Scope Features:** Explicit boundaries of what is excluded.
+5. **Reference Website & Screenshots:** Links to live reference URLs and local screenshot files.
+6. **Component Hierarchy:** Detailed tree diagram / structure of React components.
+7. **Detailed Visual Specifications:** Layout grids, container constraints, padding, margins.
+8. **Layout & Positioning Specifications:** Flex/grid properties, coordinates, z-indices.
+9. **Typography Specifications:** Font families, sizes, weights, line-heights, letter-spacing.
+10. **Colour & Styling Specifications:** Hex colors, background tokens, borders, shadows, radii.
+11. **Asset Requirements:** Image paths, icons, dimensions, format, source references.
+12. **Animation Specifications:** Springs, easings, durations, delays, stagger, triggers.
+13. **Interaction Specifications:** Hover, active, focus, click behaviors and cursor styling.
+14. **Transition Specifications:** Duration, timing curves, state-to-state mappings.
+15. **Responsive Behaviour:** Layout and styling across Desktop, Tablet, and Mobile.
+16. **Accessibility Requirements:** Semantic tags, ARIA roles, labels, keyboard support.
+17. **Technical Implementation Requirements:** State management, props, file paths, Turbopack rules.
+18. **Dependencies:** Required packages, prerequisite tasks, components, and utilities.
+19. **Edge Cases:** Overflow handling, long strings, missing assets, viewport resizing.
+20. **Detailed Acceptance Criteria:** Testable, verifiable checklist of every requirement.
+21. **Testing Requirements:** Commands and verification procedures for verification.
+
+Use tables where appropriate for token mappings, animation curves, interaction states, and breakpoint rules.
+
+#### C. Update Relevant Research Documents
+When new design patterns, tokens, or interactions are uncovered:
+- Update files under `docs/research/snapline/` (`design-tokens.json`, `interaction-matrix.md`, `responsive-analysis.md`).
+- Document newly discovered asset paths or screenshot references.
+
+#### D. Update Architecture Documentation When Necessary
+- Update `docs/project-structure-analysis.md` only when the task introduces a new architectural pattern, directory structure, or global state.
+
+---
+
+### PHASE 4: DOCUMENTATION VALIDATION GATE
+
+Before touching any application code:
+1. Verify task specification is complete across all 21 standardized sections.
+2. Verify all design references and local screenshot paths are linked.
+3. Verify all animations and motion properties are explicitly defined.
+4. Verify all interaction states (hover, focus, active, mobile) are documented.
+5. Verify responsive behavior is specified across mobile (390px), tablet (768px), and desktop (1200px+).
+6. Verify acceptance criteria are unambiguous and testable.
+7. Verify zero contradictions with existing architecture or design tokens.
+8. Verify `docs/implementation-plan.md` properly links to the task specification.
+
+**Gate Enforcement:** If any requirement cannot be validated, halt and resolve it using evidence-based research. Do not write a single line of component code until the documentation validation gate passes.
+
+---
+
+### PHASE 5: GIT BRANCH PREPARATION
+
+Once documentation is validated:
+1. **Inspect Working Tree & Remote:** Run `git status` and `git fetch origin`.
+2. **Verify Lineage:** Identify parent branch. If all prerequisites are merged, checkout and pull latest `stage-1` (`git checkout stage-1 && git pull origin stage-1`). If a prerequisite is on an unmerged dependency branch, maintain that dependency lineage.
 3. **Branch Resolution & Creation:**
-   - If the task branch already exists locally, switch to and reuse it (`git checkout <task-branch>`).
-   - If the task branch exists only remotely, check it out with tracking (`git checkout --track origin/<task-branch>`).
-   - If the task branch does not exist, switch to the parent branch, pull remote updates, and cut the new task branch (`git checkout -b task/<milestone>.<num>-<slug>`).
-   - Never create duplicate branches or modify existing task commit histories.
-   - If a branch has diverged from remote, inspect and report the divergence; never force-reset.
-   - **Never implement tasks directly on `stage-1` or `main`.**
+   - If the task branch already exists locally, switch to it (`git checkout task/<milestone>.<num>-<slug>`).
+   - If it exists only remotely, checkout with tracking (`git checkout --track origin/task/<milestone>.<num>-<slug>`).
+   - If it does not exist, cut it just-in-time from the parent (`git checkout -b task/<milestone>.<num>-<slug>`).
+4. **Never implement tasks directly on `stage-1` or `main`.**
+5. **Zero Data Loss:** Never run `git reset --hard` or overwrite uncommitted changes without explicit user approval.
 
-### 3. Protection of Existing Work (Non-Negotiable)
-- **Zero Data Loss:** Never discard uncommitted modifications or delete untracked files without explicit consent.
-- **No Destructive Operations:** Never run `git reset --hard`, `git clean`, `git checkout -- .`, or `git push --force`.
-- **Preserve System & Config Files:** Safeguard `package-lock.json`, `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, `.gitignore`, and Next.js internal files.
-- **Working Tree Collision Guard:** If uncommitted changes exist that conflict with branch switching, halt and ask for guidance rather than overwriting or stashing without permission.
+---
 
-### 4. Implementation Standards & Visual Fidelity
-1. **Architecture & Conventions:** Strictly adhere to Next.js 16 App Router, TypeScript strict mode, and Tailwind CSS v4 styling rules.
-2. **Research-Driven Accuracy:** Use exact token values from `design-tokens.json` and layout parameters from `PAGE_TOPOLOGY.md`. Never invent design values or guess dimensions when documented references exist.
-3. **Motion & Interaction Models:** Adhere to `interaction-matrix.md` (distinguish scroll-driven vs. click-driven behaviors, use specified spring curves and transitions).
-4. **Responsive Integrity:** Verify mobile (390px), tablet (768px), and desktop (1200px/1440px) breakpoints where applicable.
-5. **Minimal Footprint:** Avoid unnecessary third-party dependencies, bloatware, or editing unrelated files.
+### PHASE 6: IMPLEMENT STRICTLY ACCORDING TO DOCUMENTATION
 
-### 5. Mandatory Verification & Quality Gates
-Before declaring a task ready for review, run and pass every relevant gate:
+1. **Strict Fidelity:** Implement ONLY the scoped requirements detailed in `docs/specifications/tasks/task-X.Y.md`.
+2. **Follow Specifications:** Adhere strictly to the researched tokens, typography, dimensions, colors, animations, and responsive rules.
+3. **No Undocumented Additions:** Never add unrequested features or alter specifications during coding. If an adjustment is needed, update the documentation first.
+4. **Preserve System Configs:** Safeguard `package-lock.json`, `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, and `.gitignore`.
+
+---
+
+### PHASE 7: VISUAL AND FUNCTIONAL VERIFICATION
+
+Run and pass all quality gates prior to declaring the task complete:
 1. **TypeScript Strict Typecheck:** `npx tsc --noEmit` must exit with code 0 (zero errors).
 2. **ESLint Validation:** `npm run lint` must exit with code 0 (zero errors, zero warnings).
-3. **Production Build:** `npm run build` must compile successfully via Turbopack and prerender all static routes with exit code 0.
+3. **Production Build:** `npm run build` must compile successfully via Turbopack with exit code 0.
 4. **Runtime Dev Server Test:** Start `npm run dev` and test locally (e.g. `Invoke-WebRequest http://localhost:3000`) to confirm HTTP 200 and visual functionality.
-5. **Acceptance Criteria Verification:** Systematically check every acceptance criterion defined for the task in `docs/implementation-plan.md`.
-6. **Self-Healing:** Diagnose and fix any type errors, lint warnings, or build issues introduced during implementation prior to presenting the report.
-7. **Plan Tracking:** Update the task's status in `docs/implementation-plan.md` to `IMPLEMENTED` only after all verification gates have passed.
+5. **Acceptance Criteria Verification:** Explicitly verify every acceptance criterion defined in the task specification and implementation plan.
+6. **Self-Healing:** Diagnose and fix any type errors, lint warnings, or visual regressions before reporting.
+7. **Plan Tracking:** Update the task status in `docs/implementation-plan.md` to `IMPLEMENTED`.
 
-### 6. User Control Gate (Commit, Push & PR Policy)
-Once implementation and verification are complete:
-- **Do NOT commit automatically without user approval.**
-- **Do NOT push automatically without user approval.**
-- **Do NOT open Pull Requests automatically without user approval.**
-- **Do NOT merge branches automatically without user approval.**
-- Leave all modified and created files cleanly prepared in the working tree on the task branch, ready for user review.
+---
 
-### 7. Standardized 12-Point Final Report
-Every task execution concludes with a standardized report covering:
+### PHASE 8: STANDARDIZED 14-POINT FINAL REPORT
+
+Every task execution concludes with a standardized 14-point report:
 1. **Task Number & Task Name**
 2. **Documentation Files Inspected** (Plans, tokens, topology, research, skills)
-3. **Dependencies Identified** (Prerequisites and merge status)
-4. **Parent Branch**
-5. **Task Branch**
-6. **Files Created or Modified**
-7. **Features Implemented**
-8. **Tests Performed & Results** (`tsc`, `lint`, `build`, runtime)
-9. **Acceptance Criteria Completed** (Explicit checklist)
-10. **Remaining Issues / Notes** (If any)
-11. **Manual Testing Instructions** (Step-by-step URLs, actions, expected behavior)
-12. **Current Git Status** (Branch, uncommitted changes, ready for commit approval)
+3. **Documentation Files Created or Updated** (Task spec path, plan updates, research updates)
+4. **Research Findings** (Key visual, motion, and interaction insights discovered)
+5. **Important Visual Specifications Established** (Dimensions, typography, colors, layout)
+6. **Animations and Interactions Documented** (Spring curves, triggers, states)
+7. **Git Parent Branch and Task Branch** (Lineage and branch names)
+8. **Files Created or Modified During Implementation** (Explicit list with file links)
+9. **Implementation Summary** (Detailed breakdown of components and logic built)
+10. **Tests and Build Results** (`tsc`, `lint`, Turbopack `build`, runtime HTTP status)
+11. **Acceptance Criteria Completed** (Explicit checklist with pass status)
+12. **Remaining Limitations / Notes** (Any approximations, known boundaries, or follow-ups)
+13. **Manual Testing Instructions** (Step-by-step URLs, actions, viewport widths, expected behaviors)
+14. **Current Git Status** (Working tree status, uncommitted changes ready for user commit review)
 
-### 8. Interaction Protocol
-- When given a short prompt like "Do Task X", autonomously execute steps 1 through 7 and present the final report.
-- Do not ask routine procedural questions.
-- Interrupt only for genuine blockers: an unmerged prerequisite branch requiring a merge decision, an unresolved merge conflict, a potentially destructive operation, or a major design ambiguity.
-- Never automatically proceed to the next task until the user approves and directs the next step.
+---
+
+## User Control & Permissions Protocol (Non-Negotiable)
+
+- **User Directs Every Task:** The user personally selects each task and provides a short prompt (e.g., "Do Task 1.1", "Do Task 4.1").
+- **Autonomous Execution:** Upon receiving a task prompt, the agent automatically executes Phases 1 through 8 without prompting for routine procedural directions.
+- **Zero Routine Questions:** Do not ask the user which documents to read, how to configure branch names, or what design tokens to use.
+- **Strict Approval Gate:**
+  - **Do NOT commit automatically without user approval.**
+  - **Do NOT push automatically without user approval.**
+  - **Do NOT open Pull Requests automatically without user approval.**
+  - **Do NOT merge branches automatically without user approval.**
+  - Leave all modified and created files cleanly prepared in the working tree on the task branch, ready for user review.
+- **No Automatic Continuation:** Never proceed to the next task until the user explicitly reviews, approves, merges, and issues the next task prompt.
+- **Accidental Data Loss Prevention:** Never run destructive Git commands (`git reset --hard`, `git clean`, `git push --force`).
