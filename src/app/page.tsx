@@ -1,18 +1,20 @@
 import Image from "next/image";
-import { ArtboardContainer, DarkContainer } from "@/components/primitives";
+import {
+  ArtboardContainer,
+  DarkContainer,
+  PillBadge,
+  AvailabilityBadge,
+} from "@/components/primitives";
 
 export default function Home() {
   return (
     <main className="relative z-20 mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-4 py-8 sm:px-8 lg:px-12">
-      {/* Top Header Placeholder (Persistent Header in M4) */}
+      {/* Top Header Placeholder with AvailabilityBadge Primitive (Task 3.3) */}
       <header className="flex h-14 w-full items-center justify-between">
         <span className="font-heading text-lg font-bold tracking-tight text-text-primary">
           Maya.
         </span>
-        <div className="inline-flex items-center gap-2 rounded-pill border border-border-light bg-surface-light px-4 py-2 text-xs font-medium text-text-primary shadow-pill">
-          <span className="inline-block h-2 w-2 rounded-full bg-live-green" />
-          <span>Available for projects</span>
-        </div>
+        <AvailabilityBadge statusText="Available for projects" />
       </header>
 
       {/* Artboard Surface Container Primitive (Task 3.2) */}
@@ -29,6 +31,21 @@ export default function Home() {
               Crafting thoughtful digital interfaces, enterprise design systems, and web
               applications with meticulous attention to typography, interaction, and visual craft.
             </p>
+
+            {/* Category Filter Pills (Task 3.3) */}
+            <div className="mt-6">
+              <span className="mb-2.5 block text-xs font-semibold uppercase tracking-wider text-text-muted">
+                Category Filter Pills (Task 3.3)
+              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <PillBadge label="All" count={6} isActive />
+                <PillBadge label="Web app" count={2} />
+                <PillBadge label="Mobile app" count={2} />
+                <PillBadge label="Design system" count={1} />
+                <PillBadge label="Brand" count={1} />
+              </div>
+            </div>
+
             <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-text-muted">
               <span className="rounded-small border border-border-light bg-surface-muted px-2.5 py-1">
                 Figma Dot Grid Canvas (#E6E6E3 · 22px)
@@ -58,8 +75,15 @@ export default function Home() {
       {/* Dark Container Primitive Showcase (Task 3.2) */}
       <DarkContainer className="mt-8 mb-12">
         <div className="flex flex-col gap-4">
-          <div className="inline-flex w-fit items-center gap-2 rounded-pill bg-white/10 px-3 py-1 text-xs font-semibold text-white">
-            <span>Dark Container Primitive · #161616</span>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="inline-flex w-fit items-center gap-2 rounded-pill bg-white/10 px-3 py-1 text-xs font-semibold text-white">
+              <span>Dark Container Primitive · #161616</span>
+            </div>
+            {/* Dark Variant of AvailabilityBadge (Task 3.3) */}
+            <AvailabilityBadge
+              statusText="Booking projects for January"
+              variant="dark"
+            />
           </div>
           <h2 className="font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl">
             Contact &amp; CTA Surface Preview
