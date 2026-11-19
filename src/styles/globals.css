@@ -67,3 +67,11 @@ body {
   background-color: var(--color-neon-lime);
   color: var(--color-text-primary);
 }
+
+/* Reusable Repeating Canvas Dot Grid Utility */
+.bg-dot-grid {
+  background-color: #E6E6E3;
+  background-image: radial-gradient(circle, var(--canvas-dot-color) var(--canvas-dot-size), transparent 1.3px);
+  background-size: var(--canvas-grid-spacing) var(--canvas-grid-spacing);
+  background-position: 0 0;
+}
