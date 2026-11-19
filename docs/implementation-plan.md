@@ -94,7 +94,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `3.3` | Pill, Badge, and Category Tag Primitives | `task/3.3-pill-badge-primitives` | Medium | Low | Yes | `MERGED` | #15 | `718c1a4` | `Merged into stage-1` |
 | `3.4` | Button & Interactive Link Primitives | `task/3.4-button-primitives` | High | Low | Yes | `MERGED` | #17 | `6a1721b` | `Merged into stage-1` |
 | `3.5` | Form Input, Textarea, and Select Primitives | `task/3.5-input-primitives` | High | Medium | Yes | `MERGED` | #18 | `b251e22` | `Merged into stage-1` |
-| `3.6` | Figma Selection Frame & Dimension Handle Overlay | `task/3.6-figma-selection-overlay` | High | High | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
+| `3.6` | Figma Selection Frame & Dimension Handle Overlay | `task/3.6-figma-selection-overlay` | High | High | Yes | `MERGED` | #19 | `f9bd672` | `Merged into stage-1` |
 | **M4: Canvas & Navigation** | | | | | | | | | |
 | `4.1` | Persistent Top Header with Brand Mark & Contact CTA | `task/4.1-top-header` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `4.2` | Universal Floating Bottom Dock Navigation | `task/4.2-floating-dock` | Critical | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -1422,7 +1422,7 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 | `3.3` | `task/3.3-pill-badge-primitives` | `stage-1` | `stage-1` | `feat(ui): implement pill, badge, and category tag primitives` | `feat(ui): implement pill, badge, and category tag primitives` | `MERGED` |
 | `3.4` | `task/3.4-button-primitives` | `stage-1` | `stage-1` | `feat(ui): implement button and backlink interactive primitives` | `feat(ui): implement button and backlink interactive primitives` | `MERGED` |
 | `3.5` | `task/3.5-input-primitives` | `stage-1` | `stage-1` | `feat(ui): implement dark form inputs, textareas, and custom selects` | `feat(ui): implement dark form inputs, textareas, and custom selects` | `MERGED` |
-| `3.6` | `task/3.6-figma-selection-overlay` | `stage-1` | `stage-1` | `feat(ui): implement Figma selection frame and handle overlay primitive` | `feat(ui): implement Figma selection frame and handle overlay primitive` | `IMPLEMENTED` |
+| `3.6` | `task/3.6-figma-selection-overlay` | `stage-1` | `stage-1` | `feat(ui): implement Figma selection frame and handle overlay primitive` | `feat(ui): implement Figma selection frame and handle overlay primitive` | `MERGED` |
 | `4.1` | `task/4.1-top-header` | `stage-1` | `stage-1` | `feat(nav): implement persistent top header with brand and contact trigger` | `feat(nav): implement persistent top header with brand and contact trigger` | `NOT STARTED` |
 | `4.2` | `task/4.2-floating-dock` | `stage-1` | `stage-1` | `feat(nav): implement universal floating bottom dock navigation` | `feat(nav): implement universal floating bottom dock navigation` | `NOT STARTED` |
 | `4.3` | `task/4.3-canvas-camera-transitions` | `stage-1` | `stage-1` | `feat(canvas): implement 2D canvas camera, pan/zoom engine, and page transitions` | `feat(canvas): implement 2D canvas camera, pan/zoom engine, and page transitions` | `NOT STARTED` |
