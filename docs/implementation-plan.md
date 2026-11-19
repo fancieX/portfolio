@@ -89,8 +89,8 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `2.3` | Journal Articles Structured Data (5 Articles) | `task/2.3-journal-mock-data` | High | Medium | No | `MERGED` | #11 | `0a86d4f` | `Merged into stage-1` |
 | `2.4` | Site Navigation & Global Metadata Configurations | `task/2.4-navigation-metadata` | Medium | Low | No | `MERGED` | #12 | `bba5f36` | `Merged into stage-1` |
 | **M3: Design System Primitives** | | | | | | | | | |
-| `3.1` | Canvas Background & Repeating Dot-Grid Primitive | `task/3.1-dot-grid-canvas` | Critical | Low | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
-| `3.2` | Artboard Surface & Card Container Primitives | `task/3.2-card-primitives` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `3.1` | Canvas Background & Repeating Dot-Grid Primitive | `task/3.1-dot-grid-canvas` | Critical | Low | Yes | `MERGED` | #13 | `05b7eec` | `Merged into stage-1` |
+| `3.2` | Artboard Surface & Card Container Primitives | `task/3.2-card-primitives` | High | Low | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
 | `3.3` | Pill, Badge, and Category Tag Primitives | `task/3.3-pill-badge-primitives` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `3.4` | Button & Interactive Link Primitives | `task/3.4-button-primitives` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `3.5` | Form Input, Textarea, and Select Primitives | `task/3.5-input-primitives` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -1417,8 +1417,8 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 | `2.2` | `task/2.2-work-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for six work projects` | `feat(data): populate structured data records for six work projects` | `MERGED` |
 | `2.3` | `task/2.3-journal-mock-data` | `stage-1` | `stage-1` | `feat(data): populate structured data records for five journal articles` | `feat(data): populate structured data records for five journal articles` | `MERGED` |
 | `2.4` | `task/2.4-navigation-metadata` | `stage-1` | `stage-1` | `feat(data): configure site navigation and footer sitemap datasets` | `feat(data): configure site navigation and footer sitemap datasets` | `MERGED` |
-| `3.1` | `task/3.1-dot-grid-canvas` | `stage-1` | `stage-1` | `feat(ui): implement canvas background with 22px repeating dot grid` | `feat(ui): implement canvas background with 22px repeating dot grid` | `IMPLEMENTED` |
-| `3.2` | `task/3.2-card-primitives` | `stage-1` | `stage-1` | `feat(ui): create artboard and dark container card primitives` | `feat(ui): create artboard and dark container card primitives` | `NOT STARTED` |
+| `3.1` | `task/3.1-dot-grid-canvas` | `stage-1` | `stage-1` | `feat(ui): implement canvas background with 22px repeating dot grid` | `feat(ui): implement canvas background with 22px repeating dot grid` | `MERGED` |
+| `3.2` | `task/3.2-card-primitives` | `stage-1` | `stage-1` | `feat(ui): create artboard and dark container card primitives` | `feat(ui): create artboard and dark container card primitives` | `IMPLEMENTED` |
 | `3.3` | `task/3.3-pill-badge-primitives` | `stage-1` | `stage-1` | `feat(ui): implement pill, badge, and category tag primitives` | `feat(ui): implement pill, badge, and category tag primitives` | `NOT STARTED` |
 | `3.4` | `task/3.4-button-primitives` | `stage-1` | `stage-1` | `feat(ui): implement button and backlink interactive primitives` | `feat(ui): implement button and backlink interactive primitives` | `NOT STARTED` |
 | `3.5` | `task/3.5-input-primitives` | `stage-1` | `stage-1` | `feat(ui): implement dark form inputs, textareas, and custom selects` | `feat(ui): implement dark form inputs, textareas, and custom selects` | `NOT STARTED` |
