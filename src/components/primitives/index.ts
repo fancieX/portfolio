@@ -25,5 +25,9 @@ export type { TextAreaProps } from "./TextArea";
 export { CustomSelect } from "./CustomSelect";
 export type { CustomSelectProps, SelectOption } from "./CustomSelect";
 
+export { FigmaSelectionOverlay } from "./FigmaSelectionOverlay";
+export type { FigmaSelectionOverlayProps } from "./FigmaSelectionOverlay";
+
+
 
 
