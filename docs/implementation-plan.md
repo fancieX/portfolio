@@ -92,7 +92,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `3.1` | Canvas Background & Repeating Dot-Grid Primitive | `task/3.1-dot-grid-canvas` | Critical | Low | Yes | `MERGED` | #13 | `05b7eec` | `Merged into stage-1` |
 | `3.2` | Artboard Surface & Card Container Primitives | `task/3.2-card-primitives` | High | Low | Yes | `MERGED` | #14 | `4e9e4c1` | `Merged into stage-1` |
 | `3.3` | Pill, Badge, and Category Tag Primitives | `task/3.3-pill-badge-primitives` | Medium | Low | Yes | `MERGED` | #15 | `718c1a4` | `Merged into stage-1` |
-| `3.4` | Button & Interactive Link Primitives | `task/3.4-button-primitives` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `3.4` | Button & Interactive Link Primitives | `task/3.4-button-primitives` | High | Low | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
 | `3.5` | Form Input, Textarea, and Select Primitives | `task/3.5-input-primitives` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `3.6` | Figma Selection Frame & Dimension Handle Overlay | `task/3.6-figma-selection-overlay` | High | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | **M4: Canvas & Navigation** | | | | | | | | | |
@@ -1420,7 +1420,7 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 | `3.1` | `task/3.1-dot-grid-canvas` | `stage-1` | `stage-1` | `feat(ui): implement canvas background with 22px repeating dot grid` | `feat(ui): implement canvas background with 22px repeating dot grid` | `MERGED` |
 | `3.2` | `task/3.2-card-primitives` | `stage-1` | `stage-1` | `feat(ui): create artboard and dark container card primitives` | `feat(ui): create artboard and dark container card primitives` | `MERGED` |
 | `3.3` | `task/3.3-pill-badge-primitives` | `stage-1` | `stage-1` | `feat(ui): implement pill, badge, and category tag primitives` | `feat(ui): implement pill, badge, and category tag primitives` | `MERGED` |
-| `3.4` | `task/3.4-button-primitives` | `stage-1` | `stage-1` | `feat(ui): implement button and backlink interactive primitives` | `feat(ui): implement button and backlink interactive primitives` | `NOT STARTED` |
+| `3.4` | `task/3.4-button-primitives` | `stage-1` | `stage-1` | `feat(ui): implement button and backlink interactive primitives` | `feat(ui): implement button and backlink interactive primitives` | `IMPLEMENTED` |
 | `3.5` | `task/3.5-input-primitives` | `stage-1` | `stage-1` | `feat(ui): implement dark form inputs, textareas, and custom selects` | `feat(ui): implement dark form inputs, textareas, and custom selects` | `NOT STARTED` |
 | `3.6` | `task/3.6-figma-selection-overlay` | `stage-1` | `stage-1` | `feat(ui): implement Figma selection frame and handle overlay primitive` | `feat(ui): implement Figma selection frame and handle overlay primitive` | `NOT STARTED` |
 | `4.1` | `task/4.1-top-header` | `stage-1` | `stage-1` | `feat(nav): implement persistent top header with brand and contact trigger` | `feat(nav): implement persistent top header with brand and contact trigger` | `NOT STARTED` |
