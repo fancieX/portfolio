@@ -96,7 +96,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `3.5` | Form Input, Textarea, and Select Primitives | `task/3.5-input-primitives` | High | Medium | Yes | `MERGED` | #18 | `b251e22` | `Merged into stage-1` |
 | `3.6` | Figma Selection Frame & Dimension Handle Overlay | `task/3.6-figma-selection-overlay` | High | High | Yes | `MERGED` | #19 | `f9bd672` | `Merged into stage-1` |
 | **M4: Canvas & Navigation** | | | | | | | | | |
-| `4.1` | Persistent Top Header with Brand Mark & Contact CTA | `task/4.1-top-header` | High | Low | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
+| `4.1` | Persistent Top Header with Brand Mark & Contact CTA | `task/4.1-top-header` | High | Low | Yes | `MERGED` | #20 | `4f4f12a` | `Merged into stage-1` |
 | `4.2` | Universal Floating Bottom Dock Navigation | `task/4.2-floating-dock` | Critical | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `4.3` | 2D Canvas Camera, Pan/Zoom & Page Transitions | `task/4.3-canvas-camera-transitions` | Critical | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `4.4` | Global Page Footer & Lisbon Time Synchronization | `task/4.4-global-footer` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -467,7 +467,7 @@ MILESTONE 4: CANVAS & NAVIGATION ARCHITECTURE (Area C)
 - **Task ID:** `4.1`
 - **Task Name:** Persistent Top Header with Brand Mark & Contact CTA
 - **Priority:** High | **Complexity:** Low | **Visual QA:** Yes
-- **Status:** `IMPLEMENTED`
+- **Status:** `MERGED`
 - **Task Specification:** [task-4.1.md](file:///d:/portfolio/docs/specifications/tasks/task-4.1.md)
 - **Scope:** Global persistent header component and application shell integration.
 - **Objective:** Implement `Header.tsx` positioned at the top of the artboard (`height: 56px`), rendering the `Maya.` brand mark on the left (linking to `/`) and the `Get in touch` pill button on the right (linking to `/contact`), with pure transparent styling (zero glassmorphism, zero blur, zero border) matching the reference site across all breakpoints.
