@@ -96,7 +96,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `3.5` | Form Input, Textarea, and Select Primitives | `task/3.5-input-primitives` | High | Medium | Yes | `MERGED` | #18 | `b251e22` | `Merged into stage-1` |
 | `3.6` | Figma Selection Frame & Dimension Handle Overlay | `task/3.6-figma-selection-overlay` | High | High | Yes | `MERGED` | #19 | `f9bd672` | `Merged into stage-1` |
 | **M4: Canvas & Navigation** | | | | | | | | | |
-| `4.1` | Persistent Top Header with Brand Mark & Contact CTA | `task/4.1-top-header` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `4.1` | Persistent Top Header with Brand Mark & Contact CTA | `task/4.1-top-header` | High | Low | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
 | `4.2` | Universal Floating Bottom Dock Navigation | `task/4.2-floating-dock` | Critical | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `4.3` | 2D Canvas Camera, Pan/Zoom & Page Transitions | `task/4.3-canvas-camera-transitions` | Critical | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `4.4` | Global Page Footer & Lisbon Time Synchronization | `task/4.4-global-footer` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -467,21 +467,26 @@ MILESTONE 4: CANVAS & NAVIGATION ARCHITECTURE (Area C)
 - **Task ID:** `4.1`
 - **Task Name:** Persistent Top Header with Brand Mark & Contact CTA
 - **Priority:** High | **Complexity:** Low | **Visual QA:** Yes
-- **Scope:** Global persistent header.
-- **Objective:** Implement `Header.tsx` fixed at top (`height: 56px`), with `Maya.` logo on left and `Get in touch` pill button on right.
-- **Affected Files:** `src/components/navigation/Header.tsx`, `src/app/layout.tsx`.
-- **Dependencies:** Task 3.4.
-- **Expected Result:** Minimal sticky/fixed header consistently rendered across desktop, tablet, and mobile with no hamburger menu.
+- **Status:** `IMPLEMENTED`
+- **Task Specification:** [task-4.1.md](file:///d:/portfolio/docs/specifications/tasks/task-4.1.md)
+- **Scope:** Global persistent header component and application shell integration.
+- **Objective:** Implement `Header.tsx` positioned at the top of the artboard (`height: 56px`), rendering the `Maya.` brand mark on the left (linking to `/`) and the `Get in touch` pill button on the right (linking to `/contact`), with pure transparent styling (zero glassmorphism, zero blur, zero border) matching the reference site across all breakpoints.
+- **Affected Files:** `src/components/navigation/Header.tsx`, `src/components/navigation/index.ts`, `src/app/page.tsx`.
+- **Dependencies:** Task 3.4 (Button Primitive).
+- **Expected Result:** Minimal, elegant top header rendered with transparent background inheriting the white artboard surface, with zero hamburger menus or mobile navigation drawers, delegating primary view routing to the bottom dock (Task 4.2).
 - **Acceptance Criteria:**
-  1. Left mark links to `/`.
-  2. Right CTA links to `/contact`.
-  3. Retains identical layout across all breakpoints.
-- **Testing Requirements:** Verify position fixed behavior during page scroll.
-- **Responsive Baseline:** Desktop: `height: 56px`, `padding: 0 24px` | Tablet: `height: 56px`, `padding: 0 24px` | Mobile: `height: 56px`, `padding: 0 16px`.
-- **Research References:** `docs/research/snapline/PAGE_TOPOLOGY.md` (Section 2).
+  1. Header renders at the top of the artboard with clean transparent background (zero glassmorphism, zero blur, zero bottom border).
+  2. Left brand mark displays `Maya.` in bold typography (`font-heading font-bold text-lg text-[#0A0A0A]`) linking to `/`.
+  3. Right slot renders `Get in touch` pill button linking to `/contact`, utilizing `Button` primitive (`variant="primary" size="sm"`).
+  4. Retains identical minimal two-item structure without hamburger drawer across Desktop (1440px), Tablet (768px), and Mobile (390px).
+  5. Sits cleanly at the top of the artboard surface, aligning with left/right content margins.
+  6. Temporary inline header removed from `src/app/page.tsx` without regressions.
+- **Testing Requirements:** Run `npx tsc --noEmit`, `npm run lint`, `npm run build`, and verify viewport rendering and sticky/fixed scroll behavior.
+- **Responsive Baseline:** Desktop (1440px): `height: 56px`, `padding: 0 24px`, `max-width: 1200px` | Tablet (768px): `height: 56px`, `padding: 0 24px` | Mobile (390px): `height: 56px`, `padding: 0 16px`.
+- **Research References:** `docs/research/snapline/PAGE_TOPOLOGY.md` (Section 2), `docs/research/snapline/responsive-analysis.md` (Section 2), `docs/research/snapline/screenshots/desktop/home-desktop-nav-extracted.png`.
 - **Task Branch:** `task/4.1-top-header`
-- **Commit Message:** `feat(nav): implement persistent top header with brand and contact trigger`
-- **PR Title:** `feat(nav): implement persistent top header with brand and contact trigger`
+- **Commit Message:** `feat(nav): implement persistent top header with brand mark and contact CTA`
+- **PR Title:** `feat(nav): implement persistent top header with brand mark and contact CTA`
 
 ### Task 4.2: Universal Floating Bottom Dock Navigation
 - **Task ID:** `4.2`

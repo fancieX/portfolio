@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Header } from "@/components/navigation";
 import {
   ArtboardContainer,
   DarkContainer,
@@ -15,26 +16,19 @@ import {
 export default function Home() {
   return (
     <main className="relative z-20 mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-4 py-8 sm:px-8 lg:px-12">
-      {/* Top Header Placeholder with AvailabilityBadge & Header Button (Task 3.3 & 3.4) */}
-      <header className="flex h-14 w-full items-center justify-between">
-        <span className="font-heading text-lg font-bold tracking-tight text-text-primary">
-          Maya.
-        </span>
-        <div className="flex items-center gap-3">
-          <AvailabilityBadge statusText="Available for projects" />
-          <Button variant="primary" size="sm">
-            Get in touch
-          </Button>
-        </div>
-      </header>
-
       {/* Artboard Surface Container Primitive (Task 3.2) */}
-      <ArtboardContainer className="mt-8">
-        {/* BackLink Primitive Showcase (Task 3.4: "← All works" and "← Journal") */}
-        <div className="mb-6 flex flex-wrap items-center gap-4">
-          <BackLink to="work" />
-          <span className="text-xs text-[#605F5F]/40">|</span>
-          <BackLink to="journal" />
+      <ArtboardContainer className="mt-4 sm:mt-6">
+        {/* Top Header Component (Task 4.1) */}
+        <Header />
+
+        {/* Availability Status Badge & BackLink Row */}
+        <div className="mt-8 mb-6 flex flex-wrap items-center justify-between gap-4">
+          <AvailabilityBadge statusText="Booking projects for January" />
+          <div className="flex items-center gap-3">
+            <BackLink to="work" />
+            <span className="text-xs text-[#605F5F]/40">|</span>
+            <BackLink to="journal" />
+          </div>
         </div>
 
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
