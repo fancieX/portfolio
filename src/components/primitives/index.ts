@@ -16,4 +16,14 @@ export type { ButtonProps, ButtonVariant, ButtonSize } from "./Button";
 export { BackLink } from "./BackLink";
 export type { BackLinkProps, BackLinkTarget } from "./BackLink";
 
+export { TextInput } from "./TextInput";
+export type { TextInputProps } from "./TextInput";
+
+export { TextArea } from "./TextArea";
+export type { TextAreaProps } from "./TextArea";
+
+export { CustomSelect } from "./CustomSelect";
+export type { CustomSelectProps, SelectOption } from "./CustomSelect";
+
+
 

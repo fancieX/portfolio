@@ -6,6 +6,9 @@ import {
   AvailabilityBadge,
   Button,
   BackLink,
+  TextInput,
+  TextArea,
+  CustomSelect,
 } from "@/components/primitives";
 
 export default function Home() {
@@ -93,12 +96,12 @@ export default function Home() {
         </div>
       </ArtboardContainer>
 
-      {/* Dark Container Primitive Showcase (Task 3.2) */}
+      {/* Dark Container Primitive Showcase & Contact Form Controls (Task 3.2 & 3.5) */}
       <DarkContainer className="mt-8 mb-12">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="inline-flex w-fit items-center gap-2 rounded-pill bg-white/10 px-3 py-1 text-xs font-semibold text-white">
-              <span>Dark Container Primitive · #161616</span>
+              <span>Dark Form Controls (Task 3.5) · #161616</span>
             </div>
             {/* Dark Variant of AvailabilityBadge (Task 3.3) */}
             <AvailabilityBadge
@@ -106,17 +109,72 @@ export default function Home() {
               variant="dark"
             />
           </div>
-          <h2 className="font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            Contact &amp; CTA Surface Preview
-          </h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
-            This container provides the #161616 dark surface with rgba(255,255,255,0.12) border
-            and cascading on-dark text tokens, matching the Snapline Contact section and footer blocks.
-          </p>
-          <div className="mt-2 flex flex-wrap items-center gap-3">
-            <Button variant="lime">Send inquiry</Button>
-            <Button variant="dark">Learn more</Button>
+
+          <div>
+            <h2 className="font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              Contact Form Input Primitives
+            </h2>
+            <p className="mt-1 max-w-2xl text-sm leading-relaxed text-white/60">
+              Interactive inputs, textareas, and custom select comboboxes with signature neon lime focus borders.
+            </p>
           </div>
+
+          {/* 2-Column Responsive Form Input Grid (Task 3.5) */}
+          <form className="flex flex-col gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <TextInput
+                label="Name"
+                placeholder="Your name"
+                required
+              />
+              <TextInput
+                label="Email"
+                type="email"
+                placeholder="Your email address"
+                required
+              />
+              <TextInput
+                label="Company or website"
+                placeholder="Company name or URL"
+              />
+              <CustomSelect
+                label="Service needed"
+                options={[
+                  "Product Strategy",
+                  "Design System",
+                  "Web Application",
+                  "Mobile App",
+                ]}
+                defaultValue="Product Strategy"
+              />
+              <CustomSelect
+                label="Budget"
+                options={["Under $10k", "$10k - $25k", "$25k - $50k", "$50k+"]}
+                defaultValue="Under $10k"
+              />
+              <CustomSelect
+                label="Timeline"
+                options={[
+                  "As soon as possible",
+                  "Within 1-2 months",
+                  "Flexible",
+                ]}
+                defaultValue="As soon as possible"
+              />
+            </div>
+
+            <TextArea
+              label="Project notes"
+              placeholder="Tell me about the project, audience and goals"
+              rows={4}
+            />
+
+            <div className="mt-2">
+              <Button variant="lime" size="lg" fullWidth type="submit">
+                Send enquiry
+              </Button>
+            </div>
+          </form>
         </div>
       </DarkContainer>
     </main>
