@@ -4,18 +4,40 @@ import { AnchorHTMLAttributes, forwardRef, ReactNode } from "react";
 // ─── Token Reference ───────────────────────────────────────────────────────
 // arrow translation: -4px (-translate-x-1) on hover
 // text color:        text-text-muted (#605F5F) -> text-text-primary (#0A0A0A)
-// Source: docs/research/snapline/interaction-matrix.md & design-tokens.json
+// presets:           "work" -> "← All works" (/work)
+//                    "journal" -> "← Journal" (/journal)
+// Source: docs/research/snapline/interaction-matrix.md & implementation-plan.md
 
-export interface BackLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  /** Target URL (e.g. "/work", "/journal", "/") */
-  href: string;
-  /** Label text (defaults to "All works") */
+export type BackLinkTarget = "work" | "journal" | "home";
+
+export interface BackLinkProps
+  extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
+  /** Convenience target destination preset */
+  to?: BackLinkTarget;
+  /** Target URL (e.g. "/work", "/journal", "/"). If omitted, derived from `to` */
+  href?: string;
+  /** Label text. If omitted, derived from `to` ("All works" or "Journal") */
   label?: string;
   /** Custom arrow or icon element */
   arrow?: ReactNode;
   /** Link prefetch behavior */
   prefetch?: boolean;
 }
+
+const PRESET_CONFIGS: Record<BackLinkTarget, { href: string; label: string }> = {
+  work: {
+    href: "/work",
+    label: "All works",
+  },
+  journal: {
+    href: "/journal",
+    label: "Journal",
+  },
+  home: {
+    href: "/",
+    label: "Home",
+  },
+};
 
 /**
  * BackLink
@@ -25,13 +47,19 @@ export interface BackLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
  *
  * Micro-interaction:
  *   - Hover translates the left arrow 4px to the left (`-translate-x-1`)
- *   - Text transitions smoothly to primary text tone
+ *   - Text transitions smoothly from muted gray to primary text tone
+ *
+ * Usage:
+ *   `<BackLink to="work" />`      // Renders "← All works" linking to "/work"
+ *   `<BackLink to="journal" />`   // Renders "← Journal" linking to "/journal"
+ *   `<BackLink href="/custom" label="Back" />`
  */
 export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
   (
     {
+      to = "work",
       href,
-      label = "All works",
+      label,
       arrow,
       prefetch,
       className = "",
@@ -40,12 +68,17 @@ export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
     },
     ref
   ) => {
+    const preset = PRESET_CONFIGS[to] ?? PRESET_CONFIGS.work;
+    const resolvedHref = href ?? preset.href;
+    const resolvedLabel = children ?? label ?? preset.label;
+
     return (
       <Link
         ref={ref}
-        href={href}
+        href={resolvedHref}
         prefetch={prefetch}
         data-testid="back-link"
+        data-target={to}
         className={[
           "group inline-flex items-center gap-2 font-sans text-sm font-medium text-[#605F5F] hover:text-[#0A0A0A] select-none transition-colors duration-150",
           className,
@@ -79,7 +112,7 @@ export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
         </span>
 
         {/* Link Label */}
-        <span data-testid="back-link-label">{children ?? label}</span>
+        <span data-testid="back-link-label">{resolvedLabel}</span>
       </Link>
     );
   }

@@ -26,9 +26,11 @@ export default function Home() {
 
       {/* Artboard Surface Container Primitive (Task 3.2) */}
       <ArtboardContainer className="mt-8">
-        {/* BackLink Primitive Showcase (Task 3.4) */}
-        <div className="mb-6">
-          <BackLink href="#backlink-demo" label="All works" />
+        {/* BackLink Primitive Showcase (Task 3.4: "← All works" and "← Journal") */}
+        <div className="mb-6 flex flex-wrap items-center gap-4">
+          <BackLink to="work" />
+          <span className="text-xs text-[#605F5F]/40">|</span>
+          <BackLink to="journal" />
         </div>
 
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
