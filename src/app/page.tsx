@@ -9,6 +9,7 @@ import {
   TextInput,
   TextArea,
   CustomSelect,
+  FigmaSelectionOverlay,
 } from "@/components/primitives";
 
 export default function Home() {
@@ -83,15 +84,24 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative h-64 w-48 shrink-0 overflow-hidden rounded-medium border border-border-light bg-surface-muted shadow-card sm:h-72 sm:w-56">
-            <Image
-              src="/images/hero-portrait.webp"
-              alt="Maya Ortiz — Product Designer in Lisbon"
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 192px, 224px"
-              priority
-            />
+          {/* Hero Portrait with Signature Figma Selection Overlay (Task 3.6) */}
+          <div className="mt-8 flex justify-center lg:mt-0 lg:justify-end">
+            <FigmaSelectionOverlay
+              layerName="maya-portrait.webp"
+              dimensions="380 × 475"
+              helperText="Drag a handle to resize me"
+            >
+              <div className="relative h-80 w-64 overflow-hidden rounded-medium border border-border-light bg-surface-muted shadow-card sm:h-96 sm:w-72 lg:h-[420px] lg:w-[320px]">
+                <Image
+                  src="/images/hero-portrait.webp"
+                  alt="Maya Ortiz — Product Designer in Lisbon"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 256px, (max-width: 1024px) 288px, 320px"
+                  priority
+                />
+              </div>
+            </FigmaSelectionOverlay>
           </div>
         </div>
       </ArtboardContainer>
