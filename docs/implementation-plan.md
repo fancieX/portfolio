@@ -99,7 +99,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `4.1` | Persistent Top Header with Brand Mark & Contact CTA | `task/4.1-top-header` | High | Low | Yes | `MERGED` | #20 | `4f4f12a` | `Merged into stage-1` |
 | `4.2` | Universal Floating Bottom Dock Navigation | `task/4.2-floating-dock` | Critical | High | Yes | `MERGED` | #21 | `95b19b7` | `Merged into stage-1` |
 | `4.3` | 2D Canvas Camera, Pan/Zoom & Page Transitions | `task/4.3-canvas-camera-transitions` | Critical | High | Yes | `MERGED` | #22 | `76ddfce` | `Merged into stage-1` |
-| `4.4` | Global Page Footer & Lisbon Time Synchronization | `task/4.4-global-footer` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `4.4` | Global Page Footer & Lisbon Time Synchronization | `task/4.4-global-footer` | Medium | Low | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
 | **M5: Homepage Implementation** | | | | | | | | | |
 | `5.1` | Hero Section Layout & Animated Role Rotator | `task/5.1-hero-section` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `5.2` | Draggable & Resizable Hero Portrait | `task/5.2-draggable-resizable-portrait` | High | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -548,6 +548,8 @@ MILESTONE 4: CANVAS & NAVIGATION ARCHITECTURE (Area C)
 - **Task ID:** `4.4`
 - **Task Name:** Global Page Footer & Lisbon Time Synchronization
 - **Priority:** Medium | **Complexity:** Low | **Visual QA:** Yes
+- **Status:** `IMPLEMENTED`
+- **Task Specification:** [task-4.4.md](file:///d:/portfolio/docs/specifications/tasks/task-4.4.md)
 - **Scope:** Shared footer and live clock component.
 - **Objective:** Implement `Footer.tsx` containing the Lisbon time display (`HH:MM in Lisbon`) formatted to `Europe/Lisbon` timezone with minute-level client synchronization, sitemap links (`Pages`, `Info`, `Social`), and `"Back to top ↑"` smooth scroll trigger.
 - **Affected Files:** `src/components/navigation/Footer.tsx`, `src/hooks/useLisbonTime.ts`.

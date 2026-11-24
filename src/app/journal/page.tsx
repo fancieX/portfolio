@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/navigation";
+import { Header, Footer } from "@/components/navigation";
 import { ArtboardContainer, PillBadge, BackLink } from "@/components/primitives";
 
 export const metadata: Metadata = {
@@ -34,6 +34,9 @@ export default function JournalPage() {
           </span>
         </div>
       </ArtboardContainer>
+
+      {/* Global Page Footer Component (Task 4.4) */}
+      <Footer />
     </main>
   );
 }
