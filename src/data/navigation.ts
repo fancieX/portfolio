@@ -3,10 +3,10 @@ import type { DockItem, SitemapSection } from "@/types";
 /**
  * Universal bottom floating dock navigation triggers.
  * 5 core routes matching the reference topology:
- * 1. Cursor Arrow (V) -> Home (/)
- * 2. Frame Hash (#)   -> Work (/work)
- * 3. User Profile      -> About (/about)
- * 4. Text Type (T)     -> Journal (/journal)
+ * 1. Cursor Arrow (H) -> Home (/)
+ * 2. Frame Hash (W)   -> Work (/work)
+ * 3. User Profile (A) -> About (/about)
+ * 4. Text Type (J)     -> Journal (/journal)
  * 5. Comment Bubble (C)-> Contact (/contact)
  */
 export const dockItems: DockItem[] = [
@@ -15,27 +15,28 @@ export const dockItems: DockItem[] = [
     label: "Home",
     href: "/",
     icon: "cursor",
-    shortcut: "V",
+    shortcut: "H",
   },
   {
     id: "work",
     label: "Work",
     href: "/work",
     icon: "frame",
-    shortcut: "#",
+    shortcut: "W",
   },
   {
     id: "about",
     label: "About",
     href: "/about",
     icon: "user",
+    shortcut: "A",
   },
   {
     id: "journal",
     label: "Journal",
     href: "/journal",
     icon: "text",
-    shortcut: "T",
+    shortcut: "J",
   },
   {
     id: "contact",

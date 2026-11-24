@@ -42,17 +42,17 @@ Z-INDEX STACKING ORDER:
 
 ### 2. Floating Navigation Dock (`Dock.tsx`)
 - **Positioning:** Fixed at bottom center, `24px` above bottom on desktop, `16px` on tablet/mobile.
-- **Dimensions:** Width `280px`, height `52px`, `border-radius: 9999px`.
-- **Glassmorphism:** `background: rgba(255, 255, 255, 0.85)`, `backdrop-filter: blur(12px)`, border `1px solid rgba(0, 0, 0, 0.08)`.
+- **Dimensions:** Width `280px`, height `54px`, container `border-radius: 16px` (`rounded-[16px]`), padding `6px`, gap `3px`.
+- **Glassmorphism:** `background: rgba(255, 255, 255, 0.92)`, `backdrop-filter: blur(14px)`, border `1px solid rgba(10, 10, 10, 0.1)`.
 - **Z-Index:** `1000`.
 - **Navigation Triggers (5 Icons + 1 Zoom Status):**
-  1. **Cursor Arrow (V):** Home (`/`)
-  2. **Frame Hash (#):** Work (`/work`)
-  3. **User Profile:** About (`/about`)
-  4. **Text Type (T):** Journal (`/journal`)
+  1. **Cursor Arrow (H):** Home (`/`)
+  2. **Frame Hash (W):** Work (`/work`)
+  3. **User Profile (A):** About (`/about`)
+  4. **Text Type (J):** Journal (`/journal`)
   5. **Comment Bubble (C):** Contact (`/contact`)
   6. **Canvas Scale Status:** Non-interactive `100%` scale indicator.
-- **Active State Indicator:** A solid dark pill container (`#0A0A0A`, `border-radius: 8px`) highlights the active route, with the active icon colored neon lime (`#D6FF3F`).
+- **Active State Indicator:** A solid dark container (`#0A0A0A`, size `42px × 42px`, `border-radius: 11px`, concentric geometry `16px - 5px = 11px`) highlights the active route, with the active icon colored neon lime (`#D6FF3F`). Each button also includes a 7px-radius hover tooltip showing the route name and keyboard shortcut.
 
 ### 3. Global Footer Component
 - Rendered at the bottom of the active page artboard (or dark footer container on project/contact pages).

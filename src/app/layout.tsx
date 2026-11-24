@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { geist, inter } from "@/styles/fonts";
 import { DotGridBackground } from "@/components/canvas/DotGridBackground";
+import { FloatingDock } from "@/components/navigation";
 import "@/styles/globals.css";
 
 export const viewport: Viewport = {
@@ -69,6 +70,7 @@ export default function RootLayout({
         <div id="canvas-root" className="relative min-h-screen w-full">
           {children}
         </div>
+        <FloatingDock />
       </body>
     </html>
   );
