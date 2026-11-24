@@ -93,7 +93,7 @@ export const FigmaSelectionOverlay = forwardRef<
       borderColor,
     };
 
-    const overlayContent = (
+    const frameContent = (
       <>
         {/* Outer Bounding Hairline Frame */}
         <div
@@ -165,50 +165,60 @@ export const FigmaSelectionOverlay = forwardRef<
             />
           </div>
         )}
+      </>
+    );
 
-        {/* Bottom Neon Lime Dimension Badge & Optional Helper Text */}
-        {((showDimensions && dimensions) || helperText) && (
-          <div
-            data-testid="figma-dimension-badge-container"
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%+6px)] flex flex-col items-center gap-1.5 z-30 pointer-events-none"
+    const bottomBadgeContent = ((showDimensions && dimensions) || helperText) && (
+      <>
+        {showDimensions && dimensions && (
+          <span
+            data-testid="figma-dimension-badge"
+            className="inline-flex items-center justify-center rounded bg-[#D6FF3F] px-2 py-0.5 font-mono text-[10px] font-bold tracking-tight text-[#0A0A0A] shadow-[0_2px_6px_rgba(0,0,0,0.12)] select-none whitespace-nowrap"
           >
-            {showDimensions && dimensions && (
-              <span
-                data-testid="figma-dimension-badge"
-                className="inline-flex items-center justify-center rounded bg-[#D6FF3F] px-2 py-0.5 font-mono text-[10px] font-bold tracking-tight text-[#0A0A0A] shadow-[0_2px_6px_rgba(0,0,0,0.12)] select-none whitespace-nowrap"
-              >
-                {dimensions}
-              </span>
-            )}
-            {helperText && (
-              <span
-                data-testid="figma-helper-text"
-                className="font-sans text-[11px] font-normal text-[#0A0A0A]/50 select-none whitespace-nowrap"
-              >
-                {helperText}
-              </span>
-            )}
-          </div>
+            {dimensions}
+          </span>
+        )}
+        {helperText && (
+          <span
+            data-testid="figma-helper-text"
+            className="font-sans text-[11px] font-normal leading-tight text-[#0A0A0A]/50 select-none whitespace-nowrap"
+          >
+            {helperText}
+          </span>
         )}
       </>
     );
 
     // If children are provided, wrap them so the selection frame fits tightly around them automatically
+    // and flows the dimension badge + helper text directly below the framed child
     if (children) {
       return (
         <div
           ref={ref}
           data-testid="figma-selection-wrapper"
           className={[
-            "relative inline-flex w-fit select-none",
+            "relative inline-flex flex-col items-center w-fit select-none",
             className,
           ]
             .filter(Boolean)
             .join(" ")}
           {...rest}
         >
-          {children}
-          {overlayContent}
+          {/* Framed Child Container with Hairline Border and Handles */}
+          <div className="relative inline-flex w-fit select-none">
+            {children}
+            {frameContent}
+          </div>
+
+          {/* In-flow Dimension Badge and Helper Text */}
+          {bottomBadgeContent && (
+            <div
+              data-testid="figma-dimension-badge-container"
+              className="mt-2 flex flex-col items-center gap-1.5 z-30 pointer-events-none select-none"
+            >
+              {bottomBadgeContent}
+            </div>
+          )}
         </div>
       );
     }
@@ -227,7 +237,15 @@ export const FigmaSelectionOverlay = forwardRef<
           .join(" ")}
         {...rest}
       >
-        {overlayContent}
+        {frameContent}
+        {bottomBadgeContent && (
+          <div
+            data-testid="figma-dimension-badge-container"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%+6px)] flex flex-col items-center gap-1.5 z-30 pointer-events-none"
+          >
+            {bottomBadgeContent}
+          </div>
+        )}
       </div>
     );
   }

@@ -59,7 +59,7 @@ Page (src/app/page.tsx)
     │           ├── Brand Link (<Link href="/">)
     │           │   └── <span className="font-heading font-bold text-lg ...">Maya.</span>
     │           └── CTA Slot
-    │               └── Button (<Button variant="primary" size="sm" href="/contact">)
+    │               └── Button (<Button variant="primary" size="md" href="/contact">)
     │                   └── "Get in touch"
     ├── AvailabilityBadge ("Booking projects for January")
     ├── Hero Content (Headline, Bio, Action Buttons)
@@ -76,11 +76,11 @@ Page (src/app/page.tsx)
 | **Max Container Width** | `100%` of parent artboard (`1200px`) | Measured Value | `design-tokens.json` (layout.container) |
 | **Z-Index** | `relative` / `z-[400]` | Verified Observation | `PAGE_TOPOLOGY.md` Stacking Order |
 | **Brand Mark Font** | `Inter Bold` / `Geist` (`font-heading font-bold`) | Verified Observation | `design-tokens.json` |
-| **Brand Mark Size** | `18px` (`text-lg`, `leading-none`) | Measured Value | Computed styles |
+| **Brand Mark Size** | `20px` (`text-xl`) — changed from `text-lg` per user preference | Implementation Decision | Computed styles |
 | **Brand Mark Color** | `#0A0A0A` (`text-text-primary`) | Measured Value | `design-tokens.json` |
 | **Brand Mark Tracking** | `-0.02em` (`tracking-tight`) | Calibrated Approximation | Visual inspection |
 | **CTA Button Variant** | Primary black pill (`variant="primary"`) | Verified Observation | `home-desktop-nav-extracted.png` |
-| **CTA Button Height** | `36px` (`size="sm"`, `h-9`) | Measured Value | `Button.tsx` token scale |
+| **CTA Button Height** | `44px` (`size="md"`, `h-11`) — changed from `sm` per user preference | Implementation Decision | `Button.tsx` token scale |
 | **CTA Background** | `#0A0A0A` (`bg-[#0A0A0A]`) | Measured Value | `design-tokens.json` |
 | **CTA Text Color** | `#FFFFFF` (`text-white`) | Measured Value | `design-tokens.json` |
 | **CTA Border Radius** | `9999px` (`rounded-full`) | Measured Value | `design-tokens.json` |
@@ -106,14 +106,14 @@ Page (src/app/page.tsx)
   - Content: `"Maya."`
   - Font Family: `var(--font-heading)` (`Inter`, sans-serif)
   - Weight: `700` (`font-bold`)
-  - Size: `18px` (`text-lg`)
+  - Size: `20px` (`text-xl`) — changed from `text-lg` per user preference
   - Tracking: `-0.02em` (`tracking-tight`)
   - Color: `#0A0A0A` (`text-[#0A0A0A]`)
 - **CTA Button Text:**
   - Content: `"Get in touch"`
   - Font Family: `var(--font-sans)` (`Geist`, sans-serif)
   - Weight: `600` (`font-semibold`)
-  - Size: `13px` (`text-xs`)
+  - Size: `14px` (`text-sm`) — changed from `text-xs` per `size="md"` button scale
   - Color: `#FFFFFF` (`text-white`)
 
 ---
