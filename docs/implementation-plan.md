@@ -97,8 +97,8 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `3.6` | Figma Selection Frame & Dimension Handle Overlay | `task/3.6-figma-selection-overlay` | High | High | Yes | `MERGED` | #19 | `f9bd672` | `Merged into stage-1` |
 | **M4: Canvas & Navigation** | | | | | | | | | |
 | `4.1` | Persistent Top Header with Brand Mark & Contact CTA | `task/4.1-top-header` | High | Low | Yes | `MERGED` | #20 | `4f4f12a` | `Merged into stage-1` |
-| `4.2` | Universal Floating Bottom Dock Navigation | `task/4.2-floating-dock` | Critical | High | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
-| `4.3` | 2D Canvas Camera, Pan/Zoom & Page Transitions | `task/4.3-canvas-camera-transitions` | Critical | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `4.2` | Universal Floating Bottom Dock Navigation | `task/4.2-floating-dock` | Critical | High | Yes | `MERGED` | #21 | `95b19b7` | `Merged into stage-1` |
+| `4.3` | 2D Canvas Camera, Pan/Zoom & Page Transitions | `task/4.3-canvas-camera-transitions` | Critical | High | Yes | `MERGED` | #22 | `76ddfce` | `Merged into stage-1` |
 | `4.4` | Global Page Footer & Lisbon Time Synchronization | `task/4.4-global-footer` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | **M5: Homepage Implementation** | | | | | | | | | |
 | `5.1` | Hero Section Layout & Animated Role Rotator | `task/5.1-hero-section` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -522,7 +522,10 @@ MILESTONE 4: CANVAS & NAVIGATION ARCHITECTURE (Area C)
 - **Task ID:** `4.3`
 - **Task Name:** 2D Canvas Camera, Pan/Zoom & Page Transitions
 - **Priority:** Critical | **Complexity:** High | **Visual QA:** Yes
-- **Status:** `IMPLEMENTED`
+- **Status:** `MERGED`
+- **GitHub Pull Request:** [#22](https://github.com/fancieX/portfolio/pull/22)
+- **Merge Status:** `Merged into stage-1`
+- **Commit Reference:** `76ddfce` (Merge: `d326e07`)
 - **Task Specification:** [task-4.3.md](file:///d:/portfolio/docs/specifications/tasks/task-4.3.md)
 - **Scope:** Spatial 2D canvas coordinate engine, View Transitions CSS, and camera navigation.
 - **Objective:** Implement `CanvasProvider.tsx` and `useCanvasPan.ts` to manage a 2D artboard coordinate system, camera positioning, panning, zooming, spatial movement between pages, smooth page transition animations, URL synchronization, browser back/forward navigation, responsive canvas bounds, and strict prevention of unintended horizontal and vertical scroll overflow.
