@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { forwardRef, HTMLAttributes, ReactNode } from "react";
 import { Button, ButtonVariant } from "@/components/primitives";
 import { headerNav } from "@/data/navigation";
+import { useCanvasPan } from "@/hooks/useCanvasPan";
 
 // ─── Token Reference ───────────────────────────────────────────────────────
 // height:            56px (h-14)
@@ -59,6 +62,8 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(
     },
     ref
   ) => {
+    const { panTo } = useCanvasPan();
+
     return (
       <header
         ref={ref}
@@ -79,6 +84,10 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(
             href={brandHref}
             data-testid="header-brand-link"
             aria-label={`${brandLabel} homepage`}
+            onClick={(e) => {
+              e.preventDefault();
+              panTo(brandHref);
+            }}
             className="group inline-flex items-center"
           >
             <span className="font-heading text-lg font-bold tracking-tight text-text-primary transition-opacity duration-150 group-hover:opacity-75">
@@ -95,6 +104,10 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(
               size="sm"
               data-testid="header-cta-button"
               aria-label={ctaLabel}
+              onClick={(e) => {
+                e.preventDefault();
+                panTo(ctaHref);
+              }}
             >
               {ctaLabel}
             </Button>
