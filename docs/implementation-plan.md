@@ -97,7 +97,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `3.6` | Figma Selection Frame & Dimension Handle Overlay | `task/3.6-figma-selection-overlay` | High | High | Yes | `MERGED` | #19 | `f9bd672` | `Merged into stage-1` |
 | **M4: Canvas & Navigation** | | | | | | | | | |
 | `4.1` | Persistent Top Header with Brand Mark & Contact CTA | `task/4.1-top-header` | High | Low | Yes | `MERGED` | #20 | `4f4f12a` | `Merged into stage-1` |
-| `4.2` | Universal Floating Bottom Dock Navigation | `task/4.2-floating-dock` | Critical | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `4.2` | Universal Floating Bottom Dock Navigation | `task/4.2-floating-dock` | Critical | High | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
 | `4.3` | 2D Canvas Camera, Pan/Zoom & Page Transitions | `task/4.3-canvas-camera-transitions` | Critical | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `4.4` | Global Page Footer & Lisbon Time Synchronization | `task/4.4-global-footer` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | **M5: Homepage Implementation** | | | | | | | | | |
@@ -492,18 +492,25 @@ MILESTONE 4: CANVAS & NAVIGATION ARCHITECTURE (Area C)
 - **Task ID:** `4.2`
 - **Task Name:** Universal Floating Bottom Dock Navigation
 - **Priority:** Critical | **Complexity:** High | **Visual QA:** Yes
-- **Scope:** Universal primary navigation dock.
-- **Objective:** Implement `FloatingDock.tsx` fixed at bottom center (`width: ~280px`, `z-index: 1000`, `backdrop-filter: blur(12px)`) with 5 icons (`Home`, `Work`, `About`, `Journal`, `Contact`), `100%` zoom badge, and active dark pill indicator with neon lime active icon.
-- **Affected Files:** `src/components/navigation/FloatingDock.tsx`, `src/app/layout.tsx`.
-- **Dependencies:** Task 2.4, Task 3.4.
-- **Expected Result:** Glassmorphic floating dock that smoothly indicates active route across all viewports.
+- **Status:** `IMPLEMENTED`
+- **Task Specification:** [task-4.2.md](file:///d:/portfolio/docs/specifications/tasks/task-4.2.md)
+- **Scope:** Universal primary navigation dock component and global layout integration.
+- **Objective:** Implement `FloatingDock.tsx` fixed at bottom center (`width: ~280px`, `height: 52px`, `z-index: 1000`, `background: rgba(255, 255, 255, 0.85)`, `backdrop-filter: blur(12px)`) with 5 navigation icons (`Home`, `Work`, `About`, `Journal`, `Contact`), non-interactive `100%` canvas zoom badge, animated active dark pill indicator (`#0A0A0A`) with signature neon lime active icon (`#D6FF3F`), and global keyboard shortcuts.
+- **Affected Files:** `src/components/navigation/FloatingDock.tsx`, `src/components/navigation/index.ts`, `src/app/layout.tsx`.
+- **Dependencies:** Task 2.4 (Navigation Metadata), Task 3.4 (Design Tokens & Spring Motion).
+- **Expected Result:** Glassmorphic floating dock that smoothly indicates the active route across all viewports with fluid spring motion, keyboard navigation, and persistent visibility.
 - **Acceptance Criteria:**
-  1. Active route displays `#0A0A0A` rounded container with `#D6FF3F` icon.
-  2. Inactive icons display gray stroke `#666666`, turning `#EAEAEA` on hover.
-  3. Remains persistently visible on desktop, tablet, and mobile.
-- **Testing Requirements:** Route navigation testing and visual state inspection.
-- **Responsive Baseline:** Desktop: `bottom: 24px`, width `280px` | Tablet: `bottom: 16px`, width `280px` | Mobile: `bottom: 16px`, width `280px` with safe-area padding (`env(safe-area-inset-bottom)`).
-- **Research References:** `docs/research/snapline/interaction-matrix.md` (Interaction 1 & 7).
+  1. Floating dock is fixed at bottom center with `z-index: 1000`, `width: ~280px`, `height: 52px`, `rounded-full`, and `backdrop-filter: blur(12px)`.
+  2. Renders all 5 navigation triggers: Home (`cursor`), Work (`frame`), About (`user`), Journal (`text`), and Contact (`comment`).
+  3. Active route renders a solid dark pill container (`#0A0A0A`, `rounded-lg`) enclosing the icon with neon lime fill/stroke (`#D6FF3F`).
+  4. Active indicator smoothly transitions between items via Framer Motion spring layout animation (`layoutId="activeDockIndicator"`).
+  5. Inactive icons render in muted gray (`#666666`), highlighting with subtle background tint on hover.
+  6. Non-interactive `100%` zoom badge rendered on the right side separated by a hairline vertical divider.
+  7. Global keyboard shortcuts (`V` for Home, `Shift+3` / `#` for Work, `T` for Journal, `C` for Contact) trigger route navigation when focus is outside form inputs.
+  8. Integrated persistently into `src/app/layout.tsx` across all pages with mobile safe-area padding (`env(safe-area-inset-bottom)`).
+- **Testing Requirements:** Run `npx tsc --noEmit`, `npm run lint`, `npm run build`, and test route navigation and keyboard shortcuts in the browser.
+- **Responsive Baseline:** Desktop: `bottom: 24px`, width `280px` | Tablet: `bottom: 16px`, width `280px` | Mobile: `bottom: 16px`, width `280px` with safe-area padding.
+- **Research References:** `docs/research/snapline/PAGE_TOPOLOGY.md` (Section 2), `docs/research/snapline/interaction-matrix.md` (Interaction 1 & 7), `docs/research/snapline/design-tokens.json` (dock tokens).
 - **Task Branch:** `task/4.2-floating-dock`
 - **Commit Message:** `feat(nav): implement universal floating bottom dock navigation`
 - **PR Title:** `feat(nav): implement universal floating bottom dock navigation`
