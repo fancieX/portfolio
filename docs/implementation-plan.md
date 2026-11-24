@@ -101,7 +101,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `4.3` | 2D Canvas Camera, Pan/Zoom & Page Transitions | `task/4.3-canvas-camera-transitions` | Critical | High | Yes | `MERGED` | #22 | `76ddfce` | `Merged into stage-1` |
 | `4.4` | Global Page Footer & Lisbon Time Synchronization | `task/4.4-global-footer` | Medium | Low | Yes | `MERGED` | #23 | `76d16e9` | `Merged into stage-1` |
 | **M5: Homepage Implementation** | | | | | | | | | |
-| `5.1` | Hero Section Layout & Animated Role Rotator | `task/5.1-hero-section` | High | Medium | Yes | `IMPLEMENTED` | - | - | `Unmerged` |
+| `5.1` | Hero Section Layout & Animated Role Rotator | `task/5.1-hero-section` | High | Medium | Yes | `MERGED` | #24 | `85f73cf` | `Merged into stage-1` |
 | `5.2` | Draggable & Resizable Hero Portrait | `task/5.2-draggable-resizable-portrait` | High | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `5.3` | Simulated Multiplayer Collaborator Cursors | `task/5.3-collaborator-cursors` | Medium | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `5.4` | Client Logos Social Proof Section | `task/5.4-client-logos` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -579,7 +579,10 @@ MILESTONE 5: HOMEPAGE IMPLEMENTATION (Area D)
 - **Task ID:** `5.1`
 - **Task Name:** Hero Section Layout & Animated Role Rotator
 - **Priority:** High | **Complexity:** Medium | **Visual QA:** Yes
-- **Status:** `IMPLEMENTED`
+- **Status:** `MERGED`
+- **GitHub Pull Request:** [PR #24](https://github.com/fancieX/portfolio/pull/24)
+- **Merge Status:** `Merged into stage-1`
+- **Commit Reference:** `85f73cf` (merge commit `6cf68b9`)
 - **Task Specification:** [task-5.1.md](file:///d:/portfolio/docs/specifications/tasks/task-5.1.md)
 - **Scope:** Homepage hero layout and headline animation.
 - **Objective:** Construct `HeroSection.tsx` featuring the 72px display headline, availability badge, and an animated role rotator cycling `[Product Designer]`, `[Design Lead]`, `[Systems Thinker]`.
