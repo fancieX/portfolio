@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { geist, inter } from "@/styles/fonts";
-import { DotGridBackground } from "@/components/canvas/DotGridBackground";
+import { DotGridBackground, CanvasProvider } from "@/components/canvas";
 import { FloatingDock } from "@/components/navigation";
 import "@/styles/globals.css";
 
@@ -67,10 +67,12 @@ export default function RootLayout({
     <html lang="en" className={`${geist.variable} ${inter.variable}`}>
       <body className="relative min-h-screen font-sans text-text-primary antialiased">
         <DotGridBackground />
-        <div id="canvas-root" className="relative min-h-screen w-full">
-          {children}
-        </div>
-        <FloatingDock />
+        <CanvasProvider>
+          <div id="canvas-root" className="relative min-h-screen w-full overflow-x-hidden">
+            {children}
+          </div>
+          <FloatingDock />
+        </CanvasProvider>
       </body>
     </html>
   );

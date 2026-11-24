@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, ReactNode } from "react";
 import { dockItems } from "@/data/navigation";
+import { useCanvasPan } from "@/hooks/useCanvasPan";
 import type { DockTriggerIcon } from "@/types";
 
 // ─── Token Reference (Verified 1:1 with https://snapline.framer.website/) ──────
@@ -184,7 +185,7 @@ export function FloatingDock({
   scaleText = "100%",
 }: FloatingDockProps) {
   const pathname = usePathname();
-  const router = useRouter();
+  const { panTo } = useCanvasPan();
 
   // Route matching logic
   const isItemActive = (href: string) => {
@@ -218,25 +219,30 @@ export function FloatingDock({
       const key = e.key.toLowerCase();
       if (key === "h" || key === "v") {
         e.preventDefault();
-        router.push("/");
+        (document.activeElement as HTMLElement)?.blur();
+        panTo("/");
       } else if (key === "w" || key === "#" || (e.shiftKey && key === "3")) {
         e.preventDefault();
-        router.push("/work");
+        (document.activeElement as HTMLElement)?.blur();
+        panTo("/work");
       } else if (key === "a") {
         e.preventDefault();
-        router.push("/about");
+        (document.activeElement as HTMLElement)?.blur();
+        panTo("/about");
       } else if (key === "j" || key === "t") {
         e.preventDefault();
-        router.push("/journal");
+        (document.activeElement as HTMLElement)?.blur();
+        panTo("/journal");
       } else if (key === "c") {
         e.preventDefault();
-        router.push("/contact");
+        (document.activeElement as HTMLElement)?.blur();
+        panTo("/contact");
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [router]);
+  }, [panTo]);
 
   return (
     <nav
@@ -275,9 +281,13 @@ export function FloatingDock({
               data-testid={`dock-item-${item.id}`}
               aria-label={item.label}
               aria-current={active ? "page" : undefined}
+              onClick={(e) => {
+                e.preventDefault();
+                (e.currentTarget as HTMLElement)?.blur();
+                panTo(item.href);
+              }}
               className={[
-                "group relative z-10 flex h-[42px] w-[42px] items-center justify-center rounded-[11px] transition-transform active:scale-95",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D6FF3F] focus-visible:ring-offset-2",
+                "group relative z-10 flex h-[42px] w-[42px] items-center justify-center rounded-[11px] transition-transform active:scale-95 outline-none focus:outline-none focus-visible:outline-none",
                 !active && "hover:bg-black/[0.05]",
               ]
                 .filter(Boolean)
