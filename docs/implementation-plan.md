@@ -492,7 +492,10 @@ MILESTONE 4: CANVAS & NAVIGATION ARCHITECTURE (Area C)
 - **Task ID:** `4.2`
 - **Task Name:** Universal Floating Bottom Dock Navigation
 - **Priority:** Critical | **Complexity:** High | **Visual QA:** Yes
-- **Status:** `IMPLEMENTED`
+- **Status:** `MERGED`
+- **GitHub Pull Request:** [#21](https://github.com/fancieX/portfolio/pull/21)
+- **Merge Status:** Merged into `stage-1`
+- **Commit Reference:** `95b19b7` (Merge commit: `62932fa`)
 - **Task Specification:** [task-4.2.md](file:///d:/portfolio/docs/specifications/tasks/task-4.2.md)
 - **Scope:** Universal primary navigation dock component and global layout integration.
 - **Objective:** Implement `FloatingDock.tsx` fixed at bottom center (`width: ~280px`, `height: 52px`, `z-index: 1000`, `background: rgba(255, 255, 255, 0.85)`, `backdrop-filter: blur(12px)`) with 5 navigation icons (`Home`, `Work`, `About`, `Journal`, `Contact`), non-interactive `100%` canvas zoom badge, animated active dark pill indicator (`#0A0A0A`) with signature neon lime active icon (`#D6FF3F`), and global keyboard shortcuts.
