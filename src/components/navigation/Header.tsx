@@ -9,10 +9,11 @@ import { useCanvasPan } from "@/hooks/useCanvasPan";
 // ─── Token Reference ───────────────────────────────────────────────────────
 // height:            56px (h-14)
 // background:        Transparent (no glassmorphism, no backdrop-filter, no borders)
-// brandFont:         Inter / Geist Heading, font-bold, text-lg (18px)
+// brandFont:         Inter / Geist Heading, font-bold, text-xl (20px) — changed from text-lg per user preference
 // brandColor:        #0A0A0A (text-text-primary)
 // ctaVariant:        primary (#0A0A0A background, #FFFFFF text, rounded-full)
 // ctaSize:           sm (height: 36px, px-4)
+// ctaSize:           md (height: 44px, px-5) — changed from sm per user preference
 // containerMaxWidth: 100% of parent artboard / container
 // Source: docs/research/snapline/PAGE_TOPOLOGY.md & reference screenshots
 // (home-desktop-nav-extracted.png, contact-desktop-initial.png)
@@ -90,7 +91,7 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(
             }}
             className="group inline-flex items-center"
           >
-            <span className="font-heading text-lg font-bold tracking-tight text-text-primary transition-opacity duration-150 group-hover:opacity-75">
+            <span className="font-heading text-xl font-bold tracking-tight text-text-primary transition-opacity duration-150 group-hover:opacity-75">
               {brandLabel}
             </span>
           </Link>
@@ -101,7 +102,7 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(
             <Button
               href={ctaHref}
               variant={ctaVariant}
-              size="sm"
+              size="md"
               data-testid="header-cta-button"
               aria-label={ctaLabel}
               onClick={(e) => {
