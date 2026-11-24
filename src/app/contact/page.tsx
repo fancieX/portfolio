@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/navigation";
+import { Header, Footer } from "@/components/navigation";
 import {
   ArtboardContainer,
   DarkContainer,
@@ -54,6 +54,9 @@ export default function ContactPage() {
           </div>
         </DarkContainer>
       </ArtboardContainer>
+
+      {/* Global Page Footer Component without duplicate CTA (Task 4.4) */}
+      <Footer showCta={false} />
     </main>
   );
 }

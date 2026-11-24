@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Header } from "@/components/navigation";
+import { Header, Footer } from "@/components/navigation";
 import {
   ArtboardContainer,
   DarkContainer,
@@ -181,6 +181,9 @@ export default function Home() {
           </form>
         </div>
       </DarkContainer>
+
+      {/* Global Page Footer Component (Task 4.4) */}
+      <Footer />
     </main>
   );
 }
