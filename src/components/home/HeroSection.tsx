@@ -5,7 +5,7 @@ import { AvailabilityBadge, Button } from "@/components/primitives";
 import { useCanvasPan } from "@/hooks/useCanvasPan";
 import { RoleRotator } from "./RoleRotator";
 import { PinkGuideline } from "./PinkGuideline";
-import { HeroPortrait } from "./HeroPortrait";
+import { HangingBadge } from "./HangingBadge";
 
 export interface HeroSectionProps {
   className?: string;
@@ -129,13 +129,15 @@ export function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Right Column: Interactive Draggable & Resizable Hero Portrait Frame */}
+        {/* Right Column: Interactive Hanging Lanyard ID Badge */}
         <div className="flex justify-center lg:justify-end shrink-0">
-          <HeroPortrait
+          <HangingBadge
+            name="Maya Ortiz"
+            role="Product Designer"
             src="/images/hero-portrait.webp"
             alt="Maya Ortiz — Product Designer in Lisbon"
-            layerName="maya-portrait.webp"
-            helperText="Drag a handle to resize me"
+            accessTag="ALL ACCESS"
+            statusText="LISBON, PORTUGAL"
           />
         </div>
       </div>

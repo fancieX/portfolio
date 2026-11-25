@@ -1571,3 +1571,12 @@ flowchart TD
 3. **Identity & Hero Transformation:** Replace Maya Ortiz bio, portrait, and Lisbon clock with personal developer identity, headshot, and local timezone.
 4. **Writing & Articles:** Replace Snapline design essays with technical articles on frontend engineering, full-stack architecture, and dev workflows.
 5. **Production Deployment:** Connect contact form to a live email service (e.g. Resend) and deploy the portfolio to production hosting under a custom domain.
+
+---
+
+## 10. Custom Feature Extensions (Separate Feature Branches off `stage-1`)
+
+| Feature ID | Feature Name | Branch Name | Base Branch | Status | Specification Link |
+|:---|:---|:---|:---|:---:|:---|
+| `custom-hanging-lanyard-badge` | Homepage Hanging Lanyard Badge & Header CTA Removal | `feat/hanging-lanyard-badge` | `stage-1` | `IMPLEMENTED` | [feat-hanging-lanyard-badge.md](file:///d:/portfolio/docs/specifications/tasks/feat-hanging-lanyard-badge.md) |
+

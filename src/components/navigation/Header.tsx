@@ -29,6 +29,8 @@ export interface HeaderProps extends HTMLAttributes<HTMLElement> {
   ctaHref?: string;
   /** CTA button visual variant (defaults to "primary") */
   ctaVariant?: ButtonVariant;
+  /** Whether to display the top-right CTA button (defaults to true) */
+  showCta?: boolean;
   /** Optional sticky positioning (defaults to false) */
   sticky?: boolean;
   /** Optional additional elements placed alongside CTA */
@@ -56,6 +58,7 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(
       ctaLabel = headerNav.cta.label,
       ctaHref = headerNav.cta.href,
       ctaVariant = "primary",
+      showCta = true,
       sticky = false,
       className = "",
       children,
@@ -97,22 +100,26 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(
           </Link>
 
           {/* Right Action Slot (CTA Button + Optional Children) */}
-          <div className="flex items-center gap-3">
-            {children}
-            <Button
-              href={ctaHref}
-              variant={ctaVariant}
-              size="md"
-              data-testid="header-cta-button"
-              aria-label={ctaLabel}
-              onClick={(e) => {
-                e.preventDefault();
-                panTo(ctaHref);
-              }}
-            >
-              {ctaLabel}
-            </Button>
-          </div>
+          {(showCta || children) && (
+            <div className="flex items-center gap-3">
+              {children}
+              {showCta && (
+                <Button
+                  href={ctaHref}
+                  variant={ctaVariant}
+                  size="md"
+                  data-testid="header-cta-button"
+                  aria-label={ctaLabel}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    panTo(ctaHref);
+                  }}
+                >
+                  {ctaLabel}
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </header>
     );
