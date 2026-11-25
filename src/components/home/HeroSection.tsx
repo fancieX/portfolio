@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { AvailabilityBadge, Button, FigmaSelectionOverlay } from "@/components/primitives";
+import { AvailabilityBadge, Button } from "@/components/primitives";
 import { useCanvasPan } from "@/hooks/useCanvasPan";
 import { RoleRotator } from "./RoleRotator";
 import { PinkGuideline } from "./PinkGuideline";
+import { HeroPortrait } from "./HeroPortrait";
 
 export interface HeroSectionProps {
   className?: string;
@@ -129,24 +129,14 @@ export function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Right Column: Hero Portrait Frame with Figma Selection Overlay */}
+        {/* Right Column: Interactive Draggable & Resizable Hero Portrait Frame */}
         <div className="flex justify-center lg:justify-end shrink-0">
-          <FigmaSelectionOverlay
+          <HeroPortrait
+            src="/images/hero-portrait.webp"
+            alt="Maya Ortiz — Product Designer in Lisbon"
             layerName="maya-portrait.webp"
-            dimensions="420 × 525"
             helperText="Drag a handle to resize me"
-          >
-            <div className="relative w-[300px] h-[375px] sm:w-[350px] sm:h-[438px] lg:w-[420px] lg:h-[525px] max-w-full aspect-[0.8] overflow-hidden rounded-medium border border-border-light bg-surface-muted shadow-card">
-              <Image
-                src="/images/hero-portrait.webp"
-                alt="Maya Ortiz — Product Designer in Lisbon"
-                fill
-                priority
-                className="object-cover object-[50%_30%]"
-                sizes="(max-width: 640px) 300px, (max-width: 1024px) 350px, 420px"
-              />
-            </div>
-          </FigmaSelectionOverlay>
+          />
         </div>
       </div>
     </section>

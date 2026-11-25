@@ -72,7 +72,7 @@ export const Header = forwardRef<HTMLElement, HeaderProps>(
         data-testid="top-header"
         className={[
           "w-full bg-transparent select-none",
-          sticky ? "sticky top-0 z-[400]" : "relative",
+          sticky ? "sticky top-0 z-[400]" : "relative z-30",
           className,
         ]
           .filter(Boolean)
