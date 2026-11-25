@@ -1,13 +1,13 @@
 import { HTMLAttributes, forwardRef, ReactNode } from "react";
 
 // ─── Token Reference ───────────────────────────────────────────────────────
-// frameBorder:    1px solid #0A0A0A
+// frameBorder:    1px solid #2A2926
 // handleSize:     7px × 7px (6px–7px square)
-// handleBg:       #FFFFFF with 1px solid #0A0A0A border
+// handleBg:       #FFFFFF with 1px solid #2A2926 border
 // handleShadow:   0 1px 3px rgba(0, 0, 0, 0.18)
-// tagFont:        Geist Mono / SF Mono, text-[11px], color #0A0A0A
-// dimensionBadge: #D6FF3F (neon lime), bold black text #0A0A0A
-// helperText:     rgba(10, 10, 10, 0.45) text-xs
+// tagFont:        Geist Mono / SF Mono, text-[11px], color #2A2926
+// dimensionBadge: #D6FF3F (neon lime), bold black text #2A2926
+// helperText:     rgba(42,41,38, 0.45) text-xs
 // Source: docs/research/snapline/design-tokens.json & reference screenshots
 
 export interface FigmaSelectionOverlayProps
@@ -70,7 +70,7 @@ export const FigmaSelectionOverlay = forwardRef<
       showHandles = true,
       showLayerName = true,
       showDimensions = true,
-      borderColor = "#0A0A0A",
+      borderColor = "#2A2926",
       className = "",
       children,
       ...rest
@@ -106,7 +106,7 @@ export const FigmaSelectionOverlay = forwardRef<
         {showLayerName && (
           <div
             data-testid="figma-layer-tag"
-            className="absolute -top-5 left-0 font-mono text-[11px] font-normal tracking-tight text-[#0A0A0A] select-none whitespace-nowrap pointer-events-none"
+            className="absolute -top-5 left-0 font-mono text-[11px] font-normal tracking-tight text-[#2A2926] select-none whitespace-nowrap pointer-events-none"
           >
             {formattedLayer}
           </div>
@@ -173,7 +173,7 @@ export const FigmaSelectionOverlay = forwardRef<
         {showDimensions && dimensions && (
           <span
             data-testid="figma-dimension-badge"
-            className="inline-flex items-center justify-center rounded bg-[#D6FF3F] px-2 py-0.5 font-mono text-[10px] font-bold tracking-tight text-[#0A0A0A] shadow-[0_2px_6px_rgba(0,0,0,0.12)] select-none whitespace-nowrap"
+            className="inline-flex items-center justify-center rounded bg-[#D6FF3F] px-2 py-0.5 font-mono text-[10px] font-bold tracking-tight text-[#2A2926] shadow-[0_2px_6px_rgba(0,0,0,0.12)] select-none whitespace-nowrap"
           >
             {dimensions}
           </span>
@@ -181,7 +181,7 @@ export const FigmaSelectionOverlay = forwardRef<
         {helperText && (
           <span
             data-testid="figma-helper-text"
-            className="font-sans text-[11px] font-normal leading-tight text-[#0A0A0A]/50 select-none whitespace-nowrap"
+            className="font-sans text-[11px] font-normal leading-tight text-[#2A2926]/50 select-none whitespace-nowrap"
           >
             {helperText}
           </span>

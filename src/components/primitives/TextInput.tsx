@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, forwardRef, useId } from "react";
 
 // ─── Token Reference ───────────────────────────────────────────────────────
-// background:   #161616 (dark surface)
+// background:   #2A2926 (dark surface)
 // border:       rgba(255, 255, 255, 0.12)
 // focusBorder:  2px solid #D6FF3F (signature neon lime)
 // text:         #FFFFFF (crisp white)
@@ -26,7 +26,7 @@ export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
  * Dark form text input primitive matching the Snapline Contact section styling.
  *
  * Features:
- *   - Matte `#161616` background with `rgba(255, 255, 255, 0.12)` border
+ *   - Matte `#2A2926` background with `rgba(255, 255, 255, 0.12)` border
  *   - Signature neon lime focus border (`#D6FF3F`)
  *   - Native HTML5 validation compliance
  */
@@ -67,7 +67,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           disabled={disabled}
           data-testid="text-input"
           className={[
-            "h-12 w-full rounded-xl bg-[#161616] px-4 font-sans text-sm text-[#FFFFFF]",
+            "h-12 w-full rounded-xl bg-[#2A2926] px-4 font-sans text-sm text-[#FFFFFF]",
             "border border-[rgba(255,255,255,0.12)]",
             "placeholder:text-white/35",
             "transition-all duration-150 ease-out",

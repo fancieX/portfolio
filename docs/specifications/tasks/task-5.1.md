@@ -60,9 +60,9 @@ Implement `HeroSection.tsx`, `RoleRotator.tsx`, and `PinkGuideline.tsx`, integra
     │   ├── <div className="relative mt-6"> (Headline Container)
     │   │   ├── <h1 className="font-heading tracking-tight leading-[1.08]">
     │   │   │   ├── <span className="text-[#8A8A8A] block text-4xl sm:text-5xl lg:text-[72px] font-medium">Hello, I am</span>
-    │   │   │   ├── <span className="text-[#0A0A0A] block text-4xl sm:text-5xl lg:text-[72px] font-bold">Maya Ortiz,</span>
+    │   │   │   ├── <span className="text-[#2A2926] block text-4xl sm:text-5xl lg:text-[72px] font-bold">Maya Ortiz,</span>
     │   │   │   └── <div className="flex items-center gap-3 text-4xl sm:text-5xl lg:text-[72px] font-bold">
-    │   │   │       <span className="text-[#0A0A0A]">a</span>
+    │   │   │       <span className="text-[#2A2926]">a</span>
     │   │   │       <RoleRotator roles={["Product Designer", "Design Lead", "Systems Thinker"]} />
     │   │   │   <PinkGuideline /> (1px #FF3B5C baseline rule + vertical tick)
     │   ├── <p className="mt-6 text-base sm:text-lg text-[#605F5F] max-w-xl leading-relaxed">
@@ -81,15 +81,15 @@ Implement `HeroSection.tsx`, `RoleRotator.tsx`, and `PinkGuideline.tsx`, integra
 | Element | Property | Measured / Target Value | Evidence Classification | Token / Source |
 | :--- | :--- | :--- | :--- | :--- |
 | **"Hello, I am"** | `fontSize` / `color` | `72px`–`80px` desktop / `52px` tablet / `38px` mobile, `#8A8A8A` | Measured Value | `ref.html` / `var(--token-pBlEYyBMu)` |
-| **"Maya Ortiz,"** | `fontSize` / `color` | `72px`–`80px` desktop / `52px` tablet / `38px` mobile, `#0A0A0A` | Measured Value | `ref.html` / `var(--token-pipoqxArs)` |
+| **"Maya Ortiz,"** | `fontSize` / `color` | `72px`–`80px` desktop / `52px` tablet / `38px` mobile, `#2A2926` | Measured Value | `ref.html` / `var(--token-pipoqxArs)` |
 | **"a [Role]"** | `fontSize` / `weight`| `72px`–`80px` desktop / `52px` tablet / `38px` mobile, weight `600` | Measured Value | `ref.html` (`.snp-re`) |
 | **Pink Baseline** | `borderColor` / `h` | `#FF3B5C` (opacity 80%), height 1px, left overhang 22px–24px past vertical tick (`-left-7 sm:-left-8`), total width extends ~36px past the end of the longest role (`textWidth + 68px`) | Measured Value | `ref.html` / `home-desktop-initial.png` |
 | **Guideline Tick**| `height` / `width` | 1px width, positioned 7px–10px left of `Maya Ortiz,`, crosses baseline: extends 14px–18px below horizontal baseline and 96px–110px above (`h-[64px] sm:h-[80px] md:h-[96px] lg:h-[114px] xl:h-[128px]`, `-bottom-3.5 sm:-bottom-4 lg:-bottom-[18px]`) | Measured Value | `home-desktop-initial.png` (Y: 321 to 434) |
 | **Subhead Text** | `fontSize` / `color` | `18.5px` desktop / `16px` mobile, color `#605F5F` (`--token-xMAbJWAhJ`) | Measured Value | `ref.html` / `design-tokens.json` |
-| **Primary Button**| `background` / `color`| `#0A0A0A`, text `#FFFFFF`, rounded-pill | Measured Value | `Button.tsx` (`variant="primary"`) |
-| **Secondary Button**| `background` / `border`| `#FFFFFF`, border `rgba(10,10,10,0.08)`, text `#0A0A0A` | Measured Value | `Button.tsx` (`variant="secondary"`) |
+| **Primary Button**| `background` / `color`| `#2A2926`, text `#FFFFFF`, rounded-pill | Measured Value | `Button.tsx` (`variant="primary"`) |
+| **Secondary Button**| `background` / `border`| `#FFFFFF`, border `rgba(42, 41, 38,0.08)`, text `#2A2926` | Measured Value | `Button.tsx` (`variant="secondary"`) |
 | **Hero Portrait Frame** | `width` / `height` | `420px × 525px` desktop (`aspect-ratio: 0.8`), `350px × 438px` tablet, `300px × 375px` mobile | Measured Value | `ref.html` (`.framer-2ibnfq`) |
-| **Lena · PM Cursor**| `background` / `text` | `#D6FF3F` (neon lime), text `#0A0A0A` semibold `12.5px`, `letterSpacing: 0px`, geometric dot separator, `rounded-[7px_7px_7px_2px]` | Measured Value | `ref.html` (`.snp-re-cur b`) |
+| **Lena · PM Cursor**| `background` / `text` | `#D6FF3F` (neon lime), text `#2A2926` semibold `12.5px`, `letterSpacing: 0px`, geometric dot separator, `rounded-[7px_7px_7px_2px]` | Measured Value | `ref.html` (`.snp-re-cur b`) |
 
 ---
 
@@ -110,7 +110,7 @@ Implement `HeroSection.tsx`, `RoleRotator.tsx`, and `PinkGuideline.tsx`, integra
 ---
 
 ## 10. Colour & Styling Specifications
-- **Primary Text:** `#0A0A0A`
+- **Primary Text:** `#2A2926`
 - **Secondary Gray:** `#605F5F`
 - **Prefix Light Gray:** `#8A8A8A`
 - **Pink Guideline:** `#FF3B5C`
@@ -191,7 +191,7 @@ Implement `HeroSection.tsx`, `RoleRotator.tsx`, and `PinkGuideline.tsx`, integra
 
 ## 20. Detailed Acceptance Criteria
 1. `HeroSection.tsx` implements 2-column asymmetric layout without outer floating card wrappers.
-2. Headline displays 3-line composite structure: "Hello, I am" (`#8A8A8A`), "Maya Ortiz," (`#0A0A0A`), and "a [Role]".
+2. Headline displays 3-line composite structure: "Hello, I am" (`#8A8A8A`), "Maya Ortiz," (`#2A2926`), and "a [Role]".
 3. `RoleRotator.tsx` cycles smoothly every 3s through `Product Designer`, `Design Lead`, `Systems Thinker`.
 4. Attached collaborator cursor ("Lena · PM") renders in neon lime `#D6FF3F`.
 5. Architectural pink guideline (`#FF3B5C`) renders beneath `Maya Ortiz,` matching the reference site: vertical tick crosses baseline with 14px–18px bottom overhang, horizontal rule has 22px–24px left overhang past the tick, and the horizontal line extends a bit past the length of the longest role (`Product Designer`).

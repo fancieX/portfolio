@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-canvas: #E6E6E3;
+  --color-canvas: #F4F4F4;
   --color-surface-light: #FFFFFF;
   --color-surface-muted: #ECECEC;
   --color-surface-dark: #161616;
@@ -51,11 +51,9 @@
   --canvas-grid-spacing: 22px;
 }
 
+html,
 body {
-  background-color: #E6E6E3;
-  background-image: radial-gradient(circle, var(--canvas-dot-color) var(--canvas-dot-size), transparent 1.3px);
-  background-size: var(--canvas-grid-spacing) var(--canvas-grid-spacing);
-  background-position: 0 0;
+  background-color: #F4F4F4;
   color: var(--color-text-primary);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -98,6 +96,8 @@ body {
     animation-timing-function: linear !important;
     mix-blend-mode: normal !important;
     box-shadow: 0 60px 140px -40px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    background-color: #F4F4F4;
+    overflow: hidden;
   }
 
   ::view-transition-old(root) {
@@ -202,4 +202,26 @@ body {
   66% {
     transform: translate(-2px, -3px);
   }
+}
+
+/* ─── RoleRotator: CSS-driven highlight & caret (matches .snp-re-txt / .snp-re-caret) ─── */
+
+/* Highlight background-size transition: 0% at rest, sweeps to 100% when data-sel="1" */
+[data-sel="0"] {
+  background-size: 0% 100% !important;
+  transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-sel="1"] {
+  background-size: 100% 100% !important;
+  transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Caret opacity transition: invisible when data-on="0", solid when data-on="1" */
+[data-on="0"] {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+[data-on="1"] {
+  opacity: 1;
+  transition: opacity 0.2s ease;
 }

@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { geist, inter } from "@/styles/fonts";
-import { DotGridBackground, CanvasProvider } from "@/components/canvas";
+import { CanvasProvider } from "@/components/canvas";
 import { FloatingDock } from "@/components/navigation";
 import "@/styles/globals.css";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#E6E6E3",
+  themeColor: "#F4F4F4",
 };
 
 export const metadata: Metadata = {
@@ -65,10 +65,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable} ${inter.variable}`}>
-      <body className="relative min-h-screen font-sans text-text-primary antialiased">
-        <DotGridBackground />
+      <body className="relative min-h-screen bg-[#F4F4F4] font-sans text-text-primary antialiased">
         <CanvasProvider>
-          <div id="canvas-root" className="relative min-h-screen w-full overflow-x-hidden">
+          <div id="canvas-root" className="relative min-h-screen w-full overflow-x-hidden bg-[#F4F4F4]">
             {children}
           </div>
           <FloatingDock />

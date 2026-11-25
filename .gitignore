@@ -1,6 +1,30 @@
 # Existing agent configurations
 .agent/skills/clone-website/SKILL.md
 
+# AI tool config folders (created by third-party skill installers — not part of this project)
+.aider-desk/
+.augment/
+.autohand/
+.bob/
+.codeartsdoer/
+.codebuddy/
+.codemaker/
+.codestudio/
+.commandcode/
+.freebuff/
+.iflow/
+.jazz/
+.junie/
+.kimchi/
+.rovodev/
+.tabnine/
+.terramind/
+.tinycloud/
+.trae/
+.zcode/
+skills/
+skills-lock.json
+
 # dependencies
 /node_modules
 /.pnp

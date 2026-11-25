@@ -14,14 +14,14 @@ import type { DockTriggerIcon } from "@/types";
 // Item Gap:         3px (gap-[3px])
 // Container Bg:     rgba(255, 255, 255, 0.92)
 // Backdrop Filter:  blur(14px)
-// Border:           1px solid rgba(10, 10, 10, 0.1)
+// Border:           1px solid rgba(42,41,38, 0.1)
 // Shadow:           0px 14px 36px -16px rgba(0, 0, 0, 0.38)
 // Icon Shape Size:  42px × 42px (w-[42px] h-[42px])
 // Icon Shape Radius:11px (rounded-[11px] concentric with 16px container - 5px padding)
-// Active Pill Bg:   #0A0A0A
+// Active Pill Bg:   #2A2926
 // Active Icon Color:#D6FF3F (signature neon lime)
-// Inactive Color:   #3A3A3A (hover #0A0A0A)
-// Tooltip Radius:   7px (bg #0A0A0A, text white, shortcut badge border white/20 #D6FF3F)
+// Inactive Color:   #3A3A3A (hover #2A2926)
+// Tooltip Radius:   7px (bg #2A2926, text white, shortcut badge border white/20 #D6FF3F)
 // Z-Index:          1000
 
 /** Exact inline SVG icon renderers extracted 1:1 from Snapline Framer topology */
@@ -263,7 +263,7 @@ export function FloatingDock({
           <div
             data-testid="active-dock-pill"
             aria-hidden="true"
-            className="absolute top-[6px] left-[6px] h-[42px] w-[42px] rounded-[11px] bg-[#0A0A0A] pointer-events-none transition-transform duration-200 ease-out"
+            className="absolute top-[6px] left-[6px] h-[42px] w-[42px] rounded-[11px] bg-[#2A2926] pointer-events-none transition-transform duration-200 ease-out"
             style={{
               transform: `translateX(${activeIndex * 45}px)`,
             }}
@@ -298,7 +298,7 @@ export function FloatingDock({
                 data-testid={`dock-icon-${item.id}`}
                 className={[
                   "transition-colors duration-150 flex items-center justify-center",
-                  active ? "text-[#D6FF3F]" : "text-[#3A3A3A] group-hover:text-[#0A0A0A]",
+                  active ? "text-[#D6FF3F]" : "text-[#3A3A3A] group-hover:text-[#2A2926]",
                 ]
                   .filter(Boolean)
                   .join(" ")}
@@ -309,7 +309,7 @@ export function FloatingDock({
               {/* Hover Tooltip matching Framer reference */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute bottom-[54px] left-1/2 -translate-x-1/2 flex items-center gap-2 px-2.5 py-1.5 rounded-[7px] bg-[#0A0A0A] text-white opacity-0 translate-y-1.5 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 shadow-lg whitespace-nowrap"
+                className="pointer-events-none absolute bottom-[54px] left-1/2 -translate-x-1/2 flex items-center gap-2 px-2.5 py-1.5 rounded-[7px] bg-[#2A2926] text-white opacity-0 translate-y-1.5 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 shadow-lg whitespace-nowrap"
               >
                 <span className="text-xs font-medium text-white">{item.label}</span>
                 {item.shortcut && (

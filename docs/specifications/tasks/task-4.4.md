@@ -1,7 +1,7 @@
 # Task 4.4: Global Page Footer & Lisbon Time Synchronization
 
 ## 1. Task Overview
-Task 4.4 implements the global shared footer component (`Footer.tsx`) and the real-time Lisbon clock hook (`useLisbonTime.ts`) for the Snapline developer portfolio. In the reference topology (`https://snapline.framer.website/`), every primary artboard terminates in an elegant dark container (`#161616`) featuring an inquiry callout banner ("Let's work together."), a 3-column sitemap directory (`Pages`, `Info`, `Social`), a live synchronized local time indicator for Lisbon (`Europe/Lisbon`, e.g. `11:10 in Lisbon`), a smooth "Back to top ↑" trigger, and signature oversized watermark brand typography ("Maya Ortiz" with a neon lime initial "M").
+Task 4.4 implements the global shared footer component (`Footer.tsx`) and the real-time Lisbon clock hook (`useLisbonTime.ts`) for the Snapline developer portfolio. In the reference topology (`https://snapline.framer.website/`), every primary artboard terminates in an elegant dark container (`#2A2926`) featuring an inquiry callout banner ("Let's work together."), a 3-column sitemap directory (`Pages`, `Info`, `Social`), a live synchronized local time indicator for Lisbon (`Europe/Lisbon`, e.g. `11:10 in Lisbon`), a smooth "Back to top ↑" trigger, and signature oversized watermark brand typography ("Maya Ortiz" with a neon lime initial "M").
 
 ---
 
@@ -17,7 +17,7 @@ Architect and implement `Footer.tsx` and `useLisbonTime.ts` to provide a high-cr
   - Updates on minute or second intervals via `setInterval` with automatic cleanup on unmount.
   - Formats output as `HH:MM in Lisbon`.
 - **Global Footer Component (`src/components/navigation/Footer.tsx`):**
-  - Dark container card wrapper (`#161616`, `border: 1px solid rgba(255, 255, 255, 0.12)`, `rounded-2xl sm:rounded-3xl`).
+  - Dark container card wrapper (`#2A2926`, `border: 1px solid rgba(255, 255, 255, 0.12)`, `rounded-2xl sm:rounded-3xl`).
   - Optional CTA block ("Let's work together." headline, subhead, "Start a project" lime button, and "hello@mayaortiz.design" email pill).
   - 3-column sitemap navigation grid (`Pages`, `Info`, `Social`) consuming `footerSitemap` from `src/data/navigation.ts`.
   - Internal links navigate via `useCanvasPan().panTo` for 1.46s spatial view transitions.
@@ -52,7 +52,7 @@ Architect and implement `Footer.tsx` and `useLisbonTime.ts` to provide a high-cr
 ## 6. Component Hierarchy
 ```text
 <Footer className="...">
-└── <DarkContainer className="relative overflow-hidden w-full bg-[#161616] p-8 sm:p-12 lg:p-16">
+└── <DarkContainer className="relative overflow-hidden w-full bg-[#2A2926] p-8 sm:p-12 lg:p-16">
     ├── <FooterCtaSection> (Optional)
     │   ├── <PinkAccentGuideline /> (1px border-t border-[#FF3B5C]/60)
     │   ├── <h2> "Let's work together."
@@ -80,7 +80,7 @@ Architect and implement `Footer.tsx` and `useLisbonTime.ts` to provide a high-cr
 
 | Element | Property | Measured / Target Value | Evidence Classification | Source Token |
 | :--- | :--- | :--- | :--- | :--- |
-| **Card Background** | `backgroundColor` | `#161616` | Measured Value | `DarkContainer` / `design-tokens.json` |
+| **Card Background** | `backgroundColor` | `#2A2926` | Measured Value | `DarkContainer` / `design-tokens.json` |
 | **Card Border** | `border` | `1px solid rgba(255, 255, 255, 0.12)` | Measured Value | `DarkContainer` / `design-tokens.json` |
 | **Card Radius** | `border-radius` | `24px` desktop / `16px` mobile | Measured Value | `rounded-large` / `rounded-2xl` |
 | **Headline Size** | `fontSize` | `36px` sm / `48px` md / `56px` lg | Measured Value | `font-heading font-bold` |
@@ -114,7 +114,7 @@ Architect and implement `Footer.tsx` and `useLisbonTime.ts` to provide a high-cr
 ---
 
 ## 10. Colour & Styling Specifications
-- **Dark Surface:** `#161616`
+- **Dark Surface:** `#2A2926`
 - **Border Tone:** `rgba(255, 255, 255, 0.12)`
 - **Accent Pink:** `#FF3B5C` (thin top guideline)
 - **Signature Lime:** `#D6FF3F` (Watermark `M` and Primary CTA)
@@ -201,7 +201,7 @@ Architect and implement `Footer.tsx` and `useLisbonTime.ts` to provide a high-cr
 
 ## 20. Detailed Acceptance Criteria
 1. `useLisbonTime` formats accurate time to `Europe/Lisbon` (`HH:MM in Lisbon`) with zero hydration warnings.
-2. `Footer.tsx` renders dark container card (`#161616`) with optional CTA block, 3-column sitemap, sub-footer, and watermark typography.
+2. `Footer.tsx` renders dark container card (`#2A2926`) with optional CTA block, 3-column sitemap, sub-footer, and watermark typography.
 3. Internal sitemap links navigate via spatial `panTo(href)`.
 4. External sitemap links open in new tabs with `noopener noreferrer`.
 5. `"Back to top ↑"` smoothly scrolls viewport to `(0, 0)`.

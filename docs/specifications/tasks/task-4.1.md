@@ -10,7 +10,7 @@
 ---
 
 ## 1. Task Overview
-Task 4.1 implements the persistent top header component (`Header.tsx`) for the Snapline developer portfolio. Positioned persistently at the top of the viewport above the `#E6E6E3` canvas, the header provides the universal top navigation anchor across all 19 application routes. It features two primary slots: the brand mark `"Maya."` on the far left, and the primary call-to-action `"Get in touch"` on the far right.
+Task 4.1 implements the persistent top header component (`Header.tsx`) for the Snapline developer portfolio. Positioned persistently at the top of the viewport above the `#DAD8CF` plain background (`#DAD8CF` dot-grid during View Transitions), the header provides the universal top navigation anchor across all 19 application routes. It features two primary slots: the brand mark `"Maya."` on the far left, and the primary call-to-action `"Get in touch"` on the far right.
 
 ---
 
@@ -77,11 +77,11 @@ Page (src/app/page.tsx)
 | **Z-Index** | `relative` / `z-[400]` | Verified Observation | `PAGE_TOPOLOGY.md` Stacking Order |
 | **Brand Mark Font** | `Inter Bold` / `Geist` (`font-heading font-bold`) | Verified Observation | `design-tokens.json` |
 | **Brand Mark Size** | `20px` (`text-xl`) — changed from `text-lg` per user preference | Implementation Decision | Computed styles |
-| **Brand Mark Color** | `#0A0A0A` (`text-text-primary`) | Measured Value | `design-tokens.json` |
+| **Brand Mark Color** | `#2A2926` (`text-text-primary`) | Measured Value | `design-tokens.json` |
 | **Brand Mark Tracking** | `-0.02em` (`tracking-tight`) | Calibrated Approximation | Visual inspection |
 | **CTA Button Variant** | Primary black pill (`variant="primary"`) | Verified Observation | `home-desktop-nav-extracted.png` |
 | **CTA Button Height** | `44px` (`size="md"`, `h-11`) — changed from `sm` per user preference | Implementation Decision | `Button.tsx` token scale |
-| **CTA Background** | `#0A0A0A` (`bg-[#0A0A0A]`) | Measured Value | `design-tokens.json` |
+| **CTA Background** | `#2A2926` (`bg-[#2A2926]`) | Measured Value | `design-tokens.json` |
 | **CTA Text Color** | `#FFFFFF` (`text-white`) | Measured Value | `design-tokens.json` |
 | **CTA Border Radius** | `9999px` (`rounded-full`) | Measured Value | `design-tokens.json` |
 | **Background Fill** | `transparent` (`bg-transparent`) | Verified Observation | Reference screenshots (No glassmorphism) |
@@ -108,7 +108,7 @@ Page (src/app/page.tsx)
   - Weight: `700` (`font-bold`)
   - Size: `20px` (`text-xl`) — changed from `text-lg` per user preference
   - Tracking: `-0.02em` (`tracking-tight`)
-  - Color: `#0A0A0A` (`text-[#0A0A0A]`)
+  - Color: `#2A2926` (`text-[#2A2926]`)
 - **CTA Button Text:**
   - Content: `"Get in touch"`
   - Font Family: `var(--font-sans)` (`Geist`, sans-serif)
@@ -119,10 +119,10 @@ Page (src/app/page.tsx)
 ---
 
 ## 10. Colour & Styling Specifications
-- **Canvas Base Tone:** `#E6E6E3`
+- **Canvas Base Tone:** `#DAD8CF`
 - **Header Background:** `rgba(230, 230, 227, 0.85)` (`bg-[#E6E6E3]/85`)
 - **Brand Hover:** Text tone transitions to `#3A3A3A` on hover (`hover:opacity-80 transition-opacity`).
-- **CTA Hover:** Button transitions from `#0A0A0A` to `#202020` with active scale compression `scale(0.98)` (handled by `Button.tsx`).
+- **CTA Hover:** Button transitions from `#2A2926` to `#202020` with active scale compression `scale(0.98)` (handled by `Button.tsx`).
 - **Focus Ring:** `focus-visible:ring-2 focus-visible:ring-[#D6FF3F] focus-visible:ring-offset-2`.
 
 ---
@@ -183,8 +183,8 @@ Page (src/app/page.tsx)
 - Brand logo wrapped in an accessible `<Link href="/" aria-label="Maya Ortiz homepage">`.
 - CTA wrapped in `<Button href="/contact" aria-label="Get in touch">`.
 - Keyboard accessible via `Tab` key with standard `focus-visible:ring-2 focus-visible:ring-[#D6FF3F]`.
-- Text contrast ratio: `#0A0A0A` on `#E6E6E3` = `12.1:1` (exceeds WCAG AAA requirements).
-- White text `#FFFFFF` on `#0A0A0A` = `18.5:1` (exceeds WCAG AAA requirements).
+- Text contrast ratio: `#2A2926` on `#DAD8CF` = `12.1:1` (exceeds WCAG AAA requirements).
+- White text `#FFFFFF` on `#2A2926` = `18.5:1` (exceeds WCAG AAA requirements).
 
 ---
 

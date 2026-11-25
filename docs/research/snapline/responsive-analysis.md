@@ -42,7 +42,7 @@ One of the most critical structural findings of this reconnaissance is the **uni
   - Hero: Full-width single column with `16px` lateral margins.
   - Headline: Scales down to `38px` (`line-height: 1.15`).
   - Process: 4 stacked vertical rows.
-  - Simulated multiplayer cursors are suppressed on mobile to prevent touch conflict.
+  - Simulated multiplayer cursors (`"Lena · PM"` and `"Sam · Dev"` + comment bubbles) remain visible and animate smoothly inside their respective headline and portrait bounds on mobile (`pointer-events: none` prevents touch scroll conflict).
   - Evidence: `screenshots/mobile/home-mobile-390px.png`
 
 ### 2. Work Catalog (`/work`)

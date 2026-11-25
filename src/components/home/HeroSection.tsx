@@ -75,11 +75,11 @@ export function HeroSection({ className = "" }: HeroSectionProps) {
               <span className="block font-medium text-[#8A8A8A]">
                 Hello, I am
               </span>
-              <span className="relative inline-block font-bold text-[#0A0A0A] pr-4">
+              <span className="relative inline-block font-bold text-[#2A2926] pr-4">
                 Maya Ortiz,
                 <PinkGuideline width={guidelineWidth ?? undefined} />
               </span>
-              <span className="mt-1 flex flex-nowrap items-baseline gap-x-3 sm:gap-x-4 font-bold text-[#0A0A0A] whitespace-nowrap">
+              <span className="mt-1 flex flex-nowrap items-baseline gap-x-2 font-bold text-[#2A2926] whitespace-nowrap">
                 <span>a</span>
                 <RoleRotator />
               </span>
@@ -89,7 +89,7 @@ export function HeroSection({ className = "" }: HeroSectionProps) {
             <span
               ref={longestRoleRef}
               aria-hidden="true"
-              className="invisible pointer-events-none absolute left-0 top-0 flex flex-nowrap items-baseline gap-x-3 sm:gap-x-4 whitespace-nowrap font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[72px] xl:text-[80px] tracking-[-0.045em] leading-[1.08] select-none"
+              className="invisible pointer-events-none absolute left-0 top-0 flex flex-nowrap items-baseline gap-x-2 whitespace-nowrap font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[72px] xl:text-[80px] tracking-[-0.045em] leading-[1.08] select-none"
             >
               <span>a</span>
               <span>Product Designer</span>

@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
 
 // ─── Token Reference ───────────────────────────────────────────────────────
-// Active pill:     #0A0A0A bg, #FFFFFF text, rgba(255, 255, 255, 0.60) count
-// Inactive pill:   #FFFFFF bg, rgba(10, 10, 10, 0.08) border, #0A0A0A text
+// Active pill:     #2A2926 bg, #FFFFFF text, rgba(255, 255, 255, 0.60) count
+// Inactive pill:   #FFFFFF bg, rgba(42,41,38, 0.08) border, #2A2926 text
 // Count chip:      subtle muted tag next to label (e.g. "All 6", "Web app 2")
 // Border radius:   9999px (pill)
 // Source: docs/research/snapline/design-tokens.json & reference screenshots
@@ -29,7 +29,7 @@ export interface PillBadgeProps extends ButtonHTMLAttributes<HTMLButtonElement> 
  * filter navigation ("All 6", "Web app 2", "Mobile app 2", etc.).
  *
  * States:
- *   - Active:   Solid `#0A0A0A` dark fill with crisp white text.
+ *   - Active:   Solid `#2A2926` dark fill with crisp white text.
  *   - Inactive: Crisp white `#FFFFFF` surface with hairline 1px border.
  */
 export const PillBadge = forwardRef<HTMLButtonElement, PillBadgeProps>(
@@ -56,12 +56,12 @@ export const PillBadge = forwardRef<HTMLButtonElement, PillBadgeProps>(
 
     // Active vs Inactive state tokens
     const stateClasses = isActive
-      ? "bg-[#0A0A0A] text-[#FFFFFF] border-transparent shadow-sm"
-      : "bg-[#FFFFFF] text-[#0A0A0A] border-[rgba(10,10,10,0.08)] hover:bg-[#F9F9F8] hover:border-[rgba(10,10,10,0.16)]";
+      ? "bg-[#2A2926] text-[#FFFFFF] border-transparent shadow-sm"
+      : "bg-[#FFFFFF] text-[#2A2926] border-[rgba(42,41,38,0.08)] hover:bg-[#F9F9F8] hover:border-[rgba(42,41,38,0.16)]";
 
     const countColor = isActive
       ? "text-white/60"
-      : "text-[#0A0A0A]/45";
+      : "text-[#2A2926]/45";
 
     return (
       <button

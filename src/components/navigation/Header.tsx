@@ -10,8 +10,8 @@ import { useCanvasPan } from "@/hooks/useCanvasPan";
 // height:            56px (h-14)
 // background:        Transparent (no glassmorphism, no backdrop-filter, no borders)
 // brandFont:         Inter / Geist Heading, font-bold, text-xl (20px) — changed from text-lg per user preference
-// brandColor:        #0A0A0A (text-text-primary)
-// ctaVariant:        primary (#0A0A0A background, #FFFFFF text, rounded-full)
+// brandColor:        #2A2926 (text-text-primary)
+// ctaVariant:        primary (#2A2926 background, #FFFFFF text, rounded-full)
 // ctaSize:           sm (height: 36px, px-4)
 // ctaSize:           md (height: 44px, px-5) — changed from sm per user preference
 // containerMaxWidth: 100% of parent artboard / container
