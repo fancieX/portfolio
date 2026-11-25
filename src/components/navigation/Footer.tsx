@@ -24,7 +24,7 @@ export interface FooterProps {
  * Universal dark container footer matching Snapline's exact design tokens.
  *
  * Features:
- *   - Dark surface container card (#161616, border rgba(255,255,255,0.12), rounded-2xl sm:rounded-3xl)
+ *   - Dark surface container card (#2A2926, border rgba(255,255,255,0.12), rounded-2xl sm:rounded-3xl)
  *   - Optional "Let's work together." CTA section with pink accent guideline (#FF3B5C)
  *   - 3-column sitemap navigation (Pages, Info, Social) consuming navigation metadata
  *   - Internal navigation powered by 2D spatial canvas transitions (useCanvasPan)
@@ -53,7 +53,7 @@ export function Footer({
       data-testid="global-footer"
       className={["w-full mt-12 sm:mt-16 lg:mt-20", className].filter(Boolean).join(" ")}
     >
-      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-[#161616] p-6 sm:p-10 lg:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-[#2A2926] p-6 sm:p-10 lg:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         {/* Optional Call to Action Section */}
         {showCta && (
           <div data-testid="footer-cta-block" className="relative mb-12 sm:mb-16">

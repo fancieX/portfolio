@@ -3,7 +3,7 @@ import { HTMLAttributes, forwardRef } from "react";
 // ─── Token Reference ───────────────────────────────────────────────────────
 // liveGreen:         #22C55E (pulsating indicator dot)
 // surfaceLight:      #FFFFFF
-// borderLight:       rgba(10, 10, 10, 0.08)
+// borderLight:       rgba(42,41,38, 0.08)
 // shadowPill:        0 2px 8px rgba(0, 0, 0, 0.06)
 // radiusPill:        9999px
 // Source: docs/research/snapline/design-tokens.json
@@ -43,11 +43,11 @@ export const AvailabilityBadge = forwardRef<HTMLDivElement, AvailabilityBadgePro
   ) => {
     const variantClasses = {
       light:
-        "bg-[#FFFFFF] border-[rgba(10,10,10,0.08)] text-[#0A0A0A] shadow-[0_2px_8px_rgba(0,0,0,0.06)]",
+        "bg-[#FFFFFF] border-[rgba(42,41,38,0.08)] text-[#2A2926] shadow-[0_2px_8px_rgba(0,0,0,0.06)]",
       dark:
         "bg-[#1C1C1C] border-[rgba(255,255,255,0.12)] text-[#FFFFFF] shadow-sm",
       subtle:
-        "bg-transparent border-transparent text-[#0A0A0A] p-0 shadow-none",
+        "bg-transparent border-transparent text-[#2A2926] p-0 shadow-none",
     }[variant];
 
     return (

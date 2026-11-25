@@ -30,7 +30,7 @@ Build an accessible, high-performance, glassmorphic floating navigation dock (`F
   4. `text`: Journal (`/journal`)
   5. `comment`: Contact (`/contact`)
 - Render non-interactive `100%` zoom badge on the right, separated by a vertical hairline divider.
-- Active route highlighting: An animated dark pill container (`#0A0A0A`, `border-radius: 11px`, matching the exact Framer concentric geometry `rounded-[11px]`) smoothly moves behind the active icon with hardware-accelerated transition.
+- Active route highlighting: An animated dark pill container (`#2A2926`, `border-radius: 11px`, matching the exact Framer concentric geometry `rounded-[11px]`) smoothly moves behind the active icon with hardware-accelerated transition.
 - Active icon tone: Neon lime (`#D6FF3F`).
 - Inactive icon tone: Muted gray (`#666666`), highlighting with subtle background tint on hover.
 - Keyboard navigation: Global keyboard shortcuts (`H` for Home, `W` for Work, `A` for About, `J` for Journal, `C` for Contact; plus Figma aliases `V`, `#`, `T`) when focus is outside form inputs (`INPUT`, `TEXTAREA`, `SELECT`).
@@ -63,7 +63,7 @@ RootLayout (src/app/layout.tsx)
     └── <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[1000] ...">
         └── <div className="flex items-center gap-1 h-[52px] px-2 py-1.5 rounded-2xl bg-white/85 backdrop-blur-md border shadow-dock">
             ├── DockItem (Home /)
-            │   ├── motion.div (active background pill #0A0A0A)
+            │   ├── motion.div (active background pill #2A2926)
             │   └── CursorIcon (currentColor: #D6FF3F when active, #666666 when inactive)
             ├── DockItem (Work /work)
             ├── DockItem (About /about)
@@ -86,17 +86,17 @@ RootLayout (src/app/layout.tsx)
 | **Dock Item Gap** | `3px` (`gap-[3px]`) | Measured Value | Verified from Framer DOM (`gap: 3px`) |
 | **Dock Background** | `rgba(255, 255, 255, 0.92)` | Measured Value | Verified from Framer DOM (`rgba(255, 255, 255, 0.92)`) |
 | **Backdrop Filter** | `blur(14px)` (`backdrop-blur-[14px]`) | Measured Value | Verified from Framer DOM (`backdrop-filter: blur(14px)`) |
-| **Border** | `1px solid rgba(10, 10, 10, 0.1)` | Measured Value | Verified from Framer DOM (`--token-SDgZ8Hvxt`) |
+| **Border** | `1px solid rgba(42, 41, 38, 0.1)` | Measured Value | Verified from Framer DOM (`--token-SDgZ8Hvxt`) |
 | **Box Shadow** | `0px 14px 36px -16px rgba(0, 0, 0, 0.38)` | Measured Value | Verified from Framer DOM (`box-shadow`) |
 | **Z-Index** | `1000` (`z-[1000]`) | Verified Observation | `PAGE_TOPOLOGY.md` Stacking Order |
 | **Desktop Bottom Offset** | `24px` (`bottom-6`) | Measured Value | `design-tokens.json` (dock.bottomOffsetDesktop) |
 | **Mobile Bottom Offset** | `16px` (`bottom-4` + safe-area) | Measured Value | `design-tokens.json` (dock.bottomOffsetMobile) |
-| **Active Pill Background**| `#0A0A0A` (`bg-[#0A0A0A]`) | Measured Value | Verified from Framer DOM (`var(--token-pipoqxArs)`) |
+| **Active Pill Background**| `#2A2926` (`bg-[#2A2926]`) | Measured Value | Verified from Framer DOM (`var(--token-pipoqxArs)`) |
 | **Active Pill Radius** | `11px` (`rounded-[11px]`) | Measured Value | Verified from Framer DOM (`border-radius: 11px`, concentric geometry) |
 | **Active Icon Color** | `#D6FF3F` (neon lime) | Measured Value | Verified from Framer DOM (`var(--token-thek6W29K)`) |
 | **Inactive Icon Color** | `#3A3A3A` (dark gray) | Measured Value | Verified from Framer DOM (`var(--token-bXTCBW8oJ)`) |
 | **Hover Background** | `rgba(0, 0, 0, 0.05)` | Calibrated Approximation | Visual inspection |
-| **Divider Dimensions** | `1px wide × 24px high`, `rgba(10, 10, 10, 0.1)` | Measured Value | Verified from Framer DOM (`.framer-xk8v9o`) |
+| **Divider Dimensions** | `1px wide × 24px high`, `rgba(42, 41, 38, 0.1)` | Measured Value | Verified from Framer DOM (`.framer-xk8v9o`) |
 | **Zoom Indicator Font** | `font-mono text-xs text-[#605F5F]` | Measured Value | Verified from Framer DOM (`var(--token-xMAbJWAhJ)`) |
 
 ---
@@ -121,10 +121,10 @@ RootLayout (src/app/layout.tsx)
 ---
 
 ## 10. Colour & Styling Specifications
-- **Active Trigger Background:** `#0A0A0A` solid dark pill container.
+- **Active Trigger Background:** `#2A2926` solid dark pill container.
 - **Active Trigger Icon:** `#D6FF3F` (neon lime).
 - **Inactive Trigger Icon:** `#666666`.
-- **Inactive Hover Fill:** `rgba(10, 10, 10, 0.06)` with smooth 150ms transition.
+- **Inactive Hover Fill:** `rgba(42, 41, 38, 0.06)` with smooth 150ms transition.
 - **Focus Rings:** `focus-visible:ring-2 focus-visible:ring-[#D6FF3F] focus-visible:ring-offset-2`.
 
 ---
@@ -144,7 +144,7 @@ RootLayout (src/app/layout.tsx)
 - **Active Indicator Motion:**
   - Component: Framer Motion `<motion.div layoutId="activeDockIndicator" />`
   - Spring Curve: `stiffness: 380, damping: 30, mass: 1`
-  - Micro-motion: Moving between routes causes the solid `#0A0A0A` pill container to fluidly glide across the dock to the new active item.
+  - Micro-motion: Moving between routes causes the solid `#2A2926` pill container to fluidly glide across the dock to the new active item.
 - **Icon Hover Animation:**
   - Transition: `transition-colors duration-150 ease-out`
   - Active Tap Compression: `active:scale-95 transition-transform duration-100`.
@@ -226,7 +226,7 @@ RootLayout (src/app/layout.tsx)
 - [ ] `FloatingDock` is exported from `src/components/navigation/index.ts`.
 - [ ] `FloatingDock` is integrated into `src/app/layout.tsx` at the bottom of the body.
 - [ ] Displays all 5 navigation icons (`Home`, `Work`, `About`, `Journal`, `Contact`) using local SVGs.
-- [ ] Active route displays solid `#0A0A0A` dark pill container with neon lime `#D6FF3F` icon.
+- [ ] Active route displays solid `#2A2926` dark pill container with neon lime `#D6FF3F` icon.
 - [ ] Active pill smoothly animates between items using Framer Motion `layoutId="activeDockIndicator"`.
 - [ ] Inactive icons display `#666666` and highlight on hover.
 - [ ] Non-interactive `100%` zoom badge is rendered on the right side of a hairline vertical divider.

@@ -28,9 +28,11 @@
 - **Observed Behavior:** 24-hour real-time clock in footer updates every second (`HH:MM in Lisbon`).
 - **Implementation Hypothesis:** `setInterval` inside a React `useEffect`, formatting current time to `Europe/Lisbon` timezone.
 
-### 2. Simulated Multiplayer Cursors (Desktop Viewport Only)
-- **Observed Behavior:** Two simulated Figma-style collaborator cursors ("Lena · PM" in lime `#D6FF3F`, "Sam · Dev" in cyan `#00E5FF`) drift across the canvas on desktop.
-- **Breakpoint Behavior:** Automatically suppressed on tablet and mobile to eliminate clutter and prevent touch event interference.
+### 2. Simulated Multiplayer Cursors (`.snp-re-cur` & `.snp-pl-cur`)
+- **Verified Live Behavior:** Only two collaborator cursors exist on the homepage:
+  1. `"Lena · PM"` (`.snp-re-cur` inside `.snp-re` on hero RoleRotator): `#D6FF3F` pill / `#0A0A0A` text (`12px` semibold, `4px 9px` padding, `7px 7px 7px 2px` radius), drifts near the role headline, collaborates on word selection/retyping, and evades the user's pointer within `120px`.
+  2. `"Sam · Dev"` (`.snp-pl-cur` inside `.snp-pl` on hero portrait): `#0A0A0A` pill / `#FFFFFF` text (`12px` semibold, `4px 9px` padding, `7px 7px 7px 2px` radius), wanders strictly within the portrait frame bounds without pointer evasion, and periodically spawns white `.snp-cmt` comment bubbles (`scale: 0.3 -> 1`, `transition: scale .55s cubic-bezier(.34,1.56,.64,1), opacity .3s`).
+- **Breakpoint Behavior:** Both `"Lena · PM"` and `"Sam · Dev"` (along with `.snp-cmt` popups) remain visible and animate smoothly across desktop (`1440×900`), tablet (`768×1024`), and mobile (`390×844`) with `pointer-events: none` so touch interactions are never blocked.
 
 ### 3. FAQ Accordions on `/about`
 - **Observed Behavior:** Clicking an FAQ question smoothly expands container height from `0px` to `auto`. The `+` circular indicator turns neon lime and rotates 45° to form an `x`.

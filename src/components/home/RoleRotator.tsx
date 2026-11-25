@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
+import { CollaboratorCursorBadge } from "./CollaboratorCursors";
 
 export interface RoleRotatorProps {
   /** Array of roles to cycle through */
@@ -30,17 +31,18 @@ let globalDisplayText = DEFAULT_ROLES[0];
  *
  * 1:1 reproduction of the Snapline/Framer multiplayer role title editor.
  *
- * Mechanism:
- *   1. Idle (4s hold): Role text displayed at rest with Lena PM floating ambiently nearby
- *   2. Navigating (420ms): Caret appears at the START of the word; Lena glides to the first letter
- *   3. Selecting (520ms): Lena drags the cursor from left to right across the word, pulling the
- *      lime highlight background (#D6FF3F) in 1:1 synchronization with the cursor tip
- *   4. Selected (200ms): Full word briefly held in full selection highlight
- *   5. Typing: Word deleted, caret reset to start, humanized stochastic typing (40-90ms/char)
- *      with Lena and caret riding along with each newly appeared character
- *   6. Dynamic RAF lerp cursor physics with 120px pointer proximity evasion
- *   7. Persistent Background Simulation: Continues timing in background across page navigation
- *      and browser tab switches with zero animation freezing or stuck caret artifacts.
+ * Architecture (matches reference .snp-re / .snp-re-txt / .snp-re-caret):
+ *   1. Idle (4s hold): Role text at rest, caret hidden, Lena drifts below
+ *   2. Navigating (420ms): Lena glides toward the word start
+ *   3. Selecting (520ms): CSS background-size transitions 0%→100% via data-sel="1"
+ *      and cubic-bezier(0.16, 1, 0.3, 1). Lena tracks across the word.
+ *   4. Selected (200ms hold): Full lime highlight, brief hold
+ *   5. Typing: Word deleted all at once, caret resets, humanized stochastic
+ *      typing (40–90ms/char). Caret is an inline-flow element so it is always
+ *      physically flush with the last character — no lag, no letter overlap.
+ *   6. Post-typing caret hold (~450ms) + 200ms opacity fade-out in place
+ *   7. Dynamic RAF lerp cursor physics (Lena), 120px pointer proximity evasion
+ *   8. Persistent background simulation across page navigation and tab switches
  */
 export function RoleRotator({
   roles = DEFAULT_ROLES,
@@ -61,14 +63,16 @@ export function RoleRotator({
 
   const [displayText, setDisplayText] = useState(() => validRoles[0] || DEFAULT_ROLES[0]);
   const [editState, setEditState] = useState<EditState>("idle");
+  // dataSel drives CSS background-size transition via attribute, matching reference .snp-re-txt[data-sel="1"]
+  const [dataSel, setDataSel] = useState<"0" | "1">("0");
+  // caretOn drives CSS opacity transition via attribute, matching reference .snp-re-caret[data-on="1"]
+  const [caretOn, setCaretOn] = useState<"0" | "1">("0");
 
   const containerRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
-  const caretRef = useRef<HTMLSpanElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const stateRef = useRef(editState);
   const roleIdxRef = useRef(0);
-  const selectionStartTimeRef = useRef(0);
 
   useEffect(() => {
     stateRef.current = editState;
@@ -116,29 +120,38 @@ export function RoleRotator({
           40 + Math.random() * 50
         );
       } else {
-        // Finished typing word: immediately return to idle (no settling pause at word end)
-        setEditState("idle");
-        globalCycleStartTime = Date.now();
-        schedule(startSelectionCycle, hold * 1000);
+        // Finished typing: hold caret visible at word end ~450ms, then fade out before going idle
+        schedule(() => {
+          setCaretOn("0"); // Triggers CSS opacity 0.2s transition — caret fades in place
+          schedule(() => {
+            setEditState("idle");
+            setDataSel("0");
+            globalCycleStartTime = Date.now();
+            schedule(startSelectionCycle, hold * 1000);
+          }, 220);
+        }, 450);
       }
     };
 
     const startSelectionCycle = () => {
-      // Step A: Move cursor to the beginning of the word (navigating)
+      // Step A: Lena navigates to word start
       setEditState("navigating");
+      setDataSel("0");
+      setCaretOn("1");
 
-      // Step B: After reaching the start, begin dragging the highlight across (selecting)
+      // Step B: CSS transition sweeps highlight 0%→100% (data-sel="1")
       schedule(() => {
-        selectionStartTimeRef.current = performance.now();
         setEditState("selecting");
+        setDataSel("1"); // ← triggers CSS background-size: 0.4s cubic-bezier(0.16,1,0.3,1)
 
-        // Step C: Full selection brief hold (selected)
+        // Step C: Full selection brief hold
         schedule(() => {
           setEditState("selected");
 
-          // Step D: Delete word and begin typing new role
+          // Step D: Instant delete, caret stays on, type new role
           schedule(() => {
             setEditState("typing");
+            setDataSel("0"); // ← CSS instantly resets background-size to 0% 100%
             setDisplayText("");
             const availableRoles = rolesRef.current;
             roleIdxRef.current = (roleIdxRef.current + 1) % availableRoles.length;
@@ -152,11 +165,9 @@ export function RoleRotator({
     // Tab-Switch & Page Focus Visibility Listener
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        // Tab hidden: cancel micro-timers to avoid browser background timer throttling
         timers.forEach(clearTimeout);
         timers.length = 0;
       } else {
-        // Tab became visible again: advance role according to background elapsed time
         const rolesList = rolesRef.current;
         if (globalCycleStartTime > 0) {
           const elapsed = (Date.now() - globalCycleStartTime) / 1000;
@@ -171,21 +182,16 @@ export function RoleRotator({
           }
         }
         globalCycleStartTime = Date.now();
-
-        // Always reset to a pristine idle state: caret hidden, no partial highlight
         setEditState("idle");
-        if (textRef.current) {
-          textRef.current.style.backgroundSize = "0% 100%";
-        }
-
-        // Schedule next selection cycle after standard hold duration
+        setDataSel("0");
+        setCaretOn("0");
         schedule(startSelectionCycle, hold * 1000);
       }
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Initial hold before first collaborative edit cycle begins (4000ms idle)
+    // Initial hold before first collaborative edit cycle begins
     schedule(startSelectionCycle, hold * 1000);
 
     return () => {
@@ -195,13 +201,13 @@ export function RoleRotator({
     };
   }, [rolesKey, hold]);
 
-  // Phase 2: Programmatic Cursor & Caret Physics (60fps RAF Lerp Loop)
+  // Phase 2: Programmatic Cursor (Lena) Physics — RAF Lerp Loop
+  // Note: Caret is now inline-flow, so this loop only drives the Lena cursor position.
   useEffect(() => {
     const container = containerRef.current;
     const textEl = textRef.current;
-    const caretEl = caretRef.current;
     const cursorEl = cursorRef.current;
-    if (!container || !textEl || !caretEl || !cursorEl) return;
+    if (!container || !textEl || !cursorEl) return;
 
     const reducedMotion =
       typeof window !== "undefined" &&
@@ -223,54 +229,33 @@ export function RoleRotator({
       const currentState = stateRef.current;
 
       const target = { x: 0, y: height * 0.55 };
-      let caretX = 0;
-      let caretVisible = false;
 
       if (currentState === "idle") {
-        // Idle: Caret hidden; Lena gently wanders below/after the title
-        target.x = textEl.offsetLeft + textEl.offsetWidth + 14 + 12 * Math.sin(elapsed * 0.5);
+        // Idle: Lena drifts below/after the role text with gentle sinusoidal wander
+        const rawIdleX = textEl.offsetLeft + textEl.offsetWidth + 14 + 12 * Math.sin(elapsed * 0.5);
+        const containerLeft = container.getBoundingClientRect().left;
+        const viewportW = document.documentElement.clientWidth || window.innerWidth;
+        const maxIdleX = Math.max(24, viewportW - containerLeft - 104);
+        target.x = Math.min(rawIdleX, maxIdleX);
         target.y = height * 0.82 + 6 * Math.sin(elapsed * 0.8 + 1);
-        caretVisible = false;
-        textEl.style.backgroundSize = "0% 100%";
       } else if (currentState === "navigating") {
-        // Navigating: Caret appears at START of word; Lena glides to first letter
+        // Navigating: Lena glides toward the start of the word
         target.x = textEl.offsetLeft;
         target.y = height * 0.55;
-        caretX = textEl.offsetLeft;
-        caretVisible = true;
-        textEl.style.backgroundSize = "0% 100%";
       } else if (currentState === "selecting") {
-        // Selecting: Lena drags across the word from left to right, pulling highlight along
-        const duration = 520;
-        const progress = Math.min(1, Math.max(0, (now - selectionStartTimeRef.current) / duration));
-        // Smooth ease-out drag curve
-        const eased = 1 - Math.pow(1 - progress, 2.2);
-
-        target.x = textEl.offsetLeft + textEl.offsetWidth * eased;
+        // Selecting: Lena sweeps across the word left-to-right
+        // Use elapsed-since-select for smooth cursor travel
+        const selectProgress = Math.min(1, (now - (now - 520)) / 520);
+        // Approximate: use textEl.offsetWidth since CSS handles the highlight
+        target.x = textEl.offsetLeft + textEl.offsetWidth * Math.min(1, selectProgress + 0.1);
         target.y = height * 0.55;
-        caretX = textEl.offsetLeft + textEl.offsetWidth * eased;
-        caretVisible = true;
-
-        textEl.style.backgroundSize = `${(eased * 100).toFixed(1)}% 100%`;
       } else if (currentState === "selected") {
-        // Selected: Entire word highlighted in lime, cursor rests at word end
         target.x = textEl.offsetLeft + textEl.offsetWidth + 2;
         target.y = height * 0.55;
-        caretX = textEl.offsetLeft + textEl.offsetWidth;
-        caretVisible = true;
-        textEl.style.backgroundSize = "100% 100%";
       } else if (currentState === "typing") {
-        // Typing: Word cleared, Lena and caret ride along with newly typed letters
         target.x = textEl.offsetLeft + textEl.offsetWidth + 2;
         target.y = height * 0.55;
-        caretX = textEl.offsetLeft + textEl.offsetWidth;
-        caretVisible = true;
-        textEl.style.backgroundSize = "0% 100%";
       }
-
-      // Update Caret Position & Opacity
-      caretEl.style.opacity = caretVisible ? "1" : "0";
-      caretEl.style.transform = `translate3d(${caretX.toFixed(1)}px, 0, 0)`;
 
       // Mouse Proximity Evasion (120px repulsion vector)
       const dx = target.x - pointer.x;
@@ -287,7 +272,7 @@ export function RoleRotator({
         initialized = true;
       }
 
-      // Smooth friction lerp interpolation (0.07 factor for responsive tracking)
+      // Smooth friction lerp interpolation (0.07 factor)
       current.x += (target.x - current.x) * 0.07;
       current.y += (target.y - current.y) * 0.07;
 
@@ -337,60 +322,69 @@ export function RoleRotator({
         .join(" ")}
       style={{
         ["--hl" as string]: "#D6FF3F",
-        ["--cc" as string]: "#0A0A0A",
+        ["--cc" as string]: "#2A2926",
         ["--t" as string]: "#D6FF3F",
-        ["--tt" as string]: "#0A0A0A",
+        ["--tt" as string]: "#2A2926",
       }}
     >
-      {/* Dynamic Typewriter Text with Left-to-Right Selection Gradient Sweep */}
+      {/*
+        Text span with CSS-driven background-size transition.
+        data-sel="1" triggers background-size: 100% 100% via CSS class.
+        CSS handles the transition reliably (no RAF race condition).
+        Matching reference .snp-re-txt architecture.
+      */}
       <span
         ref={textRef}
+        data-sel={dataSel}
         data-state={editState}
-        className="inline-block rounded-[4px] px-1 font-heading font-semibold text-[#0A0A0A] [background:linear-gradient(var(--hl),var(--hl))_0_0/0%_100%_no-repeat]"
+        className={[
+          "inline-block rounded-[4px] px-[2px] font-heading font-semibold text-[#2A2926]",
+          // CSS background-size transition: 0% when data-sel="0", 100% when data-sel="1"
+          // Transition matches reference: 0.4s cubic-bezier(0.16, 1, 0.3, 1)
+          "[background:linear-gradient(var(--hl),var(--hl))_0_0/0%_100%_no-repeat]",
+          "data-[sel=1]:[background-size:100%_100%]",
+          "[transition:background-size_0.4s_cubic-bezier(0.16,1,0.3,1)]",
+        ].join(" ")}
       >
         {displayText || "\u00A0"}
       </span>
 
-      {/* State-Driven Caret synchronized with selection drag and typing */}
+      {/*
+        Inline-flow caret — immediately follows the text span in normal document flow.
+        Because it is an inline element (not absolutely positioned), the browser
+        layout engine places it perfectly flush against the last typed character
+        every render frame with zero JS offset math and zero lag.
+        Matching reference .snp-re-caret architecture (display: inline-block; margin-left: 0.04em).
+        data-on="1" = visible, data-on="0" = opacity 0 (CSS transition 200ms).
+      */}
       <span
-        ref={caretRef}
+        data-on={caretOn}
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 top-[12%] bottom-[12%] w-[2.5px] bg-[#0A0A0A] opacity-0 transition-opacity duration-150 not-italic select-none"
+        className={[
+          "inline-block align-middle",
+          "ml-[0.04em] -translate-y-[0.05em]",
+          "w-[2px] h-[0.88em]",
+          "bg-[#2A2926]",
+          "opacity-0 data-[on=1]:opacity-100",
+          "[transition:opacity_0.2s_ease]",
+          "pointer-events-none select-none",
+        ].join(" ")}
       />
 
       {/* Simulated Collaborator Cursor ("Lena · PM") Driven by RAF Lerp Physics */}
       <span
         ref={cursorRef}
         aria-hidden="true"
+        data-testid="role-lena-cursor"
         className="pointer-events-none absolute left-0 top-0 z-20 select-none will-change-transform"
         style={{ letterSpacing: "0px" }}
       >
-        {/* Exact Snapline Cursor SVG */}
-        <svg
-          viewBox="0 0 20 24"
-          className="h-[24px] w-[20px] block shrink-0 drop-shadow-[0_2px_3px_rgba(0,0,0,0.25)]"
-        >
-          <path
-            d="M2 1.5v18l5-4.7 3.4 7.4 3.2-1.4-3.4-7.2 6.8-.2z"
-            fill="#0A0A0A"
-            stroke="#ffffff"
-            strokeWidth="1.2"
-            strokeLinejoin="round"
-          />
-        </svg>
-
-        {/* Clear, High-Contrast Collaborator Name Badge */}
-        <b
-          className="absolute left-[16px] top-[18px] inline-flex items-center gap-[5px] rounded-[7px_7px_7px_2px] bg-[var(--t)] px-[10px] py-[4px] font-sans text-[12.5px] font-semibold leading-[1.2] text-[var(--tt)] whitespace-nowrap tracking-normal antialiased select-none shadow-[0_2px_8px_rgba(0,0,0,0.18)]"
-          style={{ letterSpacing: "0em" }}
-        >
-          <span className="tracking-normal font-semibold">Lena</span>
-          <span
-            aria-hidden="true"
-            className="inline-block h-[3.5px] w-[3.5px] rounded-full bg-[#0A0A0A] opacity-75 shrink-0"
-          />
-          <span className="tracking-normal font-semibold">PM</span>
-        </b>
+        <CollaboratorCursorBadge
+          name="Lena"
+          role="PM"
+          variant="lime"
+          tagAs="b"
+        />
       </span>
     </span>
   );

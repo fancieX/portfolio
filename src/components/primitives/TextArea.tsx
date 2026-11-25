@@ -1,7 +1,7 @@
 import { TextareaHTMLAttributes, forwardRef, useId } from "react";
 
 // ─── Token Reference ───────────────────────────────────────────────────────
-// background:   #161616 (dark surface)
+// background:   #2A2926 (dark surface)
 // border:       rgba(255, 255, 255, 0.12)
 // focusBorder:  2px solid #D6FF3F (signature neon lime)
 // text:         #FFFFFF (crisp white)
@@ -26,7 +26,7 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
  * ("Project notes" field).
  *
  * Features:
- *   - Matte `#161616` background with `rgba(255, 255, 255, 0.12)` border
+ *   - Matte `#2A2926` background with `rgba(255, 255, 255, 0.12)` border
  *   - Signature neon lime focus border (`#D6FF3F`)
  *   - Native HTML5 validation compliance
  */
@@ -69,7 +69,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           disabled={disabled}
           data-testid="text-area"
           className={[
-            "w-full rounded-xl bg-[#161616] p-4 font-sans text-sm text-[#FFFFFF]",
+            "w-full rounded-xl bg-[#2A2926] p-4 font-sans text-sm text-[#FFFFFF]",
             "border border-[rgba(255,255,255,0.12)]",
             "placeholder:text-white/35",
             "resize-y min-h-[120px]",

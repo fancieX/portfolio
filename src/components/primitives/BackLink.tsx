@@ -3,7 +3,7 @@ import { AnchorHTMLAttributes, forwardRef, ReactNode } from "react";
 
 // ─── Token Reference ───────────────────────────────────────────────────────
 // arrow translation: -4px (-translate-x-1) on hover
-// text color:        text-text-muted (#605F5F) -> text-text-primary (#0A0A0A)
+// text color:        text-text-muted (#605F5F) -> text-text-primary (#2A2926)
 // presets:           "work" -> "← All works" (/work)
 //                    "journal" -> "← Journal" (/journal)
 // Source: docs/research/snapline/interaction-matrix.md & implementation-plan.md
@@ -80,7 +80,7 @@ export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
         data-testid="back-link"
         data-target={to}
         className={[
-          "group inline-flex items-center gap-2 font-sans text-sm font-medium text-[#605F5F] hover:text-[#0A0A0A] select-none transition-colors duration-150",
+          "group inline-flex items-center gap-2 font-sans text-sm font-medium text-[#605F5F] hover:text-[#2A2926] select-none transition-colors duration-150",
           className,
         ]
           .filter(Boolean)

@@ -37,7 +37,7 @@ flowchart LR
      - Route 16: Contact Page with Dark Theme & Form (`/contact`)
      - Routes 17–18: Legal Pages with Tab Toggle (`/privacy`, `/terms`)
    - Implement the authentic custom error recovery canvas via an explicit direct route (`src/app/404/page.tsx`) and an unknown URL fallback boundary (`src/app/not-found.tsx`), both sharing a reusable `NotFoundCanvas` component preserving the original Snapline composition (huge bold 404 background watermark, 3 interactive draggable Polaroid photo cards with `# Layer 01–03` tags and dimension badges, "This page wandered off..." copy, and "Back home" / "See the work" action buttons).
-   - Embody the Figma design canvas metaphor: base canvas `#E6E6E3` with repeating 22px dot grid, white artboard containers, interactive selection frames with 8 resize handles, universal bottom floating dock (`~280px`), simulated collaborator cursors, and Lisbon local time.
+   - Embody the Figma design canvas metaphor: base canvas `#DAD8CF` with repeating 22px dot grid, white artboard containers, interactive selection frames with 8 resize handles, universal bottom floating dock (`~280px`), simulated collaborator cursors, and Lisbon local time.
    - **Rendering & Routing Architecture:**
      - Next.js 16 App Router with TypeScript strict mode.
      - Static pre-rendering for fixed content routes (`/`, `/work`, `/about`, `/journal`, `/contact`, `/privacy`, `/terms`).
@@ -103,7 +103,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | **M5: Homepage Implementation** | | | | | | | | | |
 | `5.1` | Hero Section Layout & Animated Role Rotator | `task/5.1-hero-section` | High | Medium | Yes | `MERGED` | #24 | `85f73cf` | `Merged into stage-1` |
 | `5.2` | Draggable & Resizable Hero Portrait | `task/5.2-draggable-resizable-portrait` | High | High | Yes | `MERGED` | - | - | `Merged into stage-1` |
-| `5.3` | Simulated Multiplayer Collaborator Cursors | `task/5.3-collaborator-cursors` | Medium | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `5.3` | Simulated Multiplayer Collaborator Cursors | `task/5.3-collaborator-cursors` | Medium | Medium | Yes | `MERGED` | - | - | `Merged into stage-1` |
 | `5.4` | Client Logos Social Proof Section | `task/5.4-client-logos` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `5.5` | 4-Step Process Section | `task/5.5-process-section` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `5.6` | Homepage Featured Works & Journal Teaser | `task/5.6-home-featured-previews` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -129,7 +129,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `9.2` | Reusable Editorial Article Page Template | `task/9.2-journal-article-template` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `9.3` | Dynamic Journal Route Generation (`/journal/[slug]`) | `task/9.3-dynamic-journal-routes` | Critical | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | **M10: Contact Page & Form** | | | | | | | | | |
-| `10.1` | Contact Page Dark Container Layout (`#161616`) | `task/10.1-contact-page-layout` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `10.1` | Contact Page Dark Container Layout (`#2A2926`) | `task/10.1-contact-page-layout` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `10.2` | Inquiry Form Controls & Custom Select Dropdowns | `task/10.2-contact-form-inputs` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `10.3` | Client-Side Validation & Mock Submission State | `task/10.3-contact-form-validation` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | **M11: Legal & Error Pages** | | | | | | | | | |
@@ -180,13 +180,13 @@ MILESTONE 1: PROJECT FOUNDATION & ENVIRONMENT SETUP (Area A)
 - **Task Name:** Tailwind CSS v4 & Design Token Integration
 - **Priority:** Critical | **Complexity:** Medium | **Visual QA:** Yes
 - **Scope:** Styling architecture and design token binding.
-- **Objective:** Configure Tailwind CSS v4 with custom design tokens mapped directly from `docs/research/snapline/design-tokens.json` (`#E6E6E3` canvas, `#FFFFFF` surface, `#161616` dark surface, `#D6FF3F` neon lime, `#FF3B5C` guideline pink).
+- **Objective:** Configure Tailwind CSS v4 with custom design tokens mapped directly from `docs/research/snapline/design-tokens.json` (`#DAD8CF` plain background (`#DAD8CF` dot-grid during View Transitions), `#FFFFFF` surface, `#2A2926` dark surface, `#D6FF3F` neon lime, `#FF3B5C` guideline pink).
 - **Affected Files:** `src/styles/globals.css`, `postcss.config.mjs`, `package.json`.
 - **Dependencies:** Task 1.1.
 - **Expected Result:** Tailwind CSS v4 theme directives (`@theme`) compile token utility classes (`bg-canvas`, `text-neon-lime`, etc.).
 - **Acceptance Criteria:**
   1. Token utility classes compile without CSS errors.
-  2. Background `#E6E6E3` and accent `#D6FF3F` render accurately in a sample component.
+  2. Background `#DAD8CF` and accent `#D6FF3F` render accurately in a sample component.
 - **Testing Requirements:** Validate compiled CSS output and run `npm run build`.
 - **Responsive Baseline:** Standard Tailwind responsive prefixes (`md:`, `lg:`) functional across 1440px, 768px, 390px.
 - **Research References:** `docs/research/snapline/design-tokens.json`.
@@ -238,12 +238,12 @@ MILESTONE 1: PROJECT FOUNDATION & ENVIRONMENT SETUP (Area A)
 - **Task Name:** Shared Application Shell & Root Layout
 - **Priority:** Critical | **Complexity:** Medium | **Visual QA:** Yes
 - **Scope:** Root viewport layout and global document metadata.
-- **Objective:** Construct `src/app/layout.tsx` embedding font classes, base canvas tone (`#E6E6E3`), viewport meta tags, and global SEO metadata.
+- **Objective:** Construct `src/app/layout.tsx` embedding font classes, base canvas tone (`#DAD8CF`), viewport meta tags, and global SEO metadata.
 - **Affected Files:** `src/app/layout.tsx`, `src/app/page.tsx`.
 - **Dependencies:** Task 1.2, Task 1.3, Task 1.4.
 - **Expected Result:** Root layout wraps every page with consistent viewport dimensions, dark background styling, and metadata tags.
 - **Acceptance Criteria:**
-  1. Page renders with background `#E6E6E3` on dev server.
+  1. Page renders with background `#DAD8CF` on dev server.
   2. Browser tab displays `Maya Ortiz | Product Designer in Lisbon`.
 - **Testing Requirements:** Build test (`npm run build`) and DOM inspection.
 - **Responsive Baseline:** Mobile viewport meta `width=device-width, initial-scale=1` active across 1440px, 768px, 390px.
@@ -350,7 +350,7 @@ MILESTONE 3: GLOBAL DESIGN SYSTEM & UI PRIMITIVES (Area B)
 - **Dependencies:** Task 1.2, Task 1.5.
 - **Expected Result:** Continuous 22px repeating dot grid visible on canvas base layer behind artboard cards.
 - **Acceptance Criteria:**
-  1. Base color matches `#E6E6E3`.
+  1. Base color matches `#DAD8CF`.
   2. Dot color matches `#C3C3BF` with anti-aliased edge.
   3. Cell dimensions measure exactly `22px × 22px`.
 - **Testing Requirements:** Visual comparison against `docs/research/snapline/screenshots/desktop/home-desktop-initial.png`.
@@ -365,7 +365,7 @@ MILESTONE 3: GLOBAL DESIGN SYSTEM & UI PRIMITIVES (Area B)
 - **Task Name:** Artboard Surface & Card Container Primitives
 - **Priority:** High | **Complexity:** Low | **Visual QA:** Yes
 - **Scope:** Atomic container components.
-- **Objective:** Create `ArtboardContainer.tsx` (white `#FFFFFF` background, rounded borders `16px–24px`, subtle shadow `0 2px 12px rgba(0,0,0,0.04)`) and `DarkContainer.tsx` (`#161616` container).
+- **Objective:** Create `ArtboardContainer.tsx` (white `#FFFFFF` background, rounded borders `16px–24px`, subtle shadow `0 2px 12px rgba(0,0,0,0.04)`) and `DarkContainer.tsx` (`#2A2926` container).
 - **Affected Files:** `src/components/primitives/ArtboardContainer.tsx`, `src/components/primitives/DarkContainer.tsx`.
 - **Dependencies:** Task 1.2.
 - **Expected Result:** Reusable card containers encapsulating page sections on the canvas.
@@ -389,7 +389,7 @@ MILESTONE 3: GLOBAL DESIGN SYSTEM & UI PRIMITIVES (Area B)
 - **Dependencies:** Task 1.2.
 - **Expected Result:** High-craft pill components with `border-radius: 9999px`.
 - **Acceptance Criteria:**
-  1. Active pill renders `#0A0A0A` background with white text.
+  1. Active pill renders `#2A2926` background with white text.
   2. Inactive pill renders white background with hairline border.
   3. Availability badge pulses green `#22C55E` indicator.
 - **Testing Requirements:** Unit verification of state props (`isActive`, `variant`).
@@ -423,7 +423,7 @@ MILESTONE 3: GLOBAL DESIGN SYSTEM & UI PRIMITIVES (Area B)
 - **Task Name:** Form Input, Textarea, and Select Primitives
 - **Priority:** High | **Complexity:** Medium | **Visual QA:** Yes
 - **Scope:** Dark form controls.
-- **Objective:** Create `TextInput.tsx`, `TextArea.tsx`, and `CustomSelect.tsx` matching the dark contact form styling (`#161616` surface, `#D6FF3F` focus border).
+- **Objective:** Create `TextInput.tsx`, `TextArea.tsx`, and `CustomSelect.tsx` matching the dark contact form styling (`#2A2926` surface, `#D6FF3F` focus border).
 - **Affected Files:** `src/components/primitives/TextInput.tsx`, `src/components/primitives/TextArea.tsx`, `src/components/primitives/CustomSelect.tsx`.
 - **Dependencies:** Task 1.2.
 - **Expected Result:** Accessible input controls with glowing neon lime focus rings and dark option dropdowns.
@@ -476,7 +476,7 @@ MILESTONE 4: CANVAS & NAVIGATION ARCHITECTURE (Area C)
 - **Expected Result:** Minimal, elegant top header rendered with transparent background inheriting the white artboard surface, with zero hamburger menus or mobile navigation drawers, delegating primary view routing to the bottom dock (Task 4.2).
 - **Acceptance Criteria:**
   1. Header renders at the top of the artboard with clean transparent background (zero glassmorphism, zero blur, zero bottom border).
-  2. Left brand mark displays `Maya.` in bold typography (`font-heading font-bold text-lg text-[#0A0A0A]`) linking to `/`.
+  2. Left brand mark displays `Maya.` in bold typography (`font-heading font-bold text-lg text-[#2A2926]`) linking to `/`.
   3. Right slot renders `Get in touch` pill button linking to `/contact`, utilizing `Button` primitive (`variant="primary" size="sm"`).
   4. Retains identical minimal two-item structure without hamburger drawer across Desktop (1440px), Tablet (768px), and Mobile (390px).
   5. Sits cleanly at the top of the artboard surface, aligning with left/right content margins.
@@ -498,14 +498,14 @@ MILESTONE 4: CANVAS & NAVIGATION ARCHITECTURE (Area C)
 - **Commit Reference:** `95b19b7` (Merge commit: `62932fa`)
 - **Task Specification:** [task-4.2.md](file:///d:/portfolio/docs/specifications/tasks/task-4.2.md)
 - **Scope:** Universal primary navigation dock component and global layout integration.
-- **Objective:** Implement `FloatingDock.tsx` fixed at bottom center (`width: ~280px`, `height: 52px`, `z-index: 1000`, `background: rgba(255, 255, 255, 0.85)`, `backdrop-filter: blur(12px)`) with 5 navigation icons (`Home`, `Work`, `About`, `Journal`, `Contact`), non-interactive `100%` canvas zoom badge, animated active dark pill indicator (`#0A0A0A`) with signature neon lime active icon (`#D6FF3F`), and global keyboard shortcuts.
+- **Objective:** Implement `FloatingDock.tsx` fixed at bottom center (`width: ~280px`, `height: 52px`, `z-index: 1000`, `background: rgba(255, 255, 255, 0.85)`, `backdrop-filter: blur(12px)`) with 5 navigation icons (`Home`, `Work`, `About`, `Journal`, `Contact`), non-interactive `100%` canvas zoom badge, animated active dark pill indicator (`#2A2926`) with signature neon lime active icon (`#D6FF3F`), and global keyboard shortcuts.
 - **Affected Files:** `src/components/navigation/FloatingDock.tsx`, `src/components/navigation/index.ts`, `src/app/layout.tsx`.
 - **Dependencies:** Task 2.4 (Navigation Metadata), Task 3.4 (Design Tokens & Spring Motion).
 - **Expected Result:** Glassmorphic floating dock that smoothly indicates the active route across all viewports with fluid spring motion, keyboard navigation, and persistent visibility.
 - **Acceptance Criteria:**
   1. Floating dock is fixed at bottom center with `z-index: 1000`, `width: ~280px`, `height: 52px`, `rounded-full`, and `backdrop-filter: blur(12px)`.
   2. Renders all 5 navigation triggers: Home (`cursor`), Work (`frame`), About (`user`), Journal (`text`), and Contact (`comment`).
-  3. Active route renders a solid dark pill container (`#0A0A0A`, `rounded-lg`) enclosing the icon with neon lime fill/stroke (`#D6FF3F`).
+  3. Active route renders a solid dark pill container (`#2A2926`, `rounded-lg`) enclosing the icon with neon lime fill/stroke (`#D6FF3F`).
   4. Active indicator smoothly transitions between items via Framer Motion spring layout animation (`layoutId="activeDockIndicator"`).
   5. Inactive icons render in muted gray (`#666666`), highlighting with subtle background tint on hover.
   6. Non-interactive `100%` zoom badge rendered on the right side separated by a hairline vertical divider.
@@ -611,12 +611,12 @@ ightarrow$ 38px mobile.
 - **Commit Reference:** -
 - **Task Specification Link:** [task-5.2.md](file:///d:/portfolio/docs/specifications/tasks/task-5.2.md)
 - **Scope:** Interactive portrait container with 8-handle resizing, underdamped spring-back release, out-of-flow slot isolation, and integrated portrait collaborator companion (`"Sam · Dev"`).
-- **Objective:** Implement `HeroPortrait.tsx` and `useResizableFrame.ts` matching `https://snapline.framer.website/`: 8 interactive `12×12px` handles (free two-axis corner resize + single-axis edge resize, simultaneous `1.35x` scaling while dragging), underdamped spring-back return (`stiffness: 160`, `damping: 13`) on release, zero layout shift (`0.000px` delta across left hero/buttons/footer), sharp `0px` image corners flush with `1.5px` `#0A0A0A` frame, attached live dimension badge, desktop inline helper hint fade-out, and autonomous `"Sam · Dev"` cursor with spring-animated `.snp-cmt` comment bubbles.
+- **Objective:** Implement `HeroPortrait.tsx` and `useResizableFrame.ts` matching `https://snapline.framer.website/`: 8 interactive `12×12px` handles (free two-axis corner resize + single-axis edge resize, simultaneous `1.35x` scaling while dragging), underdamped spring-back return (`stiffness: 160`, `damping: 13`) on release, zero layout shift (`0.000px` delta across left hero/buttons/footer), sharp `0px` image corners flush with `1.5px` `#2A2926` frame, attached live dimension badge, desktop inline helper hint fade-out, and autonomous `"Sam · Dev"` cursor with spring-animated `.snp-cmt` comment bubbles.
 - **Affected Files:** `src/components/home/HeroPortrait.tsx`, `src/hooks/useResizableFrame.ts`, `src/components/home/HeroSection.tsx`, `src/components/navigation/Header.tsx`.
 - **Dependencies:** Task 3.6, Task 5.1.
 - **Expected Result:** Portrait frame resizes smoothly via its 8 handles over a fixed resting slot (`0.000px` layout displacement) and springs elastically back to rest upon release while `"Sam · Dev"` drifts and comments uninterrupted.
 - **Acceptance Criteria:**
-  1. 8 selection handles (`12×12px`, `1.5px solid #0A0A0A`, `-14px` hit inset) render with `.35s cubic-bezier(.34,1.56,.64,1)` scaling and simultaneous `1.35x` drag expansion.
+  1. 8 selection handles (`12×12px`, `1.5px solid #2A2926`, `-14px` hit inset) render with `.35s cubic-bezier(.34,1.56,.64,1)` scaling and simultaneous `1.35x` drag expansion.
   2. Corner handles resize `width` & `height` independently; edge handles resize single-axis; releasing springs back elastically to rest with ~11%–13% underdamped overshoot while updating the attached dimension pill.
   3. Resizing isolates within a fixed resting layout footprint (`0.000px` sibling/footer shift, clean header stacking, static body click).
   4. On touch devices, handles set `touch-action: none` while container body preserves natural vertical page scrolling.
@@ -632,17 +632,24 @@ ightarrow$ 38px mobile.
 - **Task ID:** `5.3`
 - **Task Name:** Simulated Multiplayer Collaborator Cursors
 - **Priority:** Medium | **Complexity:** Medium | **Visual QA:** Yes
-- **Scope:** Figma multiplayer cursor simulation.
-- **Objective:** Create `CollaboratorCursors.tsx` simulating two wandering Figma cursors: "Lena · PM" (neon lime `#D6FF3F`) and "Sam · Dev" (cyan `#00E5FF`) on desktop viewports.
-- **Affected Files:** `src/components/home/CollaboratorCursors.tsx`.
-- **Dependencies:** Task 5.1.
-- **Expected Result:** Cursors drift smoothly across the hero canvas and hover over key sentences.
+- **Status:** `IMPLEMENTED`
+- **GitHub Pull Request:** -
+- **Merge Status:** `Unmerged`
+- **Commit Reference:** -
+- **Task Specification Link:** [task-5.3.md](file:///d:/portfolio/docs/specifications/tasks/task-5.3.md)
+- **Scope:** Shared Figma multiplayer cursor architecture (`CollaboratorCursors.tsx`) unifying `"Lena · PM"` (`RoleRotator`) and `"Sam · Dev"` (`HeroPortrait`) with exact live Reference tokens and animations.
+- **Objective:** Implement `src/components/home/CollaboratorCursors.tsx` providing a shared `CollaboratorCursorBadge` primitive (exact `20×24` SVG pointer, `4px 9px` padding, `12px` Inter semibold typography, `7px 7px 7px 2px` radius) and `PortraitCollaboratorCursor` (`"Sam · Dev"` in `#2A2926` dark pill / `#FFFFFF` text gliding inside `# maya-portrait.webp` with spring `.snp-cmt` comment bubbles including `"Love this crop"`, `"Can we test this with users?"`, `"Add it to the design system?"`, `"Ship it Friday?"`, and `"Pixel perfect"`), eliminating duplicate SVG/badge markup across `RoleRotator.tsx` and `HeroPortrait.tsx`.
+- **Affected Files:** `src/components/home/CollaboratorCursors.tsx`, `src/components/home/HeroPortrait.tsx`, `src/components/home/RoleRotator.tsx`, `src/components/home/index.ts`.
+- **Dependencies:** Task 5.1, Task 5.2.
+- **Expected Result:** Both simulated team cursors match `https://snapline.framer.website/` 1:1 in colors, typography, spacing, comment popups, pointer evasion behavior (`Lena · PM` evades user mouse within 120px; `Sam · Dev` ignores mouse and comments periodically), and multi-viewport visibility (`pointer-events: none` across Desktop, Tablet, and Mobile).
 - **Acceptance Criteria:**
-  1. Cursors follow predefined SVG motion paths with spring easing.
-  2. Completely disabled/suppressed on viewports $< 1200px$.
-- **Testing Requirements:** Verify render on desktop and complete omission on mobile.
-- **Responsive Baseline:** Desktop (1440px): active floating cursors | Tablet (768px) & Mobile (390px): completely hidden via `hidden lg:block`.
-- **Research References:** `docs/research/snapline/PAGE_TOPOLOGY.md` (Section 1).
+  1. `CollaboratorCursors.tsx` extracts shared cursor SVG + collaborator pill badge (`variant="lime" | "dark"`) with exact Reference styling (`padding: 4px 9px`, `12px` `font-semibold`, `7px 7px 7px 2px` border radius).
+  2. `"Sam · Dev"` uses `#2A2926` pill background / `#FFFFFF` text and cycles `.snp-cmt` comment bubbles (`scale: 0.3 -> 1`, `0.55s cubic-bezier(0.34, 1.56, 0.64, 1)`) including `"Ship it Friday?"`, `"Love this crop"`, `"Can we test this with users?"`, `"Add it to the design system?"`, and `"Pixel perfect"`.
+  3. `"Lena · PM"` maintains `#D6FF3F` pill / `#2A2926` text and 120px pointer evasion, whereas `"Sam · Dev"` continues waypoint drift cleanly without pointer evasion (verified against live DOM).
+  4. Both cursors remain visible and `pointer-events: none` across desktop, tablet, and mobile viewports, and pause/freeze safely under `prefers-reduced-motion: reduce`.
+- **Testing Requirements:** Verify cursor paths, comment popups, exact pill dimensions/colors, and pointer evasion at `1440×900`, `768×1024`, and `390×844`.
+- **Responsive Baseline:** Desktop (`1440px`), Tablet (`768px`), Mobile (`390px`): both cursors active and contained smoothly inside their respective headline and portrait frames (`pointer-events: none`).
+- **Research References:** `docs/research/snapline/PAGE_TOPOLOGY.md`, `docs/research/snapline/responsive-analysis.md`.
 - **Task Branch:** `task/5.3-collaborator-cursors`
 - **Commit Message:** `feat(home): implement simulated multiplayer collaborator cursors`
 - **PR Title:** `feat(home): implement simulated multiplayer collaborator cursors`
@@ -1067,17 +1074,17 @@ MILESTONE 10: CONTACT PAGE & INQUIRY FORM (Area I)
 ================================================================================
 ```
 
-### Task 10.1: Contact Page Dark Container Layout (`#161616`)
+### Task 10.1: Contact Page Dark Container Layout (`#2A2926`)
 - **Task ID:** `10.1`
-- **Task Name:** Contact Page Dark Container Layout (`#161616`)
+- **Task Name:** Contact Page Dark Container Layout (`#2A2926`)
 - **Priority:** High | **Complexity:** Low | **Visual QA:** Yes
 - **Scope:** Contact page structure.
-- **Objective:** Implement `src/app/contact/page.tsx` rendering the centered dark container card (`#161616`, `maxWidth: 640px`) with contact header and Lisbon availability status badge.
+- **Objective:** Implement `src/app/contact/page.tsx` rendering the centered dark container card (`#2A2926`, `maxWidth: 640px`) with contact header and Lisbon availability status badge.
 - **Affected Files:** `src/app/contact/page.tsx`, `src/components/contact/ContactHeader.tsx`.
 - **Dependencies:** Task 3.2, Task 3.3.
-- **Expected Result:** High-contrast dark artboard card centered on the `#E6E6E3` dot-grid canvas.
+- **Expected Result:** High-contrast dark artboard card centered on the `#DAD8CF` dot-grid canvas.
 - **Acceptance Criteria:**
-  1. Background color matches `#161616` with light text.
+  1. Background color matches `#2A2926` with light text.
   2. Availability badge displays "Booking projects for January" with green indicator.
 - **Testing Requirements:** Visual comparison against `docs/research/snapline/screenshots/desktop/contact-desktop-initial.png`.
 - **Responsive Baseline:** Desktop: centered 640px card | Tablet: full-width within 32px page margins | Mobile: full-width within 16px margins, padding reduced to 20px.
@@ -1465,7 +1472,7 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 | `4.4` | `task/4.4-global-footer` | `stage-1` | `stage-1` | `feat(nav): implement global footer with synchronized Lisbon real-time clock` | `feat(nav): implement global footer with synchronized Lisbon real-time clock` | `NOT STARTED` |
 | `5.1` | `task/5.1-hero-section` | `stage-1` | `stage-1` | `feat(home): implement hero section layout and animated role rotator` | `feat(home): implement hero section layout and animated role rotator` | `NOT STARTED` |
 | `5.2` | `task/5.2-draggable-resizable-portrait` | `stage-1` | `stage-1` | `feat(home): implement draggable and resizable hero portrait with live dimensions` | `feat(home): implement draggable and resizable hero portrait with live dimensions` | `NOT STARTED` |
-| `5.3` | `task/5.3-collaborator-cursors` | `stage-1` | `stage-1` | `feat(home): implement simulated multiplayer collaborator cursors` | `feat(home): implement simulated multiplayer collaborator cursors` | `NOT STARTED` |
+| `5.3` | `task/5.3-collaborator-cursors` | `stage-1` | `stage-1` | `feat(home): implement simulated multiplayer collaborator cursors` | `feat(home): implement simulated multiplayer collaborator cursors` | `MERGED` |
 | `5.4` | `task/5.4-client-logos` | `stage-1` | `stage-1` | `feat(home): implement client logos social proof section` | `feat(home): implement client logos social proof section` | `NOT STARTED` |
 | `5.5` | `task/5.5-process-section` | `stage-1` | `stage-1` | `feat(home): implement 4-step methodology process section` | `feat(home): implement 4-step methodology process section` | `NOT STARTED` |
 | `5.6` | `task/5.6-home-featured-previews` | `stage-1` | `stage-1` | `feat(home): implement featured works grid and journal teaser section` | `feat(home): implement featured works grid and journal teaser section` | `NOT STARTED` |

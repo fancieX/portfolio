@@ -7,10 +7,10 @@ import {
 } from "react";
 
 // ─── Token Reference ───────────────────────────────────────────────────────
-// primary:       #0A0A0A background, #FFFFFF text, active:scale-98
-// lime:          #D6FF3F signature neon lime, #0A0A0A bold text, active:scale-98
-// secondary:     #FFFFFF surface, rgba(10,10,10,0.08) border, #0A0A0A text
-// dark:          #161616 surface, rgba(255,255,255,0.12) border, #FFFFFF text
+// primary:       #2A2926 background, #FFFFFF text, active:scale-98
+// lime:          #D6FF3F signature neon lime, #2A2926 bold text, active:scale-98
+// secondary:     #FFFFFF surface, rgba(42,41,38,0.08) border, #2A2926 text
+// dark:          #2A2926 surface, rgba(255,255,255,0.12) border, #FFFFFF text
 // radius:        9999px (rounded-pill)
 // height:        44px desktop / tablet, 48px touch-target mobile
 // Source: docs/research/snapline/design-tokens.json & interaction-matrix.md
@@ -76,15 +76,15 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
     // Variant styles
     const variantClasses: Record<ButtonVariant, string> = {
       primary:
-        "bg-[#0A0A0A] text-[#FFFFFF] border border-transparent hover:bg-[#202020] shadow-sm",
+        "bg-[#2A2926] text-[#FFFFFF] border border-transparent hover:bg-[#3A3935] shadow-sm",
       lime:
-        "bg-[#D6FF3F] text-[#0A0A0A] border border-transparent font-bold hover:bg-[#c9f530] shadow-[0_2px_10px_rgba(214,255,63,0.25)]",
+        "bg-[#D6FF3F] text-[#2A2926] border border-transparent font-bold hover:bg-[#c9f530] shadow-[0_2px_10px_rgba(214,255,63,0.25)]",
       secondary:
-        "bg-[#FFFFFF] text-[#0A0A0A] border border-[rgba(10,10,10,0.08)] hover:bg-[#F9F9F8] hover:border-[rgba(10,10,10,0.16)] shadow-[0_2px_8px_rgba(0,0,0,0.04)]",
+        "bg-[#FFFFFF] text-[#2A2926] border border-[rgba(42,41,38,0.08)] hover:bg-[#F9F9F8] hover:border-[rgba(42,41,38,0.16)] shadow-[0_2px_8px_rgba(0,0,0,0.04)]",
       dark:
-        "bg-[#161616] text-[#FFFFFF] border border-[rgba(255,255,255,0.12)] hover:bg-[#222222] shadow-sm",
+        "bg-[#2A2926] text-[#FFFFFF] border border-[rgba(255,255,255,0.12)] hover:bg-[#3A3935] shadow-sm",
       ghost:
-        "bg-transparent text-[#0A0A0A] border border-transparent hover:bg-black/5",
+        "bg-transparent text-[#2A2926] border border-transparent hover:bg-black/5",
     };
 
     // Size schedule (desktop: 44px standard, mobile submit: 48px min)

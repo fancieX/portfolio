@@ -1,7 +1,7 @@
 import { HTMLAttributes, forwardRef } from "react";
 
 // ─── Token Reference ───────────────────────────────────────────────────────
-// surfaceDark:        #161616
+// surfaceDark:        #2A2926
 // borderDark:         rgba(255, 255, 255, 0.12)
 // textOnDark primary: #FFFFFF
 // textOnDark muted:   rgba(255, 255, 255, 0.6)
@@ -22,7 +22,7 @@ export interface DarkContainerProps extends HTMLAttributes<HTMLDivElement> {
 /**
  * DarkContainer
  *
- * Dark `#161616` surface card — used on the Contact page section,
+ * Dark `#2A2926` surface card — used on the Contact page section,
  * footer CTA blocks, and any dark-theme inversion panels.
  *
  * Provides CSS custom-property overrides so nested text components
@@ -53,7 +53,7 @@ const DarkContainer = forwardRef<HTMLDivElement, DarkContainerProps>(
     } as const;
 
     const containerStyle: React.CSSProperties = {
-      backgroundColor: "#161616",
+      backgroundColor: "#2A2926",
       borderRadius: radiusMap[radius],
       border: bordered ? "1px solid rgba(255, 255, 255, 0.12)" : undefined,
       maxWidth,

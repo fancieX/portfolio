@@ -10,12 +10,12 @@ import {
 } from "react";
 
 // ─── Token Reference ───────────────────────────────────────────────────────
-// background:   #161616 (dark surface)
+// background:   #2A2926 (dark surface)
 // border:       rgba(255, 255, 255, 0.12)
 // focusBorder:  2px solid #D6FF3F (signature neon lime)
 // text:         #FFFFFF (crisp white)
 // placeholder:  rgba(255, 255, 255, 0.35)
-// options bg:   #161616
+// options bg:   #2A2926
 // option hover: rgba(255, 255, 255, 0.08)
 // Source: docs/research/snapline/design-tokens.json & interaction-matrix.md
 
@@ -60,7 +60,7 @@ export interface CustomSelectProps {
  * ("Service needed", "Budget", "Timeline").
  *
  * Features:
- *   - Matte `#161616` background with `rgba(255, 255, 255, 0.12)` border
+ *   - Matte `#2A2926` background with `rgba(255, 255, 255, 0.12)` border
  *   - Glowing neon lime focus indicator (`#D6FF3F`)
  *   - Synced hidden native select for seamless HTML5 form serialization
  *   - Accessible keyboard support (Enter, Space, Escape, Arrows)
@@ -204,7 +204,7 @@ export const CustomSelect = forwardRef<HTMLButtonElement, CustomSelectProps>(
           aria-expanded={isOpen}
           data-testid="custom-select-trigger"
           className={[
-            "h-12 w-full rounded-xl bg-[#161616] px-4 font-sans text-sm text-left select-none cursor-pointer",
+            "h-12 w-full rounded-xl bg-[#2A2926] px-4 font-sans text-sm text-left select-none cursor-pointer",
             "border border-[rgba(255,255,255,0.12)]",
             "inline-flex items-center justify-between gap-3",
             "transition-all duration-150 ease-out",
@@ -257,7 +257,7 @@ export const CustomSelect = forwardRef<HTMLButtonElement, CustomSelectProps>(
           <ul
             role="listbox"
             data-testid="custom-select-dropdown"
-            className="absolute top-[calc(100%+6px)] left-0 z-50 w-full rounded-xl border border-[rgba(255,255,255,0.14)] bg-[#161616] py-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.6)] backdrop-blur-md max-h-60 overflow-y-auto animate-in fade-in zoom-in-95 duration-100"
+            className="absolute top-[calc(100%+6px)] left-0 z-50 w-full rounded-xl border border-[rgba(255,255,255,0.14)] bg-[#2A2926] py-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.6)] backdrop-blur-md max-h-60 overflow-y-auto animate-in fade-in zoom-in-95 duration-100"
           >
             {normalizedOptions.map((opt) => {
               const isSelected = opt.value === activeValue;
