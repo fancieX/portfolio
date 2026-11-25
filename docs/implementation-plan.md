@@ -102,7 +102,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `4.4` | Global Page Footer & Lisbon Time Synchronization | `task/4.4-global-footer` | Medium | Low | Yes | `MERGED` | #23 | `76d16e9` | `Merged into stage-1` |
 | **M5: Homepage Implementation** | | | | | | | | | |
 | `5.1` | Hero Section Layout & Animated Role Rotator | `task/5.1-hero-section` | High | Medium | Yes | `MERGED` | #24 | `85f73cf` | `Merged into stage-1` |
-| `5.2` | Draggable & Resizable Hero Portrait | `task/5.2-draggable-resizable-portrait` | High | High | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `5.2` | Draggable & Resizable Hero Portrait | `task/5.2-draggable-resizable-portrait` | High | High | Yes | `MERGED` | - | - | `Merged into stage-1` |
 | `5.3` | Simulated Multiplayer Collaborator Cursors | `task/5.3-collaborator-cursors` | Medium | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `5.4` | Client Logos Social Proof Section | `task/5.4-client-logos` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `5.5` | 4-Step Process Section | `task/5.5-process-section` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -605,16 +605,22 @@ ightarrow$ 38px mobile.
 - **Task ID:** `5.2`
 - **Task Name:** Draggable & Resizable Hero Portrait
 - **Priority:** High | **Complexity:** High | **Visual QA:** Yes
-- **Scope:** Interactive portrait container with drag and handle-based resize dynamics.
-- **Objective:** Implement `HeroPortrait.tsx` wrapping the portrait container with an active Figma selection frame, 8 resize handles (4 corners, 4 midpoints), mouse drag capabilities, handle-driven container resizing, live dimension badge updates (e.g. `380 × 475`), boundary constraints, responsive positioning, and touch-appropriate behavior.
-- **Affected Files:** `src/components/home/HeroPortrait.tsx`, `src/hooks/useResizableFrame.ts`.
+- **Status:** `MERGED`
+- **GitHub Pull Request:** -
+- **Merge Status:** `Merged into stage-1`
+- **Commit Reference:** -
+- **Task Specification Link:** [task-5.2.md](file:///d:/portfolio/docs/specifications/tasks/task-5.2.md)
+- **Scope:** Interactive portrait container with 8-handle resizing, underdamped spring-back release, out-of-flow slot isolation, and integrated portrait collaborator companion (`"Sam · Dev"`).
+- **Objective:** Implement `HeroPortrait.tsx` and `useResizableFrame.ts` matching `https://snapline.framer.website/`: 8 interactive `12×12px` handles (free two-axis corner resize + single-axis edge resize, simultaneous `1.35x` scaling while dragging), underdamped spring-back return (`stiffness: 160`, `damping: 13`) on release, zero layout shift (`0.000px` delta across left hero/buttons/footer), sharp `0px` image corners flush with `1.5px` `#0A0A0A` frame, attached live dimension badge, desktop inline helper hint fade-out, and autonomous `"Sam · Dev"` cursor with spring-animated `.snp-cmt` comment bubbles.
+- **Affected Files:** `src/components/home/HeroPortrait.tsx`, `src/hooks/useResizableFrame.ts`, `src/components/home/HeroSection.tsx`, `src/components/navigation/Header.tsx`.
 - **Dependencies:** Task 3.6, Task 5.1.
-- **Expected Result:** Portrait frame can be dragged and resized via its 8 corner/midpoint handles with real-time dimension readout and canvas boundary constraints, distinguishing decorative Figma tags from functional interactive resize state.
+- **Expected Result:** Portrait frame resizes smoothly via its 8 handles over a fixed resting slot (`0.000px` layout displacement) and springs elastically back to rest upon release while `"Sam · Dev"` drifts and comments uninterrupted.
 - **Acceptance Criteria:**
-  1. 8 selection handles (4 corners, 4 midpoints) render with correct box-shadow.
-  2. Dragging handles resizes bounding container with live dimension badge update.
-  3. Dragging container body repositions frame with boundary limits.
-  4. On touch devices, free canvas dragging is proposed to be disabled (or constrained) to prevent touch-drag events from capturing and disrupting vertical page scrolling. Note on evidence status: As documented in `interaction-matrix.md` and `responsive-analysis.md`, portrait dragging on mobile was not directly observed during reconnaissance; this behavior is an engineering implementation proposal that requires empirical verification and tuning against the reference website during task execution.
+  1. 8 selection handles (`12×12px`, `1.5px solid #0A0A0A`, `-14px` hit inset) render with `.35s cubic-bezier(.34,1.56,.64,1)` scaling and simultaneous `1.35x` drag expansion.
+  2. Corner handles resize `width` & `height` independently; edge handles resize single-axis; releasing springs back elastically to rest with ~11%–13% underdamped overshoot while updating the attached dimension pill.
+  3. Resizing isolates within a fixed resting layout footprint (`0.000px` sibling/footer shift, clean header stacking, static body click).
+  4. On touch devices, handles set `touch-action: none` while container body preserves natural vertical page scrolling.
+  5. Portrait `"Sam · Dev"` collaborator cursor and `.snp-cmt` spring comment bubble animate continuously without blocking resize handles.
 - **Testing Requirements:** Test drag and resize handles on desktop; test touch scroll on mobile.
 - **Responsive Baseline:** Desktop (1440px): interactive 380px wide frame | Tablet (768px): centered stack below headline (`maxWidth: 420px`) | Mobile (390px): full width with 16px lateral margins; touch-drag behavior to be verified against reference.
 - **Research References:** `docs/research/snapline/interaction-matrix.md` (Homepage Interactions).
