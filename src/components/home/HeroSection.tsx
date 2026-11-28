@@ -6,6 +6,7 @@ import { useCanvasPan } from "@/hooks/useCanvasPan";
 import { RoleRotator } from "./RoleRotator";
 import { PinkGuideline } from "./PinkGuideline";
 import { HeroPortrait } from "./HeroPortrait";
+import { ClientLogos } from "./ClientLogos";
 
 export interface HeroSectionProps {
   className?: string;
@@ -63,7 +64,7 @@ export function HeroSection({ className = "" }: HeroSectionProps) {
         .filter(Boolean)
         .join(" ")}
     >
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-10 xl:gap-14 w-full">
+      <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-10 xl:gap-14 w-full">
         {/* Left Column: Headline, Copy, Action Buttons */}
         <div className="flex flex-col items-start lg:flex-1 max-w-full lg:max-w-[840px] xl:max-w-[900px]">
           {/* Availability Status Badge */}
@@ -127,6 +128,9 @@ export function HeroSection({ className = "" }: HeroSectionProps) {
               Say hello
             </Button>
           </div>
+
+          {/* Client Logos Social Proof Row (Task 5.4) */}
+          <ClientLogos className="mt-6 sm:mt-7" />
         </div>
 
         {/* Right Column: Interactive Draggable & Resizable Hero Portrait Frame */}
