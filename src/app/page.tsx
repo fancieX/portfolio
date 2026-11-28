@@ -1,5 +1,5 @@
 import { Header, Footer } from "@/components/navigation";
-import { HeroSection } from "@/components/home";
+import { HeroSection, ProcessSection } from "@/components/home";
 
 export default function Home() {
   return (
@@ -7,8 +7,11 @@ export default function Home() {
       {/* Top Header Navigation (Task 4.1) */}
       <Header />
 
-      {/* Hero Section with Composite Headline & Role Rotator (Task 5.1) */}
+      {/* Hero Section with Composite Headline & Role Rotator (Task 5.1–5.4) */}
       <HeroSection />
+
+      {/* 4-Step Prototype-Wired Process Section (Task 5.5) */}
+      <ProcessSection />
 
       {/* Global Page Footer Component (Task 4.4) */}
       <Footer />
