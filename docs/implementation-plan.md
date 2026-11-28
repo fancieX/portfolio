@@ -105,7 +105,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `5.2` | Draggable & Resizable Hero Portrait | `task/5.2-draggable-resizable-portrait` | High | High | Yes | `MERGED` | - | - | `Merged into stage-1` |
 | `5.3` | Simulated Multiplayer Collaborator Cursors | `task/5.3-collaborator-cursors` | Medium | Medium | Yes | `MERGED` | - | - | `Merged into stage-1` |
 | `5.4` | Client Logos Social Proof Section | `task/5.4-client-logos` | Medium | Low | Yes | `MERGED` | - | - | `Merged into stage-1` |
-| `5.5` | 4-Step Process Section | `task/5.5-process-section` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `5.5` | 4-Step Process Section | `task/5.5-process-section` | Medium | Low | Yes | `MERGED` | - | - | `Merged into stage-1` |
 | `5.6` | Homepage Featured Works & Journal Teaser | `task/5.6-home-featured-previews` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | **M6: Work Catalog Showcase** | | | | | | | | | |
 | `6.1` | Work Page Layout & Counter Header | `task/6.1-work-catalog-header` | High | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
@@ -679,17 +679,19 @@ ightarrow$ 38px mobile.
 - **Task ID:** `5.5`
 - **Task Name:** 4-Step Process Section
 - **Priority:** Medium | **Complexity:** Low | **Visual QA:** Yes
-- **Scope:** Process section layout.
-- **Objective:** Implement `ProcessSection.tsx` detailing the 4 methodology stages (01 Discover, 02 Define, 03 Design, 04 Deliver) with numbered step headers and descriptions.
-- **Affected Files:** `src/components/home/ProcessSection.tsx`.
-- **Dependencies:** Task 3.2.
-- **Expected Result:** 4-column desktop layout reflowing to 2x2 on tablet and single-column on mobile.
+- **Task Specification Link:** [task-5.5.md](file:///d:/portfolio/docs/specifications/tasks/task-5.5.md)
+- **Scope:** Homepage stepped workflow section (`Process` / `Flow` + Figma Prototype Connector Wires `.snp-pf`).
+- **Objective:** Implement `ProcessSection.tsx` and `PrototypeFlowOverlay.tsx` reproducing `"How I shape every design project"` (framed with signature `#FF3B5C` baseline guideline & vertical tick) with alternating 44% sharp-corner (`rounded-none`) step cards (`01 / RESEARCH`, `02 / DESIGN`, `03 / DEVELOP`, `04 / HANDOFF`), card artwork in `public/images/process/`, tactile `scale(0.97)` press spring, `lenis` inertial smooth scrolling (`SmoothScrollProvider` + `overflow-x-clip` on `#canvas-root`), and Strict-Mode-safe continuous-RAF SVG prototype connector wires (`#0A0A0A`, `"On click"`, `#D6FF3F` traveling pulse dot `0.01 < p < 0.99`, arrowhead reveal `p >= 0.99`).
+- **Affected Files:** `src/components/home/ProcessSection.tsx`, `src/components/home/PrototypeFlowOverlay.tsx`, `src/components/home/index.ts`, `src/components/canvas/SmoothScrollProvider.tsx`, `src/components/canvas/index.ts`, `src/app/layout.tsx`, `src/app/page.tsx`, `package.json`, `public/images/process/step-01-research.webp`..`step-04-handoff.webp`.
+- **Dependencies:** Task 3.2 (`MERGED`), Task 5.1–5.4 (`MERGED`).
+- **Expected Result:** Alternating staggered 4-row prototype flow on desktop (`>860px`) reflowing cleanly to stacked vertical cards (`<=860px`) wired with dynamic SVG prototype connectors.
 - **Acceptance Criteria:**
-  1. Step numbers render in monospace typography (`01`, `02`, etc.).
-  2. Reflows cleanly across breakpoints without horizontal scroll.
-- **Testing Requirements:** Viewport resize verification.
-- **Responsive Baseline:** Desktop (1440px): 4 columns across 1200px | Tablet (768px): 2x2 grid | Mobile (390px): 4 stacked vertical rows.
-- **Research References:** `docs/research/snapline/responsive-analysis.md` (Homepage).
+  1. Step numbers render in monospace typography (`01 / RESEARCH`, `02 / DESIGN`, `03 / DEVELOP`, `04 / HANDOFF`).
+  2. Scroll-scrubbed SVG prototype connectors draw smoothly across cards with `"On click"` labels and `#D6FF3F` traveling dot.
+  3. Reflows cleanly across Desktop (`1440px`), Tablet (`768px`), and Mobile (`390px`) without horizontal scroll.
+- **Testing Requirements:** Multi-viewport layout & scroll-draw verification + `tsc`/`eslint`/`build` quality gates.
+- **Responsive Baseline:** Desktop (`>860px`): 44% alternating left/right rows with Bezier prototype connectors | Tablet/Mobile (`<=860px`): 100% stacked cards (`200px` bottom image strip) with straight vertical prototype connectors.
+- **Research References:** `https://snapline.framer.website/` (`.framer-histfi`, `.framer-TEu6n`, `.snp-pf`), `docs/research/snapline/interaction-matrix.md`.
 - **Task Branch:** `task/5.5-process-section`
 - **Commit Message:** `feat(home): implement 4-step methodology process section`
 - **PR Title:** `feat(home): implement 4-step methodology process section`
@@ -1476,7 +1478,7 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 | `5.2` | `task/5.2-draggable-resizable-portrait` | `stage-1` | `stage-1` | `feat(home): implement draggable and resizable hero portrait with live dimensions` | `feat(home): implement draggable and resizable hero portrait with live dimensions` | `NOT STARTED` |
 | `5.3` | `task/5.3-collaborator-cursors` | `stage-1` | `stage-1` | `feat(home): implement simulated multiplayer collaborator cursors` | `feat(home): implement simulated multiplayer collaborator cursors` | `MERGED` |
 | `5.4` | `task/5.4-client-logos` | `stage-1` | `stage-1` | `feat(home): implement client logos social proof section` | `feat(home): implement client logos social proof section` | `MERGED` |
-| `5.5` | `task/5.5-process-section` | `stage-1` | `stage-1` | `feat(home): implement 4-step methodology process section` | `feat(home): implement 4-step methodology process section` | `NOT STARTED` |
+| `5.5` | `task/5.5-process-section` | `stage-1` | `stage-1` | `feat(home): implement 4-step methodology process section` | `feat(home): implement 4-step methodology process section` | `MERGED` |
 | `5.6` | `task/5.6-home-featured-previews` | `stage-1` | `stage-1` | `feat(home): implement featured works grid and journal teaser section` | `feat(home): implement featured works grid and journal teaser section` | `NOT STARTED` |
 | `6.1` | `task/6.1-work-catalog-header` | `stage-1` | `stage-1` | `feat(work): implement work catalog page layout and header` | `feat(work): implement work catalog page layout and header` | `NOT STARTED` |
 | `6.2` | `task/6.2-work-category-filters` | `stage-1` | `stage-1` | `feat(work): implement category filtering bar and count animations` | `feat(work): implement category filtering bar and count animations` | `NOT STARTED` |

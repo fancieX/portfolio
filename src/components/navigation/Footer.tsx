@@ -6,6 +6,7 @@ import { footerSitemap } from "@/data/navigation";
 import { Button } from "@/components/primitives";
 import { useCanvasPan } from "@/hooks/useCanvasPan";
 import { useLisbonTime } from "@/hooks/useLisbonTime";
+import { useSmoothScroll } from "@/components/canvas";
 
 export interface FooterProps {
   /** Optional class name override for outer container */
@@ -39,14 +40,13 @@ export function Footer({
   ctaSubhead = "Have a product that needs to feel simpler? Tell me about it and I'll reply within two working days.",
 }: FooterProps) {
   const { panTo } = useCanvasPan();
+  const { scrollTo } = useSmoothScroll();
   const lisbonTime = useLisbonTime();
   const currentYear = 2026;
 
   const handleScrollToTop = useCallback(() => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, []);
+    scrollTo(0, { duration: 1.15 });
+  }, [scrollTo]);
 
   return (
     <footer

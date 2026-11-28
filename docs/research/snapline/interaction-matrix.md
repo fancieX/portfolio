@@ -41,3 +41,10 @@
 ### 4. Interactive 404 Polaroid Draggable Cards
 - **Observed Behavior:** 3 photo cards fanned out on `/404` (`# Layer 01`, `# Layer 02`, `# Layer 03`) can be grabbed and dragged freely across the canvas with elevated shadow and boundary collision.
 - **Implementation Hypothesis:** Framer Motion `drag` with `dragConstraints` and inertia spring physics.
+
+### 5. Process Prototype Flow Connectors (`.snp-pf`) & Step Cards (`.framer-TEu6n`)
+- **Verified Live Behavior:** In the homepage `"How I shape every design project"` section, 4 alternating left/right step cards (`01 / RESEARCH`, `02 / DESIGN`, `03 / DEVELOP`, `04 / HANDOFF`) are wired by an `SVG` prototype overlay (`stroke: #0A0A0A`, `1.6px`):
+  - **Wide (`>860px`):** Cubic Bezier connector `M sx,sy C ex,sy ex,sy ex,ey` exiting inner side edge center to top center of the next card.
+  - **Narrow (`<=860px`):** Vertical line `M sx,sy L ex,ey` connecting stacked cards.
+  - **Scroll-Scrubbing:** Normalized scroll progress `clamp(0, 1, (innerHeight * 0.72 - top) / (span + 120))` drives `stroke-dashoffset`, moves the `#D6FF3F` (`r=5.5`) pulse dot along `getPointAtLength`, displays `"On click"` (`11px`, `#605F5F`) beside the `#FFFFFF` start port (`r=5`), and reveals the solid arrowhead when `progress >= 0.99`.
+  - **Card Press Feedback:** Pressing any process card scales it to `0.97` (`0.5s cubic-bezier(0.34, 1.56, 0.64, 1)`).
