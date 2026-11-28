@@ -104,7 +104,7 @@ All implementation tasks strictly adhere to the non-negotiable rules codified in
 | `5.1` | Hero Section Layout & Animated Role Rotator | `task/5.1-hero-section` | High | Medium | Yes | `MERGED` | #24 | `85f73cf` | `Merged into stage-1` |
 | `5.2` | Draggable & Resizable Hero Portrait | `task/5.2-draggable-resizable-portrait` | High | High | Yes | `MERGED` | - | - | `Merged into stage-1` |
 | `5.3` | Simulated Multiplayer Collaborator Cursors | `task/5.3-collaborator-cursors` | Medium | Medium | Yes | `MERGED` | - | - | `Merged into stage-1` |
-| `5.4` | Client Logos Social Proof Section | `task/5.4-client-logos` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
+| `5.4` | Client Logos Social Proof Section | `task/5.4-client-logos` | Medium | Low | Yes | `MERGED` | - | - | `Merged into stage-1` |
 | `5.5` | 4-Step Process Section | `task/5.5-process-section` | Medium | Low | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | `5.6` | Homepage Featured Works & Journal Teaser | `task/5.6-home-featured-previews` | High | Medium | Yes | `NOT STARTED` | - | - | `Unmerged` |
 | **M6: Work Catalog Showcase** | | | | | | | | | |
@@ -658,17 +658,19 @@ ightarrow$ 38px mobile.
 - **Task ID:** `5.4`
 - **Task Name:** Client Logos Social Proof Section
 - **Priority:** Medium | **Complexity:** Low | **Visual QA:** Yes
-- **Scope:** Social proof section.
-- **Objective:** Implement `ClientLogos.tsx` displaying client partnership logos in a subtle muted monochrome row beneath hero CTAs.
-- **Affected Files:** `src/components/home/ClientLogos.tsx`.
-- **Dependencies:** Task 5.1.
-- **Expected Result:** Clean logo row with subtle opacity hover effects.
+- **Task Specification Link:** [task-5.4.md](file:///d:/portfolio/docs/specifications/tasks/task-5.4.md)
+- **Scope:** Hero social proof client row (`Trust` / `Client Row`).
+- **Objective:** Implement `ClientLogos.tsx` displaying `"TRUSTED BY 50+ TEAMS"` eyebrow (`11px` uppercase, `0.14em` tracking, `#8A8A8A`) and the 5 verified partner wordmarks (`Northwind`, `Lumen&Co`, `Parcelly`, `Ostra`, `Halcyon` at `15px` medium, `-0.02em` tracking) beneath the Hero CTAs.
+- **Affected Files:** `src/components/home/ClientLogos.tsx`, `src/components/home/HeroSection.tsx`, `src/components/home/index.ts`, `src/styles/globals.css`.
+- **Dependencies:** Task 5.1 (`MERGED`), Task 5.2 (`MERGED`), Task 5.3 (`MERGED`).
+- **Expected Result:** Clean monochrome typographic client row matching reference DOM & tablet visual layout with `[0.16, 1, 0.3, 1]` entrance motion (`0.9s`, `0.4s` delay) and smooth hover contrast transitions.
 - **Acceptance Criteria:**
-  1. Logos render with muted gray tint (`#8A8A8A`), transitioning on hover.
-  2. Wrap into 2 rows on mobile.
-- **Testing Requirements:** Visual comparison against reference desktop screenshot.
-- **Responsive Baseline:** Desktop: single horizontal row | Tablet: 2-column wrap | Mobile: 2x2 grid with centered alignment.
-- **Research References:** `docs/research/snapline/screenshots/desktop/home-desktop-initial.png`.
+  1. Eyebrow renders `"Trusted by 50+ teams"` uppercase (`11px`, `0.14em`, `#8A8A8A`) above `Northwind`, `Lumen&Co`, `Parcelly`, `Ostra`, and `Halcyon`.
+  2. Logos render with muted gray tint (`#605F5F`/muted opacity), transitioning smoothly to `#2A2926` on hover.
+  3. Single horizontal row on Desktop (`1440px`) and Tablet (`768px`), wrapping cleanly into 2 rows on Mobile (`390px`) with zero horizontal overflow.
+- **Testing Requirements:** Runtime inspection across Desktop, Tablet, and Mobile + `tsc`/`eslint`/`build` quality gates.
+- **Responsive Baseline:** Desktop (`1440px`): single row in hero left column | Tablet (`768px`): single row below CTAs & above portrait | Mobile (`390px`): flex-wrap into 2 rows (`gap-x-[26px] gap-y-2.5`).
+- **Research References:** `docs/research/snapline/screenshots/tablet/home-tablet-768px.png`, `docs/research/snapline/screenshots/desktop/home-desktop-initial.png`.
 - **Task Branch:** `task/5.4-client-logos`
 - **Commit Message:** `feat(home): implement client logos social proof section`
 - **PR Title:** `feat(home): implement client logos social proof section`
@@ -1473,7 +1475,7 @@ Every task maps to a unique branch created just-in-time from latest `stage-1`:
 | `5.1` | `task/5.1-hero-section` | `stage-1` | `stage-1` | `feat(home): implement hero section layout and animated role rotator` | `feat(home): implement hero section layout and animated role rotator` | `NOT STARTED` |
 | `5.2` | `task/5.2-draggable-resizable-portrait` | `stage-1` | `stage-1` | `feat(home): implement draggable and resizable hero portrait with live dimensions` | `feat(home): implement draggable and resizable hero portrait with live dimensions` | `NOT STARTED` |
 | `5.3` | `task/5.3-collaborator-cursors` | `stage-1` | `stage-1` | `feat(home): implement simulated multiplayer collaborator cursors` | `feat(home): implement simulated multiplayer collaborator cursors` | `MERGED` |
-| `5.4` | `task/5.4-client-logos` | `stage-1` | `stage-1` | `feat(home): implement client logos social proof section` | `feat(home): implement client logos social proof section` | `NOT STARTED` |
+| `5.4` | `task/5.4-client-logos` | `stage-1` | `stage-1` | `feat(home): implement client logos social proof section` | `feat(home): implement client logos social proof section` | `MERGED` |
 | `5.5` | `task/5.5-process-section` | `stage-1` | `stage-1` | `feat(home): implement 4-step methodology process section` | `feat(home): implement 4-step methodology process section` | `NOT STARTED` |
 | `5.6` | `task/5.6-home-featured-previews` | `stage-1` | `stage-1` | `feat(home): implement featured works grid and journal teaser section` | `feat(home): implement featured works grid and journal teaser section` | `NOT STARTED` |
 | `6.1` | `task/6.1-work-catalog-header` | `stage-1` | `stage-1` | `feat(work): implement work catalog page layout and header` | `feat(work): implement work catalog page layout and header` | `NOT STARTED` |

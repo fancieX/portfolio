@@ -31,15 +31,17 @@ One of the most critical structural findings of this reconnaissance is the **uni
 - **Desktop (1440px):**
   - Hero: Asymmetrical 2 columns (60% typography / 40% draggable portrait).
   - Headline: `72px` (`line-height: 1.05`, `letter-spacing: -0.03em`).
+  - Client Row (`Trust`): `"Trusted by 50+ teams"` eyebrow + 5 client wordmarks (`Northwind`, `Lumen&Co`, `Parcelly`, `Ostra`, `Halcyon`) in 1 horizontal row (`gap: 26px`) beneath hero CTAs.
   - Process: 4 columns side by side across `1200px`.
   - Evidence: `screenshots/desktop/home-desktop-initial.png`
 - **Tablet (768px):**
-  - Hero: Single column stack; portrait centered beneath headline and CTA row (`maxWidth: 420px`).
+  - Hero: Single column stack; client logos row sits beneath CTA buttons and above centered portrait (`maxWidth: 420px`) on a single horizontal row (`home-tablet-768px.png`).
   - Headline: Scales down to `52px` (`line-height: 1.10`).
   - Process: 2x2 grid.
   - Evidence: `screenshots/tablet/home-tablet-768px.png`
 - **Mobile (390px):**
   - Hero: Full-width single column with `16px` lateral margins.
+  - Client Row (`Trust`): Wraps cleanly across 2 rows via `flex-wrap` (`gap: 26px` horizontal) beneath CTAs.
   - Headline: Scales down to `38px` (`line-height: 1.15`).
   - Process: 4 stacked vertical rows.
   - Simulated multiplayer cursors (`"Lena · PM"` and `"Sam · Dev"` + comment bubbles) remain visible and animate smoothly inside their respective headline and portrait bounds on mobile (`pointer-events: none` prevents touch scroll conflict).
